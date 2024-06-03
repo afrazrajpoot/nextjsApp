@@ -124,3 +124,61 @@ export const resetForm = [
     },
   },
 ];
+export const headerData = [
+  {
+    title: "STORE",
+    link: "/store",
+  },
+  {
+    title: "TUTORIALS",
+    link: "/tutorials",
+  },
+  {
+    title: "FAQS",
+    link: "/faqs",
+  },
+  {
+    title: "ABOUT",
+    link: "/about",
+  },
+];
+export const menueData = [
+  {
+    title: "Dashboards",
+    icon: "/img/dashboardIcon.png",
+  },
+  {
+    title: "Orders",
+    icon: "/img/ordersIcon.png",
+  },
+  {
+    title: "Subscriptions",
+    icon: "/img/subscriptionIcon.png",
+  },
+  {
+    title: "Downloads",
+    icon: "/img/downloadIcon.png",
+  },
+  {
+    title: "Address",
+    icon: "/img/addressIcon.png",
+  },
+  {
+    title: "Payment methods",
+    icon: "/img/paymentIcon.png",
+  },
+];
+export const otherData = [
+  {
+    title: "Account details",
+    icon: "/img/account.png",
+  },
+  {
+    title: "VAT Number",
+    icon: "/img/vatIcon.png",
+  },
+  {
+    title: "Logout",
+    icon: "/img/logoutIcon.png",
+  },
+];

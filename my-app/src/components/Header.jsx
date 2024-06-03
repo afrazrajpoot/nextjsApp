@@ -4,26 +4,10 @@ import Link from "next/link";
 import React from "react";
 import SearchIcon from "@mui/icons-material/Search"; // Importing the Search icon from Material-UI
 import { Button, TextField } from "@mui/material";
+import { headerData } from "@/data/data";
 
 const Header = () => {
-  const data = [
-    {
-      title: "STORE",
-      link: "/store",
-    },
-    {
-      title: "TUTORIALS",
-      link: "/tutorials",
-    },
-    {
-      title: "FAQS",
-      link: "/faqs",
-    },
-    {
-      title: "ABOUT",
-      link: "/about",
-    },
-  ];
+ 
   return (
     <>
       <nav className="bg-[#171717] w-full p-[0.7vw] flex items-center  gap-[4vw] justify-center fixed z-50">
@@ -31,7 +15,7 @@ const Header = () => {
           <Image src={"/img/whiteDuck.png"} height={200} width={200} />
         </div>
         <div className="flex gap-[4vw] text-[1vw]">
-          {data.map((item) => (
+          {headerData?.map((item) => (
             <div className="text-[#FFFFFF]" key={item.title}>
               <Link href={item.link}>{item.title}</Link>
             </div>
