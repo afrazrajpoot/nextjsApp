@@ -1,0 +1,68 @@
+"use client";
+import {
+  Button,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+  Typography,
+} from "@mui/material";
+import React from "react";
+import { useForm, Controller } from "react-hook-form";
+import { forgetForm, formData, loginFormData, resetForm } from "@/data/data";
+const ResetForm = () => {
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+    // Handle form submission
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} noValidate className="w-full">
+      {resetForm.map((field, index) => (
+        <div key={index} className="mb-4">
+          <label
+            htmlFor={field.name}
+            className="block text-sm font-medium text-gray-700 text-[0.8vw]"
+          >
+            {field.label}
+          </label>
+          <Controller
+            name={field.name}
+            control={control}
+            defaultValue=""
+            rules={field.rules}
+            render={({ field }) => (
+              <input
+                id={field.name}
+                type={field.type}
+                required
+                {...field}
+                className={`mt-1 block w-full rounded-md outline-none shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm placeholder:text-[0.8vw] placeholder:text-[#A3A3A3] bg-[#FAFAFA] p-[0.5vw] ${
+                  errors[field.name] ? "border-red-500" : "border-gray-300"
+                }`}
+                placeholder={"Must be at least 8 character"}
+              />
+            )}
+          />
+        </div>
+      ))}
+
+      <Button
+        type="submit"
+        size="large"
+        className="w-full mt-4 text-[0.8vw] bg-[#FF387A] hover:bg-[#FF387A] text-white"
+      >
+        Next
+      </Button>
+    </form>
+  );
+};
+
+export default ResetForm;

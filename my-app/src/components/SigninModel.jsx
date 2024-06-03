@@ -7,15 +7,16 @@ import CloseIcon from "@mui/icons-material/Close";
 import Modal from "@mui/material/Modal";
 import Form from "./Form";
 import Image from "next/image";
+import SigninForm from "./SigninForm";
 
-export default function SignupModel() {
+export default function SigninModel() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
     <div className="w-full relative">
-      <Button onClick={handleOpen}>Signup modal</Button>
+      <Button onClick={handleOpen}>Signin modal</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -31,10 +32,9 @@ export default function SignupModel() {
               Great to see you here!
             </h1>
             <p className="text-center text-[1vw] w-full max-w-[17vw] mx-auto">
-              It’s free to create an account. Already have an account?{" "}
-              <span className="text-[#FF387A]">Log in</span>
+              Great to have you back! Log in
             </p>
-            <Form />
+            <SigninForm />
             <div className="flex items-center w-full gap-[0.3vw]">
               <div className="border flex-grow"></div>
               <div className="px-[0.5vw] py-[0.3vw] text-[0.8vw] text-[#737373]">
@@ -45,9 +45,9 @@ export default function SignupModel() {
             <div className="flex w-full gap-[2vw] justify-center items-center">
               <Button
                 variant="outlined"
-                className="w-full max-w-[12vw] flex items-center gap-[2vw] bg-[#FAFAFA] border-[1px] border-[#E5E5E5]"
+                className="w-full max-w-[12vw] flex items-center gap-[2vw] bg-[#FFFFFF] border-[1px] border-[#E5E5E5]"
                 style={{
-                  // backgroundColor: "#FAFAFA",
+                  backgroundColor: "#FAFAFA",
                   color: "#171717",
                   fontSize: "0.8vw",
                   fontWeight: "bold",
@@ -81,7 +81,7 @@ export default function SignupModel() {
               </Button>
             </div>
           </div>
-          <Button className="absolute top-[43vw] ">
+          <Button className="absolute top-[40vw]">
             <IconButton
               onClick={handleClose}
               style={{

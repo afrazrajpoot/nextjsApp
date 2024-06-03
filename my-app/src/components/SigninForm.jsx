@@ -9,9 +9,9 @@ import {
 import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { formData } from "@/data/data";
+import { loginFormData } from "@/data/data";
 
-const Form = () => {
+const SigninForm = () => {
   const {
     handleSubmit,
     control,
@@ -27,12 +27,12 @@ const Form = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate className="w-full ">
-      {formData.map((field, index) => (
+    <form onSubmit={handleSubmit(onSubmit)} noValidate className="w-full">
+      {loginFormData.map((field, index) => (
         <div key={index} className="mb-4">
           <label
             htmlFor={field.name}
-            className="block text-sm font-medium text-gray-700 text-[0.7vw]"
+            className="block text-sm font-medium text-gray-700 text-[0.8vw]"
           >
             {field.label}
           </label>
@@ -60,9 +60,8 @@ const Form = () => {
                       : "border-gray-300"
                   }`}
                   placeholder={
-                    (index === 0 && "e.g San Address") ||
-                    (index === 1 && "e.g sanandreas@gmail.com") ||
-                    (index === 2 && "Must be at least 8 character")
+                    (index === 0 && "e.g sanandreas@gmail.com") ||
+                    (index === 1 && "Must be at least 8 character")
                   }
                 />
                 {field.type === "password" && (
@@ -90,6 +89,9 @@ const Form = () => {
           />
         </div>
       ))}
+      <p className="text-[0.7vw] text-[#FF387A] ml-[19.6vw] font-bold w-full max-w-[30vw]">
+        Forget password?
+      </p>
       <div className="mb-4">
         <FormControlLabel value="female" control={<Radio size="small" />} />
         <label htmlFor="" className="text-[0.9vw] ml-[-1vw]">
@@ -108,4 +110,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default SigninForm;
