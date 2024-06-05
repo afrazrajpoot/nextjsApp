@@ -1,12 +1,84 @@
-import Link from "next/link";
-import React from "react";
+import { TextField } from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
+import MotionDuck from "./components/pagesComponents/landingpage/MotionDuck";
+import SubscriptionPass from "./components/pagesComponents/landingpage/SubscriptionPass";
+import Categories from "./components/pagesComponents/landingpage/Categories";
+import SubscriptionPlains from "./components/pagesComponents/landingpage/SubscriptionPlains";
+import Image from "next/image";
+import { profileData } from "@/data/data";
+import Profile from "./components/Cards/Profile";
+import Footer from "./components/Common/Footer/Footer";
+import Bundles from "./components/pagesComponents/landingpage/Bundles";
 
-const page = () => {
+const LandingPage = () => {
   return (
-    <>
-      <h1 className="bg-red-500">Home</h1>
-    </>
+    <main style={{ backgroundImage: "url('/img/hero1.png')"}} className="w-full h-screen bg-cover bg-center">
+      <aside className="pt-[6vw] ml-[7vw] mt-[8vw] md:mt-0 w-full max-w-[90vw]  md:max-w-[50vw] p-[1vw]">
+         <button className="bg-[#3D3D3D] text-[4vw] md:text-[1vw] hover:bg-[#333333] text-[#fff] p-[2.5vw] md:p-[0.6vw] rounded-full w-full max-w-[35vw] md:max-w-[10vw] text-center">SONDUCKFILM</button>
+         <p className="gradient-text mt-[5vw] w-full text-[12vw] md:text-[4.5vw] font-bold leading-[12vw] md:leading-[4.5vw] md:mt-[1vw] ">
+        Get Access to Hundreds <span>Motion</span> <span>Graphics</span> Available
+      </p>
+      <p className="w-full text-[4vw] mt-[3vw] md:text-[1vw] md:mt-[1vw] text-[#B0B0B0] md:max-w-[30vw]">Find what you need on Sonduck Film, Discover millions of video templates, stock footage, audio & more. All for one low cost.</p>
+      <section className="flex flex-col md:flex-row items-center mt-[4vw] md:mt-[1vw]">
+      <TextField
+            id="outlined-basic" placeholder="Search"
+            InputProps={{ startAdornment: (  <SearchIcon className="text-[#FF387A]"/>  ),
+              className: "text-gray-800 bg-[#F6F6F6] text-[4vw] md:text-[1vw] focus:outline-none focus:shadow-md p-[0.3vw] focus:outline-none rounded-md",
+              style: { padding: "0.3vw"},}}
+            sx={{
+              "& input": {
+                padding: "0.7vw", width: "21vw", fontSize: "1vw",
+                '@media (max-width: 768px)': {
+                  padding: "2.5vw", width: "77vw", fontSize: "4vw",
+                }
+
+              },
+            }}
+          />
+          <button className="bg-[#FF387A] text-[4vw] mt-[3vw] md:mt-0 md:text-[1vw] md:ml-[1vw] hover:shadow-md hover:bg-[#ff387af1] text-[#fff] p-[2.5vw] md:p-[0.9vw] rounded-md w-full md:max-w-[10vw] text-center">SEARCH</button>
+      </section>
+      </aside>
+      <section className="w-full mt-[22vw] md:mt-[2vw] max-w-[80vw] mx-auto">
+        <MotionDuck />
+      </section>
+      <section className="w-full mt-[10vw] md:mt-[2vw] max-w-[80vw] mx-auto">
+        <SubscriptionPass />
+      </section>
+      <section className="w-full mt-[10vw] md:mt-[2vw] bg-[#F8F8F8]">
+        <Categories />
+      </section>
+      <section className="w-full mt-[10vw] md:mt-[2vw] bg-[#F8F8F8]">
+        <Bundles />
+      </section>
+      <section className="w-full mt-[10vw] md:mt-[2vw] bg-[#F8F8F8]">
+        <SubscriptionPlains />
+      </section>
+      <article className="w-full relative flex flex-col items-center justify-center mt-[10vw] md:mt-[2vw] py-[6vw] md:py-[2vw] bg-[#171717]">
+        <Image src={"/img/duck1.png"} alt="hero2" width={200} height={200} className="absolute top-[2vw] right-0" />
+        <Image src={"/img/duck2.png"} alt="hero2" width={200} height={200} className="absolute top-[15vw] left-0" />
+        <h1 className="text-[5.5vw] md:text-[2.5vw] mt-[2vw] font-semibold text-[#fff] text-center">Unlock Your Potential as a <br /> <span className="text-[#FF689A]">Creator</span> with Sonduck</h1>
+        <p className="text-[3.8vw] md:text-[0.8vw] mt-[1vw] text-[#D4D4D4] text-center w-full max-w-[80vw] md:max-w-[47vw]">Experience the collaboration of numerous creators and an expanding selection of courses. Register now and become a part of a community comprising over 10,000 local and international creators. Utilize our Course Editor, and showcase your expertise by publishing your finest course on the Sonduck Course Library.</p>
+        <button className="bg-[#FF387A] text-[4vw] md:text-[1vw] ml-[1vw] hover:shadow-md hover:bg-[#ff387af1] text-[#fff] p-[2.5vw] md:p-[0.9vw] mt-[5vw] md:mt-[2vw] rounded-md w-full max-w-[30vw] md:max-w-[10vw] text-center">Browse All</button>
+        <Image src={"/img/Desktop.png"} alt="hero2" width={1250} height={300} className="mt-[4vw]" />
+      </article>
+      <section className="w-full py-[6vw] md:py-[2vw] bg-[#F6F6F6]">
+        <article className="w-full flex flex-col md:flex-row justify-between mt-[3vw] max-w-[75vw] mx-auto">
+          <h1 className="text-[5.5vw] md:text-[2vw] leading-[6vw] md:leading-[3vw] font-semibold text-[#171717]">Discover What Our <br /> Community Is Saying</h1>
+          <p className="text-[#525252] mt-[3vw] md:mt-0 text-[4vw] md:text-[1vw] w-full max-w-[80vw] md:max-w-[35vw]">
+          At Sonduck, our vibrant community of learners and creators is at the heart of what we do.
+          Hear directly from those who have experienced the transformative journey of learning and creating on our platform.
+          Explore testimonials that reflect the diverse perspectives of enthusiastic learners and accomplished creators.
+          </p>
+        </article>
+        <figure className="w-full  max-w-[80vw] mx-auto my-[5vw] grid grid-cols-1 md:grid-cols-3 gap-[10vw] md:gap-[2vw] place-items-center place-content-center">
+          {profileData?.map((user, index)=> (
+            <Profile key={index} {...user} />
+          ))}
+        </figure>
+      </section>
+      <Footer />
+    </main>
   );
 };
 
-export default page;
+export default LandingPage;

@@ -5,13 +5,13 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Modal from "@mui/material/Modal";
-import Form from "./Form";
+import Form from "../../Common/Footer/Form";
 import Image from "next/image";
-import SigninForm from "./SigninForm";
-import ForgetForm from "./ForgetForm";
-import ResetForm from "./ResetForm";
+import SigninForm from "../register/SigninForm";
+import ForgetForm from "../forgotPassword/ForgetForm";
+import Otp from "./Otp";
 
-export default function ResetModel() {
+export default function OtpModel() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -33,10 +33,28 @@ export default function ResetModel() {
             <h1 className="font-bold text-[1.2vw] text-center">
               Reset Password
             </h1>
-            <p className="text-center text-[0.8vw]">
+            <p className="text-center text-[0.8vw] text-[#525252]">
               Recover your account password
             </p>
-            <ResetForm />
+            <Otp />
+            <Button
+              size="large"
+              className="w-full mt-4 text-[0.8vw] bg-[#FF387A] hover:bg-[#FF387A] text-white"
+            >
+              Next
+            </Button>
+            <Button
+              size="large"
+              variant="outlined"
+              sx={{
+                color: "#FF387A",
+                border: "none",
+                "&:hover": { border: "none" },
+              }}
+              className="w-full  text-[0.8vw] mt-[1vw]"
+            >
+              Resend
+            </Button>
           </div>
           <Button className="absolute top-[34vw]">
             <IconButton
