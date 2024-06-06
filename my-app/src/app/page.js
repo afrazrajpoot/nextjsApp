@@ -54,8 +54,8 @@ const LandingPage = () => {
         <SubscriptionPlains />
       </section>
       <article className="w-full relative flex flex-col items-center justify-center mt-[10vw] md:mt-[2vw] py-[6vw] md:py-[2vw] bg-[#171717]">
-        <Image src={"/img/duck1.png"} alt="hero2" width={200} height={200} className="absolute top-[2vw] right-0" />
-        <Image src={"/img/duck2.png"} alt="hero2" width={200} height={200} className="absolute top-[15vw] left-0" />
+        <img src={"/img/duck1.png"} alt="hero2"  className="absolute w-full max-w-[13vw] top-[2vw] right-0" />
+        <img src={"/img/duck2.png"} alt="hero2" className="absolute w-full max-w-[13vw] top-[15vw] left-0" />
         <h1 className="text-[5.5vw] md:text-[2.5vw] mt-[2vw] font-semibold text-[#fff] text-center">Unlock Your Potential as a <br /> <span className="text-[#FF689A]">Creator</span> with Sonduck</h1>
         <p className="text-[3.8vw] md:text-[0.8vw] mt-[1vw] text-[#D4D4D4] text-center w-full max-w-[80vw] md:max-w-[47vw]">Experience the collaboration of numerous creators and an expanding selection of courses. Register now and become a part of a community comprising over 10,000 local and international creators. Utilize our Course Editor, and showcase your expertise by publishing your finest course on the Sonduck Course Library.</p>
         <button className="bg-[#FF387A] text-[4vw] md:text-[1vw] ml-[1vw] hover:shadow-md hover:bg-[#ff387af1] text-[#fff] p-[2.5vw] md:p-[0.9vw] mt-[5vw] md:mt-[2vw] rounded-md w-full max-w-[30vw] md:max-w-[10vw] text-center">Browse All</button>
@@ -76,7 +76,7 @@ const LandingPage = () => {
           ))}
         </figure>
       </section>
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 };

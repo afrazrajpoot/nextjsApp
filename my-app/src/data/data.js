@@ -352,3 +352,12 @@ export const bundleData = [
     template: "25,000+ Templates",
   },
 ]
+
+
+export const features = [
+  '1500+ Transitions for Premiere Pro',
+  'Premiere Pro MotionDuck Extension',
+  'Works with any FPS',
+  'Premiere Pro CC 2021 (15.0.0) and Above',
+  'Lifetime "Unlimited" license for all your projects.'
+  ]

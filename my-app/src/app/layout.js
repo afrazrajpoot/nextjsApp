@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/app/components/Common/Header/Header";
 import Sidebar from "@/app/components/Common/Sidebar/Sidebar";
+import Footer from "./components/Common/Footer/Footer";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
         <Header />
         {/* <Sidebar /> */}
         <main className="mt-[2.5vw]">{children}</main>
+        <Footer />
       </body>
     </html>
   );
