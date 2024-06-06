@@ -530,11 +530,11 @@ export const footerLists = [
 
 export const socialMediaLinks = [
   {
-    img: "/img/facebook1.png",
+    img: "/img/FooterFb.png",
     path: "#",
   },
   {
-    img: "/img/linkedin.png",
+    img: "/img/linkedIn.png",
     path: "#",
   },
   {
@@ -546,7 +546,7 @@ export const socialMediaLinks = [
     path: "#",
   },
   {
-    img: "/img/instagram.png",
+    img: "/img/insta.png",
     path: "#",
   },
 ];

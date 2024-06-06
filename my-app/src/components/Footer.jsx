@@ -9,7 +9,12 @@ const Footer = () => {
     <footer className="w-full p-[2vw] bg-[#171717] ">
       <main className="w-full max-w-[80vw] mx-auto mt-[2vw] flex items-start">
         <section className="w-full max-w-[20vw]">
-          <Image src={"/img/logoText.png"} alt="logo" width={200} height={50} />
+          <Image
+            src={"/img/footerLogo.png"}
+            alt="logo"
+            width={200}
+            height={50}
+          />
           <p className="text-[#525252] mt-[1.5vw] text-[1vw] w-full max-w-[20vw]">
             Market design is the process of designing markets to achieve
             specific goals.
