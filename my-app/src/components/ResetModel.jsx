@@ -18,7 +18,7 @@ export default function ResetModel() {
 
   return (
     <div className="w-full relative">
-      <Button onClick={handleOpen}>Signin modal</Button>
+      <Button onClick={handleOpen}>Reset Password modal</Button>
       <Modal
         open={open}
         onClose={handleClose}

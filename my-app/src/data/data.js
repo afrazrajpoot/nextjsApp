@@ -146,39 +146,641 @@ export const menueData = [
   {
     title: "Dashboards",
     icon: "/img/dashboardIcon.png",
+    link: "/dashboard",
   },
   {
     title: "Orders",
     icon: "/img/ordersIcon.png",
+    link: "/order",
   },
   {
     title: "Subscriptions",
     icon: "/img/subscriptionIcon.png",
+    link: "/",
   },
   {
     title: "Downloads",
     icon: "/img/downloadIcon.png",
+    link: "/downloadPage",
   },
   {
     title: "Address",
     icon: "/img/addressIcon.png",
+    link: "/billing",
   },
   {
     title: "Payment methods",
     icon: "/img/paymentIcon.png",
+    link: "/paymentMethod",
   },
 ];
 export const otherData = [
   {
     title: "Account details",
     icon: "/img/account.png",
+    link: "/accountDetail",
   },
   {
     title: "VAT Number",
     icon: "/img/vatIcon.png",
+    link: "/VatNumber",
   },
   {
     title: "Logout",
     icon: "/img/logoutIcon.png",
+    link: "/",
+  },
+];
+export const accoutForm = [
+  {
+    label: "Email address",
+    name: "email",
+    type: "email",
+    value: "magika@mail.com",
+    placeholder: "e.g sanandreas@gmail.com",
+    pc: "email",
+    rules: {
+      required: "Email is required",
+      pattern: {
+        value: /^\S+@\S+$/i,
+        message: "Enter a valid email address",
+      },
+    },
+  },
+  {
+    label: "Display Name",
+    name: "displayName",
+    value: "George Gika",
+    type: "text",
+    placeholder: "e.g San Andreas",
+    pc: "email",
+
+    rules: {
+      required: "Full name is required",
+      minLength: {
+        value: 3,
+        message: "Full name must be at least 3 characters long",
+      },
+    },
+  },
+];
+export const accountForm2 = [
+  {
+    label: "Phone number",
+    name: "phoneNumber",
+    value: "+62 888 999 1222",
+    type: "text",
+    placeholder: "e.g San Andreas",
+    pc: "email",
+
+    rules: {
+      required: "Full name is required",
+      minLength: {
+        value: 3,
+        message: "Full name must be at least 3 characters long",
+      },
+    },
+  },
+  {
+    label: "Country",
+    name: "country",
+    value: "United Kingdom",
+    type: "text",
+    placeholder: "e.g San Andreas",
+    pc: "email",
+
+    rules: {
+      required: "Full name is required",
+      minLength: {
+        value: 3,
+        message: "Full name must be at least 3 characters long",
+      },
+    },
+  },
+  {
+    label: "Address",
+    name: "address",
+    value: "Malang, Sronowagen, East Java, Indonesia",
+    type: "text",
+    placeholder: "e.g San Andreas",
+    pc: "email",
+
+    rules: {
+      required: "Full name is required",
+      minLength: {
+        value: 3,
+        message: "Full name must be at least 3 characters long",
+      },
+    },
+  },
+  {
+    label: "City",
+    name: "city",
+    value: "Birmingham",
+    type: "text",
+    placeholder: "e.g San Andreas",
+    pc: "email",
+
+    rules: {
+      required: "Full name is required",
+      minLength: {
+        value: 3,
+        message: "Full name must be at least 3 characters long",
+      },
+    },
+  },
+  {
+    label: "Postal code",
+    name: "postalCode",
+    value: "5657 8767",
+    type: "text",
+    placeholder: "e.g San Andreas",
+    pc: "email",
+
+    rules: {
+      required: "Full name is required",
+      minLength: {
+        value: 3,
+        message: "Full name must be at least 3 characters long",
+      },
+    },
+  },
+];
+export const checkoutFormData = [
+  {
+    label: "Your name",
+    name: "name",
+    value: "Giks",
+    type: "text",
+    placeholder: "e.g San Andreas",
+    pc: "email",
+
+    rules: {
+      required: "Full name is required",
+      minLength: {
+        value: 3,
+        message: "Full name must be at least 3 characters long",
+      },
+    },
+  },
+  {
+    label: "Phone number",
+    name: "phoneNumber",
+    value: "+62 888 999 1222",
+    type: "text",
+    placeholder: "e.g San Andreas",
+    pc: "email",
+
+    rules: {
+      required: "Full name is required",
+      minLength: {
+        value: 3,
+        message: "Full name must be at least 3 characters long",
+      },
+    },
+  },
+  {
+    label: "Country",
+    name: "country",
+    value: "United Kingdom",
+    type: "text",
+    placeholder: "e.g San Andreas",
+    pc: "email",
+
+    rules: {
+      required: "Full name is required",
+      minLength: {
+        value: 3,
+        message: "Full name must be at least 3 characters long",
+      },
+    },
+  },
+  {
+    label: "Address",
+    name: "address",
+    value: "Malang, Sronowagen, East Java, Indonesia",
+    type: "text",
+    placeholder: "e.g San Andreas",
+    pc: "email",
+
+    rules: {
+      required: "Full name is required",
+      minLength: {
+        value: 3,
+        message: "Full name must be at least 3 characters long",
+      },
+    },
+  },
+];
+export const createPassword = [
+  {
+    label: "New Password",
+    name: "newPassword",
+    type: "password",
+    placeholder: "Must be at least 8 characters",
+    pc: "email",
+
+    rules: {
+      required: "Password is required",
+      minLength: {
+        value: 8,
+        message: "Password must be at least 8 characters long",
+      },
+    },
+  },
+  {
+    label: "Confirm Password",
+    name: "confirmPassword",
+    type: "password",
+    placeholder: "Must be at least 8 characters",
+    pc: "email",
+
+    rules: {
+      required: "Password is required",
+      minLength: {
+        value: 8,
+        message: "Password must be at least 8 characters long",
+      },
+    },
+  },
+];
+export const paymentMethodData = [
+  {
+    icon: "/img/skype.png",
+    title: "Stripe",
+    desc: "Offers payment processing software for e-commerce websites and mobile applications.",
+  },
+  {
+    icon: "/img/viza.png",
+    title: "Stripe",
+    desc: "Offers payment processing software for e-commerce websites and mobile applications.",
+  },
+  {
+    icon: "/img/paypal.png",
+    title: "Paypal",
+    desc: "Offers payment processing software for e-commerce websites and mobile applications.",
+  },
+  {
+    icon: "/img/apple.png",
+    title: "Apple pay",
+    desc: "Offers payment processing software for e-commerce websites and mobile applications.",
+  },
+];
+export const billingAddress = [
+  {
+    label: "Email ",
+    name: "email",
+    type: "email",
+    value: "magika@mail.com",
+    placeholder: "e.g sanandreas@gmail.com",
+    pc: "email",
+    rules: {
+      required: "Email is required",
+      pattern: {
+        value: /^\S+@\S+$/i,
+        message: "Enter a valid email address",
+      },
+    },
+  },
+  {
+    label: "Your Name",
+    name: "yourname",
+    value: "George Gika",
+    type: "text",
+    placeholder: "e.g San Andreas",
+    pc: "email",
+
+    rules: {
+      required: "Full name is required",
+      minLength: {
+        value: 3,
+        message: "Full name must be at least 3 characters long",
+      },
+    },
+  },
+  {
+    label: "Phone number",
+    name: "phoneNumber",
+    value: "+62 888 999 1222",
+    type: "text",
+    placeholder: "e.g San Andreas",
+    pc: "email",
+
+    rules: {
+      required: "Full name is required",
+      minLength: {
+        value: 3,
+        message: "Full name must be at least 3 characters long",
+      },
+    },
+  },
+  {
+    label: "Country",
+    name: "country",
+    value: "United Kingdom",
+    type: "text",
+    placeholder: "e.g San Andreas",
+    pc: "email",
+
+    rules: {
+      required: "Full name is required",
+      minLength: {
+        value: 3,
+        message: "Full name must be at least 3 characters long",
+      },
+    },
+  },
+  {
+    label: "Address",
+    name: "address",
+    value: "Malang, Sronowagen, East Java, Indonesia",
+    type: "text",
+    placeholder: "e.g San Andreas",
+    pc: "email",
+
+    rules: {
+      required: "Full name is required",
+      minLength: {
+        value: 3,
+        message: "Full name must be at least 3 characters long",
+      },
+    },
+  },
+];
+export const footerLists = [
+  {
+    title: "Products",
+    list: [
+      { title: "After Effect", path: "#" },
+      { title: "Premier Pro", path: "#" },
+    ],
+  },
+  {
+    title: "Links",
+    list: [
+      { title: "Store", path: "#" },
+      { title: "Tutorials", path: "#" },
+      { title: "FAQs", path: "#" },
+      { title: "Affiliate", path: "#" },
+      { title: "Returns & Refunds", path: "#" },
+      { title: "Licences", path: "#" },
+    ],
+  },
+];
+
+export const socialMediaLinks = [
+  {
+    img: "/img/facebook1.png",
+    path: "#",
+  },
+  {
+    img: "/img/linkedin.png",
+    path: "#",
+  },
+  {
+    img: "/img/twitter.png",
+    path: "#",
+  },
+  {
+    img: "/img/youtube.png",
+    path: "#",
+  },
+  {
+    img: "/img/instagram.png",
+    path: "#",
+  },
+];
+
+export const featurePack = [
+  {
+    image: "/img/card1.png",
+    actualPrice: "48",
+    discountedPrice: "60",
+    title: "1500+ Transitions Premiere Pro",
+  },
+  {
+    image: "/img/card2.png",
+    actualPrice: "43",
+    discountedPrice: "46",
+    title: "1500+ Transitions Premiere Pro",
+  },
+];
+export const privacyPolicyData = [
+  {
+    title: "Information We Collect",
+    desc: "We collect various types of information from you when you use our website. This may include personal information such as your name, email address, and phone number. We may also collect non-personal information such as your IP address, browser type, and operating system.",
+  },
+  {
+    title: "How We Use Your Information",
+    desc: "We may use your personal information to contact you, provide services to you, and to improve our website. We may also use your non-personal information to improve our website, monitor our website usage, and analyze trends.",
+  },
+  {
+    title: "Disclosure of Your Information",
+    desc: "We may share your personal information with third-party service providers who help us operate our website, provide our services, and fulfill your requests. We may also share your information when required by law or when we believe that disclosure is necessary to protect our rights or the rights of others.",
+  },
+  {
+    title: "Security of Your Information",
+    desc: "We take reasonable measures to protect your personal information from unauthorized access, disclosure, or misuse. However, we cannot guarantee the security of your information transmitted through the internet.",
+  },
+  {
+    title: "Children’s Privacy",
+    desc: "Our website is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you believe we have collected information from a child under 13, please contact us and we will remove the information.",
+  },
+  {
+    title: "Contact Us",
+    desc: "If you have any questions about this Privacy Policy or our practices, please contact us at [Business Agency Contact Information].",
+  },
+];
+export const termAndConditionData = [
+  {
+    title: "Services",
+    desc: 'Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the website (the "Service") operated by [company name]. Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, and others who access or use the Service. By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service.',
+  },
+  {
+    title: "Accounts",
+    desc: "When you create an account with us, you must provide us information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of your account on our Service. You are responsible for safeguarding the password that you use to access the Service and for any activities or actions under your password, whether your password is with our Service or a third-party service. You agree not to disclose your password to any third party. You must notify us immediately upon becoming aware of any breach of security or unauthorized use of your account.",
+  },
+  {
+    title: "Intellectual Property",
+    desc: "The Service and its original content, features, and functionality are and will remain the exclusive property of [company name] and its licensors. The Service is protected by copyright, trademark, and other laws of both the United States and foreign countries. Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of [company name].",
+  },
+  {
+    title: "Links To Other Web Sites",
+    desc: "Our Service may contain links to third-party web sites or services that are not owned or controlled by [company name]. [company name] has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third-party web sites or services. You further acknowledge and agree that [company name] shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods or services available on or through any such web sites or services.",
+  },
+  {
+    title: "Changes",
+    desc: "We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.",
+  },
+];
+export const data1 = [
+  {
+    desc: "1:Consider your needs. What are your biggest financial risks? What would happen if you lost your job, got sick, or had a car accident? Once you know your biggest risks, you can start to think about what kind of Motion Graphic you need",
+  },
+  {
+    desc: "2:Do your research. There are many different types of Motion Graphic available, and each one has its own pros and cons. It's important to do your research and understand the different options before you make a decision.",
+  },
+  {
+    desc: "3:Get quotes from multiple companies. Once you know what kind of Motion Graphic you need, get quotes from multiple companies. This will help you compare prices and coverage.",
+  },
+  {
+    desc: "4:Read the fine print. Before you sign any Motion Graphic policy, be sure to read the fine print. This is where you'll find information about things like deductibles, copays, and exclusions.",
+  },
+  {
+    desc: "5:Ask questions. If you have any questions about Motion Graphic, don't be afraid to ask your Motion Graphic agent. They should be able to answer all of your questions and help you choose the right policy for you.'",
+  },
+];
+export const data2 = [
+  {
+    desc: "Consider your budget: Motion Graphic can be expensive, so it's important to factor in your budget when you're making a decision.",
+  },
+  {
+    desc: " Think about your lifestyle: If you have a high-risk lifestyle, you may need to purchase more Motion Graphic. For example, if you drive a lot, you may need to purchase more auto Motion Graphic.",
+  },
+  {
+    desc: "  Talk to your family: If you have a family, you'll need to consider their needs when you're choosing Motion Graphic. For example, you may want to purchase life Motion Graphic to protect your family if you die..",
+  },
+  {
+    desc: "   Review your Motion Graphic regularly: Your needs may change over time, so it's important to review your Motion Graphic regularly. This will help you make sure that you have the right coverage in place.'",
+  },
+];
+export const data3 = [
+  {
+    desc: " Auto Motion Graphic: This type of Motion Graphic protects you financially if you are involved in a car accident.",
+  },
+  {
+    desc: " Homeowners Motion Graphic: This type of Motion Graphic protects your home and belongings from damage caused by fire, theft, and other disasters.",
+  },
+  {
+    desc: " Life Motion Graphic: This type of Motion Graphic provides financial support to your loved ones if you die.",
+  },
+  {
+    desc: " Health Motion Graphic: This type of Motion Graphic helps pay for your medical expenses if you get sick or injured.",
+  },
+  {
+    desc: " Disability Motion Graphic: This type of Motion Graphic provides income if you become disabled and unable to work.",
+  },
+  {
+    desc: "Business Motion Graphic: This type of Motion Graphic protects your business from financial losses due to things like fire, theft, and lawsuits.",
+  },
+];
+export const cardData = [
+  {
+    img: "/img/graphicsImg.png",
+    title: "Make Powerful Motion Graphics in After Effects",
+    date: "Sep 31 , 2023",
+  },
+  {
+    img: "/img/graphicsImg2.png",
+    title: "Make Powerful Motion Graphics in After Effects",
+    date: "Sep 31 , 2023",
+  },
+  {
+    img: "/img/graphicsImg3.png",
+    title: "Make Powerful Motion Graphics in After Effects",
+    date: "Sep 31 , 2023",
+  },
+];
+export const latestArticledata = [
+  {
+    img: "/img/latest1.png",
+    title: "Make Powerful Motion Graphics in After Effects",
+    date: "Sep 31 , 2023",
+    desc: "Consider your needs. What are your biggest financial risks? What would happen if you lost your job, got sick, or had a car accident? Once you know your biggest risks, you can start to think about what kind of Motion Graphic you need",
+  },
+  {
+    img: "/img/latest2.png",
+    title: "Make Simple Cinematic 3D Visuals in After Effects",
+    date: "Sep 31 , 2023",
+    desc: "Consider your needs. What are your biggest financial risks? What would happen if you lost your job, got sick, or had a car accident? Once you know your biggest risks, you can start to think about what kind of Motion Graphic you need",
+  },
+  {
+    img: "/img/latest3.png",
+    title: "The Best Motion Graphic Texture & Color in After Effects",
+    date: "Sep 31 , 2023",
+    desc: "Consider your needs. What are your biggest financial risks? What would happen if you lost your job, got sick, or had a car accident? Once you know your biggest risks, you can start to think about what kind of Motion Graphic you need",
+  },
+  {
+    img: "/img/latest4.png",
+    title: "Make Any After Effects Project Cinematic in Seconds",
+    date: "Sep 31 , 2023",
+    desc: "Consider your needs. What are your biggest financial risks? What would happen if you lost your job, got sick, or had a car accident? Once you know your biggest risks, you can start to think about what kind of Motion Graphic you need",
+  },
+  {
+    img: "/img/latest5.png",
+    title: "Make Hyper Visual Motion Graphics in After Effects",
+    date: "Sep 31 , 2023",
+    desc: "Consider your needs. What are your biggest financial risks? What would happen if you lost your job, got sick, or had a car accident? Once you know your biggest risks, you can start to think about what kind of Motion Graphic you need",
+  },
+  {
+    img: "/img/latest6.png",
+    title: "Create Hyper Cinematic 3D Worlds in After Effects",
+    date: "Sep 31 , 2023",
+    desc: "Consider your needs. What are your biggest financial risks? What would happen if you lost your job, got sick, or had a car accident? Once you know your biggest risks, you can start to think about what kind of Motion Graphic you need",
+  },
+];
+export const faqData = [
+  {
+    title: "What is Sonduckfilm Web?",
+    img: "/img/faq.png",
+    desc: "Sonduckfilm Web is a website that offers a variety of UI kits, templates, and design resources for web developers and designers. They have a wide variety of templates to choose from, including templates for landing pages, websites, web applications, and more. They also offer premium features, such as the ability to export your designs in high resolution, the ability to add custom fonts and colors, and the ability to collaborate with other designers.",
+  },
+  {
+    title: "How much does Sonduckfilm Web cost?",
+    img: "/img/faq.png",
+    desc: "To use the templates, simply download the template files from the Sonduckfilm Web website and import them into your design software. From there, you can customize the templates to fit your specific needs by adding your own text, images, and other design elements.",
+  },
+  {
+    title: "What are the benefits of using Sonduckfilm Web?",
+    img: "/img/faq.png",
+    desc: "To use the templates, simply download the template files from the Sonduckfilm Web website and import them into your design software. From there, you can customize the templates to fit your specific needs by adding your own text, images, and other design elements.",
+  },
+  {
+    title: "What are the drawbacks of using Sonduckfilm Web?",
+    img: "/img/faq.png",
+    desc: "To use the templates, simply download the template files from the Sonduckfilm Web website and import them into your design software. From there, you can customize the templates to fit your specific needs by adding your own text, images, and other design elements.",
+  },
+  {
+    title: "Is Sonduckfilm Web a good resource for beginners?",
+    img: "/img/faq.png",
+    desc: "To use the templates, simply download the template files from the Sonduckfilm Web website and import them into your design software. From there, you can customize the templates to fit your specific needs by adding your own text, images, and other design elements.",
+  },
+  {
+    title: "Is Sonduckfilm Web a good resource for experienced designers?",
+    img: "/img/faq.png",
+    desc: "To use the templates, simply download the template files from the Sonduckfilm Web website and import them into your design software. From there, you can customize the templates to fit your specific needs by adding your own text, images, and other design elements.",
+  },
+  {
+    title: "How do I get started with Sonduckfilm Web?",
+    img: "/img/faq.png",
+    desc: "To use the templates, simply download the template files from the Sonduckfilm Web website and import them into your design software. From there, you can customize the templates to fit your specific needs by adding your own text, images, and other design elements.",
+  },
+
+  // Add more items as needed
+];
+export const faqCardData = [
+  {
+    img: "/img/quotation.png",
+    desc: "The template company handled everything quickly and efficiently, and I was able to get a new car without having to worry about the cost.",
+    icon: "/img/pinkStar.png",
+    avatar: "/img/faqAvatar1.png",
+    name: "Skylar Siphron",
+    brandName: "Behance",
+  },
+  {
+    img: "/img/quotation.png",
+    desc: "The template company handled everything quickly and efficiently, and I was able to get a new car without having to worry about the cost.",
+    icon: "/img/pinkStar.png",
+    avatar: "/img/faqAvatar1.png",
+    name: "Skylar Siphron",
+    brandName: "Behance",
+  },
+  {
+    img: "/img/quotation.png",
+    desc: "The template company handled everything quickly and efficiently, and I was able to get a new car without having to worry about the cost.",
+    icon: "/img/pinkStar.png",
+    avatar: "/img/faqAvatar1.png",
+    name: "Skylar Siphron",
+    brandName: "Behance",
   },
 ];

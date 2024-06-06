@@ -1,11 +1,11 @@
-"use client";
 import { menueData, otherData } from "@/data/data";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Sidebar = () => {
   return (
-    <aside className="fixed top-[3vw]">
+    <aside className="fixed top-[3vw] hidden md:block">
       <div className="flex items-start gap-[0.4vw] bg-white  border-[1px] border-[#F1F5F9] w-full max-w-[16vw] ml-[8vw] px-[1vw] py-[3vw]">
         <img src="/img/avatar.png" alt="" className="" />
 
@@ -22,10 +22,19 @@ const Sidebar = () => {
           <div className="flex flex-col gap-[1vw] ml-[1vw]">
             {menueData?.map((item, index) => {
               return (
-                <div key={index} className="flex items-center gap-[0.4vw]">
+                <Link
+                  href={item.link}
+                  key={index}
+                  className="flex items-center gap-[0.4vw]"
+                >
                   <img src={item.icon} alt="" className="w-[1vw] h-[1vw]" />
-                  <p className="text-[0.9vw] text-[#334155] ">{item.title}</p>
-                </div>
+                  <p
+                    // to={item?.link}
+                    className="text-[0.9vw] text-[#334155] "
+                  >
+                    {item.title}
+                  </p>
+                </Link>
               );
             })}
           </div>
@@ -35,16 +44,21 @@ const Sidebar = () => {
           <div className="flex flex-col gap-[1vw] ml-[1vw]">
             {otherData?.map((item, index) => {
               return (
-                <div key={index} className="flex items-center gap-[0.4vw]">
+                <Link
+                  href={item.link}
+                  key={index}
+                  className="flex items-center gap-[0.4vw]"
+                >
                   <img src={item.icon} alt="" className="w-[1vw] h-[1vw]" />
                   <p
+                    // to={item.link}
                     className={`text-[0.9vw] text-[#334155] ${
                       index === 2 && "text-[#ED544E]"
                     }`}
                   >
                     {item.title}
                   </p>
-                </div>
+                </Link>
               );
             })}
           </div>
