@@ -76,7 +76,7 @@ const LandingPage = () => {
           ))}
         </figure>
       </section>
-      {/* <Footer /> */}
+      <Footer />
     </main>
   );
 };

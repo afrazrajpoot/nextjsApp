@@ -10,7 +10,9 @@ const Header = () => {
   return (
     <>
       <nav className="bg-[#171717] w-full p-[0.7vw] flex items-center  gap-[4vw] justify-center fixed z-50">
-        <figure>  <Image src={"/img/whiteDuck.png"} height={200} alt="logo" width={200} />  </figure>
+       <Link href={'/'}>
+       <figure>  <Image src={"/img/whiteDuck.png"} height={200} alt="logo" width={200} />  </figure>
+       </Link>
         <aside className="flex gap-[4vw] text-[1vw]">
           {headerData?.map((item) => (
             <div className="text-[#FFFFFF]" key={item.title}>

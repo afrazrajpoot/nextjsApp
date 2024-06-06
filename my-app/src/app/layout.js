@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
         <Header />
         {/* <Sidebar /> */}
         <main className="mt-[2.5vw]">{children}</main>
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );

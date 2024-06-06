@@ -325,11 +325,11 @@ export const singlePack = [
 
 export const bundleData = [
   {
-    image1: "/img/card2.png",
+    image1: "/img/card3.png",
     actualPrice: "654",
     discountedPrice: "2132",
     title:"1500+ Transitions Premiere Pro",
-    image2: "/img/items.png",
+    image2: "/img/subscription.png",
     saveInfo: "Save $1470 and get all 40 Packs!",
     template: "25,000+ Templates",
   },
@@ -338,16 +338,16 @@ export const bundleData = [
     actualPrice: "",
     discountedPrice: "",
     title:"1500+ Transitions Premiere Pro",
-    image2: "/img/items.png",
+    image2: "/img/subscription.png",
     saveInfo: "Save $1470 and get all 40 Packs!",
     template: "25,000+ Templates",
   },
   {
-    image1: "/img/card2.png",
+    image1: "/img/card4.png",
     actualPrice: "",
     discountedPrice: "",
     title:"1500+ Transitions Premiere Pro",
-    image2: "/img/items.png",
+    image2: "/img/subscription.png",
     saveInfo: "Save $1470 and get all 40 Packs!",
     template: "25,000+ Templates",
   },

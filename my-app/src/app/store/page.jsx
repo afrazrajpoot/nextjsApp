@@ -4,17 +4,21 @@ import ImportExportSharpIcon from '@mui/icons-material/ImportExportSharp';
 import { singlePack } from '@/data/data';
 import Pack from '../components/Cards/Pack';
 import Pagination from '../components/Common/Paggination';
-import MotionDuck from '../components/pagesComponents/landingpage/MotionDuck';
 import SubscriptionPass from '../components/pagesComponents/landingpage/SubscriptionPass';
 import Bundles from '../components/pagesComponents/landingpage/Bundles';
+import Link from 'next/link';
+import Footer from '../components/Common/Footer/Footer';
 
 const Store = () => {
   return (
+    <>
     <main className='w-full'>
          <nav className='flex mt-[10vw] md:mt-[0vw] w-full max-w-[90vw] mx-auto items-center justify-between p-[3vw]'>
          <section className="grid grid-cols-1 md:grid-cols-6 gap-[1vw]  w-full md:max-w-[50vw] items-center">
          <Button startIcon={<ImportExportSharpIcon />} variant="outlined" className='bg-[#FFFF] ml-[0.5vw] border-[1px] border-[#FF387A] font-medium hover:font-medium text-[3.5vw] md:text-[1vw]  hover:text-white hover:shadow-md hover:bg-[#ff387af6] text-[#FF387A] p-[2.5vw] md:p-[0.5vw] rounded-md w-full max-w-[30vw] md:max-w-[8vw] text-center' >Filter</Button>
+         <Link href={'/storedetails'}>
         <button className="bg-[#FFFF] ml-[0.5vw] border-[1px] hidden md:block border-[#525252] font-medium hover:font-medium text-[3.5vw] md:text-[1vw]  hover:text-white hover:shadow-md hover:bg-[#ff387af6] text-[#525252] p-[2.5vw] md:p-[0.5vw] rounded-md w-full max-w-[30vw] md:max-w-[8vw] text-center">All Products</button>
+         </Link>
         <button className="bg-[#FFFF] ml-[0.5vw] border-[1px] hidden md:block border-[#525252] font-medium hover:font-medium text-[3.5vw] md:text-[1vw]  hover:text-white hover:shadow-md hover:bg-[#ff387af6] text-[#525252] p-[2.5vw] md:p-[0.5vw] rounded-md w-full max-w-[30vw] md:max-w-[8vw] text-center">Bundle</button>
         <button className="bg-[#FFFF] ml-[0.5vw] border-[1px] hidden md:block border-[#525252] font-medium hover:font-medium text-[3.5vw] md:text-[1vw]  hover:text-white hover:shadow-md hover:bg-[#ff387af6] text-[#525252] p-[2.5vw] md:p-[0.5vw] rounded-md w-full max-w-[30vw] md:max-w-[8vw] text-center">Single Packs</button>
         <button className="bg-[#FFFF] ml-[0.5vw] border-[1px] hidden md:block border-[#525252] font-medium hover:font-medium text-[3.5vw] md:text-[1vw]  hover:text-white hover:shadow-md hover:bg-[#ff387af6] text-[#525252] p-[2.5vw] md:p-[0.5vw] rounded-md w-full max-w-[30vw] md:max-w-[8vw] text-center">After Effects</button>
@@ -40,6 +44,8 @@ const Store = () => {
         <Bundles />
       </section>
     </main>
+    <Footer />
+    </>
   )
 }
 

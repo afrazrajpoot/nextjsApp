@@ -5,11 +5,13 @@ import EastSharpIcon from '@mui/icons-material/EastSharp';
 import { features, singlePack } from '@/data/data';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import Pack from '../components/Cards/Pack';
+import Footer from '../components/Common/Footer/Footer';
 
 
 
 const StoreDetails = () => {
   return (
+    <>
     <main className='w-full'>
         <nav className='w-full max-w-[90vw] mx-auto mt-[12vw] md:mt-0 p-[2vw]'>
             <p className='text-[5.5vw] md:text-[2.5vw] text-[#171717] w-full md:max-w-[50vw] font-semibold'>Seamless Transitions Pack | 1500+ Transitions | Premiere Pro</p>
@@ -97,6 +99,9 @@ const StoreDetails = () => {
             </div>
         </section>
     </main>
+    <Footer />
+
+    </>
   )
 }
 
