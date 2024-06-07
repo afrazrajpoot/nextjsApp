@@ -8,18 +8,21 @@ import Modal from "@mui/material/Modal";
 import Form from "./Form";
 import Image from "next/image";
 import SigninForm from "./SigninForm";
+import { useGlobalContext } from "@/context/globalState";
 
 export default function SigninModel() {
+  const { setLoginModel, openLoginModel } = useGlobalContext();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setLoginModel(false);
+  };
 
   return (
     <div className="w-full relative">
-      <Button onClick={handleOpen}>Signin modal</Button>
       <Modal
-        open={open}
-        onClose={handleClose}
+        open={openLoginModel}
+        // onClose={closeLoginModel}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >

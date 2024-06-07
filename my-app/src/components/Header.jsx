@@ -5,8 +5,20 @@ import React from "react";
 import SearchIcon from "@mui/icons-material/Search"; // Importing the Search icon from Material-UI
 import { Button, TextField } from "@mui/material";
 import { headerData } from "@/data/data";
-
+import { useGlobalContext } from "@/context/globalState";
+import { styled } from "@mui/material/styles";
 const Header = () => {
+  const CustomButton = styled(Button)({
+    color: "white",
+    borderColor: "white",
+    borderWidth: "1px",
+    textTransform: "capitalize",
+  });
+  const { login, setLogin, openLoginModel, setLoginModel } = useGlobalContext();
+  const filteredHeaderData = !login
+    ? headerData.filter((item, index) => index !== 3)
+    : headerData;
+
   return (
     <>
       <nav className="bg-[#171717]  w-full p-[2vw] md:p-[0.7vw]   flex items-center  md:gap-[4vw] justify-center gap-[8vw] fixed z-50">
@@ -15,14 +27,15 @@ const Header = () => {
         </div>
         <div className="md:block hidden">
           <div className=" md:flex gap-[4vw] text-[1vw]">
-            {headerData?.map((item) => (
-              <div className="text-[#FFFFFF]" key={item.title}>
+            {filteredHeaderData.map((item, ind) => (
+              <div className="text-[#FFFFFF]" key={ind}>
                 <Link href={item.link}>{item.title}</Link>
               </div>
             ))}
           </div>
         </div>
-        <div className="">
+
+        {login ? (
           <div className="flex items-center gap-[0.3vw]">
             <span className="hidden md:block">
               <TextField
@@ -62,7 +75,21 @@ const Header = () => {
               </span>
             </span>
           </div>
-        </div>
+        ) : (
+          <div className="translate-x-[15vw] flex gap-[2vw]">
+            <Button
+              onClick={() => setLoginModel(true)}
+              variant="text"
+              style={{ textTransform: "capitalize" }}
+              className="text-white text-[1vw]"
+            >
+              Log <span className="ml-[0.3vw]">in</span>
+            </Button>
+            <CustomButton variant="outlined" className="text-[1vw]">
+              Join us
+            </CustomButton>
+          </div>
+        )}
       </nav>
     </>
   );

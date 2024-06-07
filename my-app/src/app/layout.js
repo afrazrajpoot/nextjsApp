@@ -2,6 +2,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
+import { UserProvider } from "@/context/globalState";
+import SigninModel from "@/components/SigninModel";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 const inter = Inter({ subsets: ["latin"] });
@@ -16,10 +18,14 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head></head>
 
-      <body className={inter.className}>
-        <Header />
-        <main className="">{children}</main>
-      </body>
+      <UserProvider>
+        <body className={inter.className}>
+          <Header />
+
+          {children}
+          <SigninModel />
+        </body>
+      </UserProvider>
     </html>
   );
 }
