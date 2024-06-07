@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import { UserProvider } from "@/context/globalState";
 import SigninModel from "@/components/SigninModel";
+import MobileSidebar from "@/components/MobileSidebar";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 const inter = Inter({ subsets: ["latin"] });
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
 
           {children}
           <SigninModel />
+          <MobileSidebar />
         </body>
       </UserProvider>
     </html>

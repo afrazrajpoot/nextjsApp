@@ -14,7 +14,16 @@ const Header = () => {
     borderWidth: "1px",
     textTransform: "capitalize",
   });
-  const { login, setLogin, openLoginModel, setLoginModel } = useGlobalContext();
+  const {
+    login,
+    setLogin,
+    openLoginModel,
+    setLoginModel,
+    toggelMobileSidebar,
+    setMobileSideBar,
+    toggleSidebar,
+  } = useGlobalContext();
+
   const filteredHeaderData = !login
     ? headerData.filter((item, index) => index !== 3)
     : headerData;
@@ -65,7 +74,7 @@ const Header = () => {
             <div className="bg-[#262626] md:px-[0.5vw] px-[1vw] md:py-[0.6vw] py-[2vw] transform translate-x-[-3.5vw] md:translate-x-[vw] rounded-md ">
               <img src={"/img/cart.png"} alt="cart" />
             </div>
-            <span className="md:hidden">
+            <span className="md:hidden" onClick={toggleSidebar}>
               <img src="/img/burger.png" alt="burger" />
             </span>
             <span className="hidden md:block">

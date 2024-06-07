@@ -18,16 +18,16 @@ export default function DisabledAccordion() {
   };
 
   return (
-    <main className="bg-[#FAFAFA] h-[140vh]">
-      <section className="translate-y-[5vw] pb-[4vw]">
+    <main className="bg-[#FAFAFA] md:h-[140vh] h-[198vw] xr:h-[85vh] 2xr:h-[85vh]">
+      <section className="md:translate-y-[5vw] translate-y-[18vw] pb-[4vw]">
         <article className="w-full max-w-[80vw] m-auto">
-          <button className="border-[1px] border-[#FF689A] bg-[#ff689a34] p-[0.6vw] rounded-md text-[#FF689A] mt-[1vw]">
+          <button className="border-[1px] border-[#FF689A] bg-[#ff689a34] p-[0.6vw] rounded-md text-[#FF689A] md:mt-[1vw] md:text-[1vw] text-[3vw]">
             Tutorials
           </button>
-          <h1 className="text-[2vw] font-bold mt-[1vw]">
+          <h1 className="md:text-[2vw] text-[5vw] font-bold mt-[1vw] ">
             Frequently Asked Questions
           </h1>
-          <p className="mt-[1vw]">
+          <p className="mt-[1vw] md:text-[1vw] text-[3vw]">
             We understand that you may have some questions about sunduckfilm. We
             have compiled a list of frequently asked questions to help you get
             the information you need. If you have any other questions, please do
@@ -47,27 +47,31 @@ export default function DisabledAccordion() {
                 aria-controls={`panel${index}-content`}
                 id={`panel${index}-header`}
               >
-                <Typography className="text-[1vw] p-[0.8vw] font-bold">
+                <Typography className="md:text-[1vw] text-[3vw] p-[0.8vw] font-bold">
                   {item.title}
                 </Typography>
               </AccordionSummary>
-              <AccordionDetails className="flex items-start gap-[1vw]">
+              <AccordionDetails className="flex md:flex-row  flex-col items-start gap-[1vw]">
                 <img src={item.img} alt={item.title} className="" />
-                <Typography className="text-[1vw]">{item.desc}</Typography>
+                <Typography className="md:text-[1vw] text-[3vw]">
+                  {item.desc}
+                </Typography>
               </AccordionDetails>
             </Accordion>
           ))}
         </article>
-        <article className="mt-[9vw]">
-          <h1 className="font-bold text-[2vw] text-center">What they say</h1>
-          <p className="text-center w-full max-w-[27vw] m-auto text-[#525252] font-medium mt-[1vw]">
+        <article className="md:mt-[9vw] mt-[20vw]">
+          <h1 className="font-bold md:text-[2vw] text-[6vw] text-center">
+            What they say
+          </h1>
+          <p className="text-center md:w-[27vw] w-[99vw] m-auto text-[#525252] font-medium mt-[1vw]">
             Hear from our satisfied clients and learn how we've helped them take
             their businesses to new heights.
           </p>
           <figure className="flex justify-center mt-[2vw]">
             <img src="/img/brands.png" alt="brands images" />
           </figure>
-          <main className="flex w-full max-w-[65vw] m-auto gap-[3vw]">
+          <main className="flex md:flex-row flex-col w-full max-w-[65vw] m-auto md:gap-[3vw] gap-[8vw]">
             {faqCardData?.map((item, index) => (
               <main
                 key={index}
@@ -78,19 +82,21 @@ export default function DisabledAccordion() {
               >
                 <header className="">
                   <img src={item.img} alt={item.name} className="" />
-                  <p className="text-[0.8vw] mt-[1vw] font-medium">
+                  <p className="md:text-[0.8vw] text-[3vw] mt-[1vw] font-medium">
                     {item.desc}
                   </p>
                 </header>
-                <figure className="border-[1px] border-[#F5F5F5] p-[0.1vw] rounded-full w-full max-w-[3vw] gap-[0.3vw]  flex">
+                <figure className="border-[1px] border-[#F5F5F5] p-[0.1vw] rounded-full w-[10.5vw] md:w-[3vw] gap-[0.3vw]  flex">
                   <img src={item.icon} alt="" />{" "}
-                  <span className="text-[0.8vw]">5.0</span>
+                  <span className="md:text-[0.8vw] text-[3vw]">5.0</span>
                 </figure>
                 <figure className="flex gap-[1vw]">
                   <img src={item.avatar} alt={item.name} className="" />
                   <div>
-                    <p className="text-[1vw] font-bold">{item.name}</p>
-                    <p className="text-[1vw]">{item.brandName}</p>
+                    <p className="md:text-[1vw] text-[3vw] font-bold">
+                      {item.name}
+                    </p>
+                    <p className="md:text-[1vw] text-[3vw]">{item.brandName}</p>
                   </div>
                 </figure>
               </main>
@@ -98,7 +104,7 @@ export default function DisabledAccordion() {
           </main>
         </article>
       </section>
-      <footer className="translate-y-[10vw]">
+      <footer className="md:translate-y-[10vw] translate-y-[25vw]">
         <Footer />
       </footer>
     </main>

@@ -15,13 +15,20 @@ export const UserProvider = ({ children }) => {
     }
     return false;
   }
+
   function logout() {
     localStorage.removeItem("token");
     setLogin(false);
     setLoginModel(false);
   }
+
   const [login, setLogin] = useState(false);
   const [openLoginModel, setLoginModel] = useState(false);
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setMobileSidebarOpen((prev) => !prev);
+  };
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -30,6 +37,7 @@ export const UserProvider = ({ children }) => {
       setLogin(false);
     }
   }, []);
+
   return (
     <UserContext.Provider
       value={{
@@ -39,6 +47,9 @@ export const UserProvider = ({ children }) => {
         setLoginModel,
         tokenInLocal,
         logout,
+        mobileSidebarOpen,
+        toggleSidebar,
+        setMobileSidebarOpen,
       }}
     >
       {children}

@@ -32,28 +32,25 @@ const page = () => {
           className="p-[2vw] bg-white border-[1px] border-[#F5F5F5] mt-[1vw] translate-y-[15vw]
           md:translate-y-0 rounded-lg"
         >
-          <div className="flex gap-[1vw]">
+          <div className="flex md:flex-row flex-col md:gap-[1vw] gap-[5vw]">
             {downloadData?.map((elem, ind) => (
               <div key={ind} className="flex flex-col">
-                <img src={elem.img} alt="" />
-                <p>{elem.desc}</p>
+                <figure className="w-full md:max-w-[15vw] max-w-[65vw]">
+                  <img
+                    src={elem.img}
+                    alt=""
+                    className="w-full md:ml-[0vw] ml-[10.5vw]"
+                  />
+                </figure>
+                <p className="text-[4vw] md:text-[1vw] ml-[12.5vw] md:mt-[1vw] mt-[4vw]  md:ml-[0vw] font-medium">
+                  {elem.desc}
+                </p>
                 <Button
                   variant="outlined"
-                  sx={{
-                    py: "0.4vw",
-                    px: "1vw",
-                    width: "100%",
-                    mt: "1vw",
-                    color: "#FF387A",
-                    borderColor: "#FF387A",
-                    borderRadius: "0.5vw",
-                    "&:hover": {
-                      backgroundColor: "transparent",
-                      borderColor: "#FF387A",
-                    },
-                  }}
+                  className="md:py-[0.4vw] py-[2vw] md:px-[1vw] w-[60vw] ml-[13vw] md:ml-[0vw]  md:w-full md:mt-[1vw] md:text-[1vw] text-[4vw] text-[#FF387A] border-[1px] border-[#FF387A] rounded-md hover:border-[#FF387A] mt-[3vw]"
+                  style={{ textTransform: "capitalize" }}
                 >
-                  View All
+                  Download now
                 </Button>
               </div>
             ))}
