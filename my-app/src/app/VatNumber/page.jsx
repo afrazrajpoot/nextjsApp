@@ -1,8 +1,10 @@
+import Sidebar from "@/components/Sidebar";
 import { Button } from "@mui/material";
 
 const page = () => {
   return (
     <main className="bg-[#FAFAFA] h-screen">
+      <Sidebar />
       <div className=" w-full max-w-[29vw] ml-[30vw] absolute top-[6vw]  ">
         <h1 className="font-bold text-[1.5vw]">VATE Number</h1>
         <div className="bg-white border-[1px] border-[#F5F5F5] rounded-md p-[1vw] mt-[1vw]">

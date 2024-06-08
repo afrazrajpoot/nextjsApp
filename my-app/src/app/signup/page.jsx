@@ -12,13 +12,13 @@ import ResetModel from "@/app/components/authModel/resetModal/ResetModel";
 
 const page = () => {
   return (
-    <>
+    <main className="absolute top-[8vw]">
       <SignupModel />
       <SigninModel />
       <ForgetModel />
       <OtpModel />
       <ResetModel />
-    </>
+    </main>
   );
 };
 
