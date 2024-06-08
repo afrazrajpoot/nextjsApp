@@ -13,7 +13,7 @@ const AccountForm = () => {
             <div key={index} className="mb-4">
               <label
                 htmlFor={field.name}
-                className="md:text-[0.9vw] text-[3vw] text-[#1B1B1B]"
+                className="md:text-[0.9vw] text-[4vw] text-[#1B1B1B]"
               >
                 {field.label}
               </label>
@@ -24,7 +24,7 @@ const AccountForm = () => {
                   type={field?.type}
                   required
                   value={field.value}
-                  className="bg-[#FAFAFA] md:p-[0.7vw] p-[4vw] w-full focus:outline-none border-[1px] rounded-sm border-[#F5F5F5] md:text-[0.9vw] text-[2.5vw]"
+                  className="bg-[#FAFAFA] md:p-[0.7vw] p-[4vw] w-full focus:outline-none border-[1px] rounded-sm border-[#F5F5F5] md:text-[0.9vw] text-[3.5vw]"
                 />
               </div>
             </div>
@@ -34,7 +34,7 @@ const AccountForm = () => {
           <div>
             <label
               htmlFor=""
-              className="md:text-[0.9vw] text-[3vw] text-[#1B1B1B]"
+              className="md:text-[0.9vw] text-[4vw] text-[#1B1B1B]"
             >
               First Name
             </label>
@@ -43,13 +43,13 @@ const AccountForm = () => {
               name=""
               value={"ab"}
               id=""
-              className="bg-[#FAFAFA] p-[4vw] md:p-[0.7vw] w-full focus:outline-none border-[1px] rounded-sm border-[#F5F5F5] md:text-[0.9vw] text-[2.5vw]"
+              className="bg-[#FAFAFA] p-[4vw] md:p-[0.7vw] w-full focus:outline-none border-[1px] rounded-sm border-[#F5F5F5] md:text-[0.9vw] text-[3.5vw]"
             />
           </div>
           <div>
             <label
               htmlFor=""
-              className="md:text-[0.9vw] text-[3vw] text-[#1B1B1B]"
+              className="md:text-[0.9vw] text-[4vw] text-[#1B1B1B]"
             >
               Last Name
             </label>
@@ -58,7 +58,7 @@ const AccountForm = () => {
               name=""
               value={"ab"}
               id=""
-              className="bg-[#FAFAFA] p-[4vw] md:p-[0.7vw] w-full focus:outline-none border-[1px] rounded-sm border-[#F5F5F5] md:text-[1vw] text-[2.5vw]"
+              className="bg-[#FAFAFA] p-[4vw] md:p-[0.7vw] w-full focus:outline-none border-[1px] rounded-sm border-[#F5F5F5] md:text-[1vw] text-[3.5vw]"
             />
           </div>
         </div>
@@ -68,7 +68,7 @@ const AccountForm = () => {
             <div key={index} className="mb-4 flex flex-col ">
               <label
                 htmlFor={field.name}
-                className="md:text-[0.9vw] text-[3vw] text-[#1B1B1B]"
+                className="md:text-[0.9vw] text-[4vw] text-[#1B1B1B]"
               >
                 {field.label}
               </label>
@@ -79,7 +79,7 @@ const AccountForm = () => {
                   type={field?.type}
                   required
                   value={field.value}
-                  className="bg-[#FAFAFA] md:p-[0.7vw] p-[4vw] w-full focus:outline-none border-[1px] rounded-sm border-[#F5F5F5] md:text-[0.9vw] text-[2.5vw]"
+                  className="bg-[#FAFAFA] md:p-[0.7vw] p-[4vw] w-full focus:outline-none border-[1px] rounded-sm border-[#F5F5F5] md:text-[0.9vw] text-[3.5vw]"
                 />
               </div>
             </div>

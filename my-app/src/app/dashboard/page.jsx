@@ -14,19 +14,19 @@ const page = () => {
         <section className="grid md:grid-cols-2 grid-cols-1 w-full gap-[4vw]">
           <article
             className=" p-[2vw] bg-white border-[1px] border-[#F5F5F5] mt-[1vw] translate-y-[15vw]
-        md:translate-y-0 rounded-lg w-[70vw] md:ml-[0vw] md:w-[25vw] ml-[10vw]"
+        md:translate-y-0 rounded-lg w-[90vw] md:ml-[0vw] md:w-[25vw] ml-[1-2vw]"
           >
             <div className="flex flex-col items-center md:gap-[1vw] ">
               <img
                 src="/img/accountAvatar.png"
                 alt="dashborad photo"
-                className="w-full md:max-w-[5vw] max-w-[15vw]"
+                className="w-full md:max-w-[5vw] max-w-[20vw]"
               />
               <div>
-                <p className="text-center font-bold md:text-[1vw] text-[3vw]">
+                <p className="text-center font-bold md:text-[1vw] text-[4vw]">
                   George Gika
                 </p>
-                <p className="text-center md:text-[0.9vw] text-[2.5vw] font-bold text-[#475569]">
+                <p className="text-center md:text-[0.9vw] text-[3.5vw] font-bold text-[#475569]">
                   george
                 </p>
               </div>
@@ -66,38 +66,38 @@ const page = () => {
             </div>
 
             <div className="border-[0.8px] border-b-[#CBD5E1] md:mt-[1vw] mt-[2.5vw]"></div>
-            <div className="flex justify-between md:mt-[0.9vw] mt-[2.5vw]">
-              <p className="text-[#475569] md:text-[0.9vw] text-[3vw]">
+            <div className="flex justify-between md:mt-[0.9vw] mt-[4vw]">
+              <p className="text-[#475569] md:text-[0.9vw] text-[4vw] font-medium">
                 Address
               </p>
-              <p className="text-[#475569] md:text-[0.9vw] text-[2.5vw] font-bold">
+              <p className="text-[#475569] md:text-[0.9vw] text-[3.5vw] font-bold">
                 Mila beoty 243
               </p>
             </div>
-            <div className="border-[0.8px] border-b-[#CBD5E1] md:mt-[1vw] mt-[2.5vw]"></div>
+            <div className="border-[0.8px] border-b-[#CBD5E1] md:mt-[1vw] mt-[3.5vw]"></div>
             <div className="flex justify-between md:mt-[0.9vw] mt-[2.5vw]">
-              <p className="text-[#475569] md:text-[0.9vw] text-[3vw] font-medium">
+              <p className="text-[#475569] md:text-[0.9vw] text-[4vw] font-medium">
                 Zip Code
               </p>
-              <p className="text-[#475569] md:text-[0.9vw] text-[2.5vw] font-bold">
+              <p className="text-[#475569] md:text-[0.9vw] text-[3.5vw] font-bold">
                 353243
               </p>
             </div>
-            <div className="border-[0.8px] border-b-[#CBD5E1] md:mt-[1vw] mt-[2vw]"></div>
+            <div className="border-[0.8px] border-b-[#CBD5E1] md:mt-[1vw] mt-[3.5vw]"></div>
             <div className="flex justify-between md:mt-[0.9vw] mt-[2vw]">
-              <p className="text-[#475569] md:text-[0.9vw] text-[3vw] font-medium">
+              <p className="text-[#475569] md:text-[0.9vw] text-[4vw] font-medium">
                 Currency
               </p>
-              <p className="text-[#475569] md:text-[0.9vw] text-[2.5vw] font-bold">
+              <p className="text-[#475569] md:text-[0.9vw] text-[3.5vw] font-bold">
                 IDR
               </p>
             </div>
 
             <div className="flex gap-[3vw] md:items-center justify-center md:mt-[1vw] mt-[3vw]">
-              <button className="text-[#FF387A] font-bold md:text-[1vw] text-[2.5vw]">
+              <button className="text-[#FF387A] font-bold md:text-[1vw] text-[3.5vw]">
                 change password
               </button>
-              <button className="md:py-[0.4vw] py-[1.5vw] md:px-[1vw] px-[7vw] md:text-[0.9vw] text-[3vw] text-[#FF387A] border-[1px] border-[#FF387A] md:rounded-md rounded-lg">
+              <button className="md:py-[0.4vw] py-[1.5vw] md:px-[1vw] px-[7vw] md:text-[0.9vw] text-[3.5vw] text-[#FF387A] border-[1px] border-[#FF387A] md:rounded-md rounded-lg">
                 Edit profile
               </button>
             </div>
@@ -105,9 +105,9 @@ const page = () => {
           <section>
             <article
               className=" p-[2vw] bg-white border-[1px] border-[#F5F5F5] mt-[1vw] translate-y-[15vw]
-        md:translate-y-0 rounded-lg md:w-[30vw] w-[70vw] md:ml-[0vw] ml-[10vw]"
+        md:translate-y-0 rounded-lg md:w-[30vw] w-[90vw] md:ml-[0vw] ml-[0.5vw]"
             >
-              <p className="md:text-[1vw] text-[4vw] font-bold">
+              <p className="md:text-[1vw] text-[5vw] font-bold">
                 Recent Orders ,
               </p>
 
@@ -119,7 +119,7 @@ const page = () => {
                 />
 
                 <div className="ml-[1vw]">
-                  <p className="md:text-[0.9vw] text-[3.5vw] font-medium">
+                  <p className="md:text-[0.9vw] text-[4vw] font-medium">
                     1500+ Transitions Premiere Pro
                   </p>
                   <div className="flex   justify-between w-[50vw] md:w-[20vw]">
@@ -128,7 +128,7 @@ const page = () => {
                     <img
                       src="/img/download.png"
                       alt="download"
-                      className="w-[4vw] md:w-[1.5vw] ml-[-14vw]"
+                      className="w-[4vw] md:w-[1.5vw] ml-[60vw]"
                     />
                   </div>
                 </div>
@@ -151,7 +151,7 @@ const page = () => {
                     <img
                       src="/img/download.png"
                       alt="download"
-                      className="w-[4vw] md:w-[1.5vw] ml-[-14vw]"
+                      className="w-[4vw] md:w-[1.5vw] ml-[60vw]"
                     />
                   </div>
                 </div>

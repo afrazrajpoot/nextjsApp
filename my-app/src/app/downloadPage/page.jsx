@@ -35,19 +35,19 @@ const page = () => {
           <div className="flex md:flex-row flex-col md:gap-[1vw] gap-[5vw]">
             {downloadData?.map((elem, ind) => (
               <div key={ind} className="flex flex-col">
-                <figure className="w-full md:max-w-[15vw] max-w-[65vw]">
+                <figure className="w-full md:max-w-[15vw] max-w-[80vw] md:ml-[0vw] ml-[-7.5vw]">
                   <img
                     src={elem.img}
                     alt=""
                     className="w-full md:ml-[0vw] ml-[10.5vw]"
                   />
                 </figure>
-                <p className="text-[4vw] md:text-[1vw] ml-[12.5vw] md:mt-[1vw] mt-[4vw]  md:ml-[0vw] font-medium">
+                <p className="text-[4.5vw] md:text-[1vw] ml-[5vw] md:mt-[1vw] mt-[4vw]  md:ml-[0vw] font-medium">
                   {elem.desc}
                 </p>
                 <Button
                   variant="outlined"
-                  className="md:py-[0.4vw] py-[2vw] md:px-[1vw] w-[60vw] ml-[13vw] md:ml-[0vw]  md:w-full md:mt-[1vw] md:text-[1vw] text-[4vw] text-[#FF387A] border-[1px] border-[#FF387A] rounded-md hover:border-[#FF387A] mt-[3vw]"
+                  className="md:py-[0.4vw] py-[2vw] md:px-[1vw] w-[76vw] ml-[5vw] md:ml-[0vw]  md:w-full md:mt-[1vw] md:text-[1vw] text-[4vw] text-[#FF387A] border-[1px] border-[#FF387A] rounded-md hover:border-[#FF387A] mt-[3vw]"
                   style={{ textTransform: "capitalize" }}
                 >
                   Download now

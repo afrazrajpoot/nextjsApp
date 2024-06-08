@@ -17,7 +17,7 @@ const CreatePasswordForm = () => {
         <div className="mb-4">
           <label
             htmlFor=""
-            className="md:text-[0.8vw] text-[3vw] font-medium text-[#1B1B1B] "
+            className="md:text-[0.8vw] text-[4vw] font-medium text-[#1B1B1B] "
           >
             Old password
           </label>
@@ -34,7 +34,7 @@ const CreatePasswordForm = () => {
             <div key={index} className="mb-4">
               <label
                 htmlFor={field.name}
-                className="block  font-medium text-[#1B1B1B] text-[3vw] md:text-[0.8vw]"
+                className="block  font-medium text-[#1B1B1B] text-[4vw] md:text-[0.8vw]"
               >
                 {field.label}
               </label>

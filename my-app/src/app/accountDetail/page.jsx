@@ -16,13 +16,13 @@ const page = () => {
       <Sidebar />
 
       <section className=" rounded-md w-full md:max-w-[50vw] max-w-[90vw] translate-y-[5vw] md:translate-x-[26vw] translate-x-[5vw] p-[2vw] md:p-[1vw]">
-        <h1 className="font-bold text-[6vw] md:text-[2vw] md:ml-[0vw] ml-[5vw] translate-y-[13vw] md:translate-y-[0.5vw] translate-x-[-4vw]  md:translate-x-0 ">
+        <h1 className="font-bold text-[6vw] md:text-[2vw] md:ml-[0vw] ml-[5vw] translate-y-[13vw] md:translate-y-[0.5vw] translate-x-[-8vw]  md:translate-x-0 ">
           Account Detail
         </h1>
         <article className="flex w-[90vw] md:flex-row flex-col  gap-[1.5vw] items-center md:items-start">
           <div
             className=" p-[2vw] bg-white border-[1px] border-[#F5F5F5] mt-[1vw] translate-y-[15vw]
-        md:translate-y-0 rounded-lg md:w-[30vw] w-[85vw] ml-[-2.5vw] md:ml-[0vw]"
+        md:translate-y-0 rounded-lg md:w-[30vw] w-[93vw] ml-[-3.8vw] md:ml-[0vw]"
           >
             <header className="flex items-start gap-[1vw] w-full">
               <div className="">

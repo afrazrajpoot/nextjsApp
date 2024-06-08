@@ -41,14 +41,14 @@ const PaymentMethod = () => {
             <Button
               type="submit"
               size="small"
-              className="w-full mt-4 text-[3vw] md:text-[0.8vw] bg-[#FF387A] md:max-w-[10vw] max-w-[40vw] md:p-[0.5vw] p-[2vw] hover:bg-[#FF387A] text-white"
+              className="w-full mt-4 text-[4vw] md:text-[0.8vw] bg-[#FF387A] md:max-w-[10vw] max-w-[40vw] md:p-[0.5vw] p-[2vw] hover:bg-[#FF387A] text-white"
             >
               save changes
             </Button>
             <Button
               variant="outlined"
               size="small"
-              className="w-full mt-4 md:text-[0.8vw] text-[3vw] md:max-w-[10vw] max-w-[40vw] p-[0.5vw]  text-[#FF387A] ml-[1vw] hover:border-[#FF387A] font-bold border-[#FF387A]"
+              className="w-full mt-4 md:text-[0.8vw] text-[4vw] md:max-w-[10vw] max-w-[40vw] md:p-[0.5vw] p-[2vw]  text-[#FF387A] ml-[1vw] hover:border-[#FF387A] font-bold border-[#FF387A]"
             >
               No cancel
             </Button>

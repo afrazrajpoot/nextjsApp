@@ -86,11 +86,11 @@ export default function DisabledAccordion() {
                     {item.desc}
                   </p>
                 </header>
-                <figure className="border-[1px] border-[#F5F5F5] p-[0.1vw] rounded-full w-[10.5vw] md:w-[3vw] gap-[0.3vw]  flex">
-                  <img src={item.icon} alt="" />{" "}
+                <figure className="border-[1px] border-[#F5F5F5] p-[0.1vw] mt-[6vw] rounded-full w-[10.5vw] md:w-[3vw] gap-[0.3vw]  flex">
+                  <img src={item.icon} alt="icon" />{" "}
                   <span className="md:text-[0.8vw] text-[3vw]">5.0</span>
                 </figure>
-                <figure className="flex gap-[1vw]">
+                <figure className="flex gap-[1vw] mt-[6vw] md:mt-[0vw]">
                   <img src={item.avatar} alt={item.name} className="" />
                   <div>
                     <p className="md:text-[1vw] text-[3vw] font-bold">
