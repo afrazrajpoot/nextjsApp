@@ -76,16 +76,19 @@ const Header = () => {
             </span>
           </div>
         ) : (
-          <div className="translate-x-[15vw] flex gap-[2vw]">
+          <div className="lg:translate-x-[15vw] translate-x-1 flex gap-[2vw]">
             <Button
               onClick={() => setLoginModel(true)}
               variant="text"
               style={{ textTransform: "capitalize" }}
-              className="text-white text-[1vw]"
+              className="text-white text-[3vw] lg:text-[1vw]"
             >
               Log <span className="ml-[0.3vw]">in</span>
             </Button>
-            <CustomButton variant="outlined" className="text-[1vw]">
+            <CustomButton
+              variant="outlined"
+              className="lg:text-[1vw] text-[2vw]"
+            >
               Join us
             </CustomButton>
           </div>
