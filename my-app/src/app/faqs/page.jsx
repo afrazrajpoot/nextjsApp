@@ -7,8 +7,7 @@ import Typography from "@mui/material/Typography";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { faqCardData, faqData } from "@/data/data";
-import Layout from "@/components/Layout";
-import Footer from "@/components/Footer";
+import Footer from "../components/Common/Footer/Footer";
 
 export default function DisabledAccordion() {
   const [expanded, setExpanded] = React.useState(false);

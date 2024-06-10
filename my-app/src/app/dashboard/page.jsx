@@ -1,6 +1,6 @@
 "use client";
-import Sidebar from "@/components/Sidebar";
 import { Button } from "@mui/material";
+import Sidebar from "../components/Common/Sidebar/Sidebar";
 
 const page = () => {
   return (
