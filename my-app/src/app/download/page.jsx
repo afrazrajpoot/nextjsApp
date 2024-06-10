@@ -1,10 +1,7 @@
 "use client";
-import BillingForm from "@/components/BillingForm";
-import Sidebar from "@/components/Sidebar";
-import { menueData, otherData } from "@/data/data";
-
 import React from "react";
 import Button from "@mui/material/Button"; // Import MUI Button
+import Sidebar from "../components/Common/Sidebar/Sidebar";
 
 const Page = () => {
   const downloadData = [

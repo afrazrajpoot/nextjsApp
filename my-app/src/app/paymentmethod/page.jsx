@@ -1,5 +1,5 @@
-import PaymentMethod from "@/components/PaymentMethod";
 import React from "react";
+import PaymentMethod from "../components/authModel/register/PaymentMethod";
 
 const page = () => {
   return (

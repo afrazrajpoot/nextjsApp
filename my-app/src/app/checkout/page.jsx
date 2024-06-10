@@ -1,7 +1,7 @@
-import Steper from "@/components/Steper";
 import { checkoutFormData } from "@/data/data";
 import { Button } from "@mui/material";
 import React from "react";
+import Steper from "../components/authModel/register/Steper";
 
 const page = () => {
   const data = [

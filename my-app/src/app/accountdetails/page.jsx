@@ -1,14 +1,9 @@
 "use client";
-import AccountDetail from "@/components/AccountDetail";
-import AccountForm from "@/components/AccountForm";
-import BillingForm from "@/components/BillingForm";
-import CreatePasswordForm from "@/components/CreatePasswordForm";
-import CreatePassword from "@/components/CreatePasswordForm";
-import Sidebar from "@/components/Sidebar";
-import { menueData, otherData } from "@/data/data";
 import { Button } from "@mui/material";
-
 import React from "react";
+import Sidebar from "../components/Common/Sidebar/Sidebar";
+import AccountForm from "../components/authModel/register/AccountForm";
+import CreatePasswordForm from "../components/authModel/register/CreatePasswordForm";
 
 const page = () => {
   return (

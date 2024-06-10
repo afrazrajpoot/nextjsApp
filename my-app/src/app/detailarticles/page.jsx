@@ -1,7 +1,6 @@
 import React from "react";
-import { Button } from "@mui/material";
 import { cardData, data1, data2, data3 } from "@/data/data";
-import Footer from "@/components/Footer";
+import Footer from "../components/Common/Footer/Footer";
 
 const Page = () => {
   return (

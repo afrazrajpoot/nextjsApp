@@ -1,8 +1,6 @@
-import Footer from "@/components/Footer";
-
 import { termAndConditionData } from "@/data/data";
 import React from "react";
-import Layout from "../layout/Layout";
+import Footer from "../components/Common/Footer/Footer";
 
 const page = () => {
   return (

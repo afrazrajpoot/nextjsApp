@@ -64,13 +64,13 @@ const Categories = () => {
         <button className="bg-[#FFFF] mt-[2vw] ml-[0.5vw] border-[1px] border-[#FF387A] font-medium hover:font-medium text-[3.5vw] sm:text-[2vw] lg:text-[1vw]  hover:text-white hover:shadow-md hover:bg-[#ff387af6] text-[#FF387A] p-[2.5vw] md:p-[0.9vw] rounded-md w-full max-w-[30vw] sm:max-w-[15vw] lg:max-w-[10vw] text-center">Premiere Pro</button>
         </div>
         </aside>
-        <figure className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-[5vw] sm:mt-[5vw] lg:mt-0 gap-[10vw] md:gap-[2vw] items-start'>
+        <figure className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-[5vw] sm:mt-[5vw] lg:mt-0 gap-[10vw] sm:gap-[4vw] lg:gap-[2vw] items-start'>
           {singlePack?.map((pack, index)=> (
             <Pack key={index} {...pack} />
           ))}
         </figure>
         <div className="flex items-center justify-center">
-        <button className="bg-[#FFFF] mt-[5vw] md:mt-[2vw] border-[1px] border-[#FF387A] font-medium hover:font-medium text-[4vw] sm:text-[2vw] lg:text-[1vw] hover:text-white hover:shadow-md hover:bg-[#ff387af6] text-[#FF387A] p-[2.5vw] md:p-[0.9vw] rounded-md w-full max-w-[30vw] md:max-w-[10vw] text-center">View All</button>
+        <button className="bg-[#FFFF] mt-[5vw] lg:mt-[2vw] border-[1px] border-[#FF387A] font-medium hover:font-medium text-[4vw] sm:text-[2vw] lg:text-[1vw] hover:text-white hover:shadow-md hover:bg-[#ff387af6] text-[#FF387A] p-[2.5vw] md:p-[0.9vw] rounded-md w-full max-w-[30vw] md:max-w-[10vw] text-center">View All</button>
         </div>
       </section>
       

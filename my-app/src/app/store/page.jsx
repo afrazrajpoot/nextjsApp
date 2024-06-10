@@ -13,7 +13,7 @@ const Store = () => {
   return (
     <>
     <main className='w-full'>
-         <nav className='flex mt-[20vw] sm:mt-[8vw] lg:mt-[0vw] w-full max-w-[90vw] mx-auto items-center justify-between p-[3vw]'>
+         <nav className='flex mt-[20vw] sm:mt-[8vw] lg:mt-[5vw] w-full max-w-[90vw] mx-auto items-center justify-between p-[3vw]'>
          <section className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-[1vw]  w-full md:max-w-[50vw] items-center">
          <Button startIcon={<ImportExportSharpIcon />} variant="outlined" className='bg-[#FFFF] ml-[0.5vw] border-[1px] border-[#FF387A] font-medium hover:font-medium text-[3.5vw] sm:text-[2vw] lg:text-[1vw]  hover:text-white hover:shadow-md hover:bg-[#ff387af6] text-[#FF387A] p-[2.5vw] md:p-[0.5vw] rounded-md w-full max-w-[30vw] sm:max-w-[15vw] lg:max-w-[8vw] text-center' >Filter</Button>
          <Link href={'/storedetails'}>

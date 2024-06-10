@@ -56,7 +56,6 @@ const LandingPage = () => {
       <section className="w-full mt-[10vw] sm:mt-[6vw] lg:mt-[2vw] bg-[#F8F8F8]">
         <SubscriptionPlains />
       </section>
-
       <article className="w-full relative flex flex-col items-center justify-center mt-[10vw] sm:mt-[6vw] lg:mt-[2vw] py-[6vw] md:py-[2vw] bg-[#171717]">
         <img src={"/img/duck1.png"} alt="hero2"  className="absolute w-full max-w-[13vw] top-[2vw] right-0" />
         <img src={"/img/duck2.png"} alt="hero2" className="absolute w-full max-w-[13vw] top-[15vw] left-0" />
@@ -65,7 +64,7 @@ const LandingPage = () => {
         <button className="bg-[#FF387A] text-[4vw] sm:text-[2vw] lg:text-[1vw] ml-[1vw] hover:shadow-md hover:bg-[#ff387af1] text-[#fff] p-[2.5vw] md:p-[0.9vw] mt-[5vw] md:mt-[2vw] rounded-md w-full max-w-[30vw] sm:max-w-[15vw] lg:max-w-[10vw] text-center">Browse All</button>
         <Image src={"/img/Desktop.png"} alt="hero2" width={1250} height={300} className="mt-[4vw]" />
       </article>
-      <section className="w-full py-[6vw] md:py-[2vw] bg-[#F6F6F6]">
+      <section className="w-full py-[6vw] sm:py-[4vw] lg:py-[2vw] bg-[#F6F6F6]">
         <article className="w-full flex flex-col md:flex-row justify-between mt-[3vw] max-w-[75vw] mx-auto">
           <h1 className="text-[5.5vw] sm:text-[3vw] lg:text-[2vw] leading-[6vw] md:leading-[3vw] font-semibold text-[#171717]">Discover What Our <br /> Community Is Saying</h1>
           <p className="text-[#525252] mt-[3vw] md:mt-0 text-[4vw] sm:text-[2vw] lg:text-[1vw] w-full max-w-[80vw] sm:max-w-[45vw] lg:max-w-[35vw]">

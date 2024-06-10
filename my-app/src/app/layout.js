@@ -1,10 +1,9 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Sidebar from "@/components/Sidebar";
 import { UserProvider } from "@/context/globalState";
-import SigninModel from "@/components/SigninModel";
-import MobileSidebar from "@/components/MobileSidebar";
+import Header from "./components/Common/Header/Header";
+import SigninModel from "./components/authModel/register/SigninModel";
+import MobileSidebar from "./components/Common/Sidebar/MobileSidebar";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 const inter = Inter({ subsets: ["latin"] });

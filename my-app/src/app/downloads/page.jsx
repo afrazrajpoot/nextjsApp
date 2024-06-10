@@ -1,9 +1,6 @@
-import BillingForm from "@/components/BillingForm";
-import Sidebar from "@/components/Sidebar";
-import { menueData, otherData } from "@/data/data";
-
 import React from "react";
 import Button from "@mui/material/Button"; // Import MUI Button
+import Sidebar from "../components/Common/Sidebar/Sidebar";
 
 const page = () => {
   const downloadData = [
@@ -23,7 +20,6 @@ const page = () => {
   return (
     <main className="bg-[#FAFAFA] h-[110vh]">
       <Sidebar />
-
       <section className="rounded-md w-full md:max-w-[50vw] max-w-[90vw] translate-y-[5vw] md:translate-x-[26vw] translate-x-[5vw]">
         <h1 className="font-bold text-[6vw] md:text-[2vw] md:ml-[0vw] ml-[5vw] translate-y-[13vw] md:translate-y-[0.5vw] translate-x-[-4vw] md:translate-x-0">
           Downloads

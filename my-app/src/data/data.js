@@ -161,7 +161,7 @@ export const menueData = [
   {
     title: "Downloads",
     icon: "/img/downloadIcon.png",
-    link: "/downloadPage",
+    link: "/downloads",
   },
   {
     title: "Address",
@@ -171,19 +171,19 @@ export const menueData = [
   {
     title: "Payment methods",
     icon: "/img/paymentIcon.png",
-    link: "/paymentMethod",
+    link: "/paymentmethod",
   },
 ];
 export const otherData = [
   {
     title: "Account details",
     icon: "/img/account.png",
-    link: "/accountDetail",
+    link: "/accountdetails",
   },
   {
     title: "VAT Number",
     icon: "/img/vatIcon.png",
-    link: "/VatNumber",
+    link: "/vatnumber",
   },
   {
     title: "Logout",

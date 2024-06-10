@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { headerData } from "@/data/data";
 import { useGlobalContext } from "@/context/globalState";
 import { styled } from "@mui/material/styles";
@@ -29,10 +29,12 @@ const Header = () => {
 
   return (
     <>
-      <nav className="bg-[#171717]  w-full p-[2vw] lg:p-[0.7vw]  sm:p-[1vw] justify-center   flex items-center sm:justify-center  lg:gap-[4vw]   lg:justify-center gap-[8vw] fixed z-50">
-        <div className="w-full lg:max-w-[12vw] sm:max-w-[20vw] max-w-[60vw]">
+      <nav className="bg-[#171717] top-0  w-full p-[2vw] lg:p-[0.7vw]  sm:p-[1vw] justify-center   flex items-center sm:justify-center  lg:gap-[4vw]   lg:justify-center gap-[8vw] fixed z-50">
+        <Link href={"/"}>
+        <figure className="w-full lg:max-w-[12vw] sm:max-w-[20vw] max-w-[60vw]">
           <img src={"/img/whiteDuck.png"} className="w-full" alt="logo" />
-        </div>
+        </figure>
+        </Link>
         <div className="lg:block hidden sm:block ">
           <div className=" lg:flex sm:flex gap-[4vw] text-[1vw] lg:text-[1vw] sm:text-[1.5vw]">
             {filteredHeaderData?.map((item, ind) => (

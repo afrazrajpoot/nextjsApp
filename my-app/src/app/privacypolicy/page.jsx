@@ -1,7 +1,6 @@
-import Footer from "@/components/Footer";
-
-import { privacyPolicyData, termAndConditionData } from "@/data/data";
+import { privacyPolicyData } from "@/data/data";
 import React from "react";
+import Footer from "../components/Common/Footer/Footer";
 
 const page = () => {
   return (
