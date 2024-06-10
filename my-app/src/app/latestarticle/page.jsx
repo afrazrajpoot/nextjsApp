@@ -69,9 +69,9 @@ const Page = () => {
               </div>
             ))}
           </article>
-          <article className="flex  mt-[3vw]">
+          <article className="flex  mt-[8vw] sm:mt-[5vw]">
             <section className="">
-              <article className="flex flex-col gap-[4vw]">
+              <article className="flex flex-col gap-[6vw]">
                 {latestArticledata?.map((item, index) => (
                   <div
                     key={index}

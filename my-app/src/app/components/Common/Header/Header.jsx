@@ -65,16 +65,16 @@ const Header = () => {
             <span className="lg:hidden  " onClick={toggleSidebar}>
               <img src="/img/burger.png" alt="burger" />
             </span>
-            <span className="hidden  lg:block ">
-              <span className="px-[0.5vw] sm:w-[20vw] lg:w-[10vw] lg:translate-x-[5vw] w-[12vw] py-[0.6vw] bg-[#262626] rounded-lg flex items-center text-white font-bold gap-[1.5vw] lg:p-[0.4vw]">
+            <aside className="hidden  lg:block ">
+              <div className="px-[0.5vw] sm:w-[20vw] lg:w-[15vw] xl:w-[12vw] lg:translate-x-[5vw] w-[12vw] py-[0.6vw] bg-[#262626] rounded-lg flex items-center text-white font-bold gap-[1.5vw] lg:p-[0.4vw]">
                 <img
                   src={"/img/profileIcon.png"}
                   alt="profile icon"
                   className="sm:w-[2vw] lg:w-[1.5vw]"
                 />
                 <span>George Gika</span>
-              </span>
-            </span>
+              </div>
+            </aside>
           </div>
         ) : (
           <div className="lg:translate-x-[15vw] translate-x-1 flex gap-[2vw]">

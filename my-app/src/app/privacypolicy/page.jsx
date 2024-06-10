@@ -12,7 +12,7 @@ const page = () => {
         <p className="text-center mt-[0.6vw] lg:text-[1vw] text-[3vw] sm:text-[2vw]">
           Effective Date: November 28, 2023
         </p>
-        <article className=" w-full max-w-[100vw] m-auto mt-[6vw] flex flex-col gap-[3vw] lg:gap-[1vw] px-[9vw]">
+        <article className=" w-full max-w-[100vw] m-auto mt-[6vw] flex flex-col gap-[3vw] lg:gap-[1vw] sm:gap-[5vw] px-[9vw]">
           {privacyPolicyData?.map((section, index) => (
             <div
               key={index}

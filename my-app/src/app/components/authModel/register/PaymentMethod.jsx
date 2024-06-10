@@ -1,7 +1,7 @@
 "use client";
 import { paymentMethodData } from "@/data/data";
 import { Button } from "@mui/material";
-import Sidebar from "./Sidebar";
+import Sidebar from "../../Common/Sidebar/Sidebar";
 
 const PaymentMethod = () => {
   return (
@@ -18,7 +18,7 @@ const PaymentMethod = () => {
                 key={ind}
                 className="bg-[#F8FAFC] grid grid-cols-1  gap-[3.5vw] lg:gap-[0.7vw] lg:p-[1vw] lg:w-[25vw] sm:w-[40vw] w-[80vw] ml-[2.5vw] lg:ml-[-1vw] p-[4vw] sm:p-[2vw]"
               >
-                <img src={elem.icon} alt="icon" className="" />
+                <img src={elem?.icon} alt="icon" className="" />
 
                 <h1 className="font-bold text-[4vw] lg:text-[0.8vw] sm:text-[3vw]">
                   {elem.title}

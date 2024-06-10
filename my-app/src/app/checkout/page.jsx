@@ -30,7 +30,7 @@ const page = () => {
   ];
   return (
     <main className="bg-[#FAFAFA] lg:h-[150vh] h-[160vh] overflow-x-hidden">
-      <section className="lg:translate-y-[5vw] sm:translate-y-[6vw] translate-y-[20vw] p-[2vw] w-full max-w-[90vw] m-auto">
+      <section className="lg:translate-y-[5vw] sm:translate-y-[10vw] translate-y-[20vw] p-[2vw] w-full max-w-[90vw] m-auto">
         <Button
           variant="outlined"
           className="border-[1px] border-[#E5E5E5] sm:text-[1.5vw]  rounded-lg p-[0.5vw] text-[#525252] flex items-center lg:gap-[0.1vw] lg:w-[6vw] w-[20vw] sm:w-[10vw] sm:ml-[-2vw] sm:translate-y-[3vw] lg:translate-y-[0vw] sm:pr-[2vw] ml-[1vw] lg:ml-[0vw] lg:text-[1vw] text-[3vw] lg:py-[0.3vw] sm:py-[1vw] py-[1.55vw]"
@@ -45,9 +45,9 @@ const page = () => {
           Back
         </Button>
         <section className="flex lg:flex-row flex-col mt-[3vw] ml-[-9.5vw]">
-          <article className="w-full max-w-[70vw] flex flex-col gap-[2vw] mt-[5vw] lg:mt-[0vw]">
+          <article className="w-full max-w-[70vw] flex flex-col gap-[2vw] mt-[5vw] sm:mt-[7vw] lg:mt-[0vw]">
             <Steper />
-            <div className="bg-white border-[1px] border-[#F5F5F5] lg:rounded-lg  lg:w-[50vw] lg:p-[1vw] lg:ml-[10vw] ml-[7vw] p-[4vw] w-[90vw] rounded-xl">
+            <div className="bg-white border-[1px] border-[#F5F5F5] mt-[8vw] lg:rounded-lg  sm:mt-[5vw] lg:w-[50vw] lg:p-[1vw] lg:ml-[10vw] ml-[7vw] p-[4vw] w-[90vw] rounded-xl">
               <p className="font-bold lg:text-[1.5vw] text-[5vw] sm:text-[3vw]">
                 Contact Info
               </p>
@@ -67,13 +67,13 @@ const page = () => {
                 />
               </form>
             </div>
-            <div className="bg-white border-[1px] ml-[7vw] p-[2vw] border-[#F5F5F5] lg:rounded-lg  w-[90vw] lg:w-[50vw] lg:p-[1vw] lg:ml-[10vw] rounded-xl">
+            <div className="bg-white border-[1px] ml-[7vw] p-[2vw] mt-[8vw] border-[#F5F5F5] lg:rounded-lg sm:mt-[5vw]  w-[90vw] lg:w-[50vw] lg:p-[1vw] lg:ml-[10vw] rounded-xl">
               <p className="font-bold lg:text-[1.5vw] text-[5vw] sm:text-[3vw]">
                 Detail Address
               </p>
-              <form action="" className="mt-[1vw]">
+              <form action="" className="mt-[1vw] sm:mt-[3vw]">
                 {checkoutFormData?.map((elem, ind) => (
-                  <div className="flex flex-col gap-[1vw]">
+                  <div className="flex flex-col gap-[1vw] sm:mb-4">
                     <label
                       htmlFor=""
                       className="font-medium lg:text-[1vw] text-[4vw] sm:text-[2.5vw]"
@@ -91,7 +91,7 @@ const page = () => {
                   </div>
                 ))}
                 <div className="flex lg:gap-[1vw] gap-[2vw]">
-                  <div className="flex flex-col">
+                  <div className="flex flex-col ">
                     <label
                       htmlFor=""
                       className="font-medium lg:text-[1vw] sm:text-[2.5vw] text-[4vw]"
@@ -103,7 +103,7 @@ const page = () => {
                       value={"Birmingham"}
                       name="city"
                       id=""
-                      className="lg:p-[0.8vw] sm:text-[2vw]  p-[2vw] lg:text-[1vw] text-[3.5vw] bg-[#FAFAFA] mb-4 lg:w-[23vw] w-[42vw]"
+                      className="lg:p-[0.8vw] sm:text-[2vw] sm:mt-[1vw]  p-[2vw] lg:text-[1vw] text-[3.5vw] bg-[#FAFAFA] mb-4 lg:w-[23vw] w-[42vw]"
                     />
                   </div>
                   <div className="flex flex-col">
@@ -118,7 +118,7 @@ const page = () => {
                       value={"5678"}
                       name="postalCode"
                       id=""
-                      className="lg:p-[0.8vw] p-[2vw]  sm:text-[2vw] lg:text-[1vw] text-[3.5vw] bg-[#FAFAFA] mb-4 lg:w-[24vw] w-[42vw]"
+                      className="lg:p-[0.8vw] p-[2vw] sm:mt-[1vw]  sm:text-[2vw] lg:text-[1vw] text-[3.5vw] bg-[#FAFAFA] mb-4 lg:w-[24vw] w-[42vw]"
                     />
                   </div>
                 </div>
@@ -126,7 +126,7 @@ const page = () => {
             </div>
           </article>
           <section>
-            <article className="bg-white border-[1px] sm:ml-[7vw] lg:ml-[0vw] ml-[8vw] rounded-xl w-[90vw]  border-[#F5F5F5] lg:w-[25vw] p-[2vw] lg:mt-[0vw] mt-[2vw]">
+            <article className="bg-white border-[1px] mt-[8vw] sm:ml-[7vw] lg:ml-[0vw] sm:mt-[5vw] ml-[8vw] rounded-xl w-[90vw]  border-[#F5F5F5] lg:w-[25vw] p-[2vw] lg:mt-[0vw] ">
               <p className="font-bold lg:text-[1.5vw] text-[5vw] sm:text-[3vw]">
                 Summary
               </p>

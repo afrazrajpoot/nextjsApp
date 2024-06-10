@@ -12,7 +12,7 @@ const page = () => {
         <p className="text-center mt-[0.6vw] lg:text-[1vw] text-[3vw] sm:text-[2vw]">
           Effective Date: November 28, 2023
         </p>
-        <article className=" w-full max-w-[90vw] ml-[]  mt-[6vw] flex flex-col gap-[3vw] lg:gap-[1vw] px-[9vw]">
+        <article className=" w-full max-w-[90vw] sm:gap-[5vw] mt-[6vw] flex flex-col gap-[3vw] lg:gap-[1vw] px-[9vw]">
           {termAndConditionData?.map((section, index) => (
             <div
               key={index}

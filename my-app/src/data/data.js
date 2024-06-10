@@ -384,7 +384,7 @@ export const paymentMethodData = [
     desc: "Offers payment processing software for e-commerce websites and mobile applications.",
   },
   {
-    icon: "/img/paypal.png",
+    icon: "/img/payPal.png",
     title: "Paypal",
     desc: "Offers payment processing software for e-commerce websites and mobile applications.",
   },

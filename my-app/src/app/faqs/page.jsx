@@ -18,22 +18,22 @@ export default function DisabledAccordion() {
 
   return (
     <main className="bg-[#FAFAFA]">
-      <section className="lg:translate-y-[5vw] translate-y-[18vw] sm:translate-y-[8.5vw] pb-[4vw]">
+      <section className="lg:translate-y-[5vw] translate-y-[18vw] sm:translate-y-[10vw] pb-[4vw]">
         <article className="w-full max-w-[80vw] m-auto">
           <button className="border-[1px] border-[#FF689A] sm:text-[1.5vw] bg-[#ff689a34] p-[0.6vw] rounded-lg text-[#FF689A] lg:mt-[1vw] lg:text-[1vw] text-[3vw]">
             Tutorials
           </button>
-          <h1 className="lg:text-[2vw] text-[5vw] font-bold mt-[1vw]  sm:text-[3vw]">
+          <h1 className="lg:text-[2vw] text-[5vw] font-bold mt-[5vw]  sm:text-[3vw] sm:mt-[4vw] ">
             Frequently Asked Questions
           </h1>
-          <p className="mt-[1vw] lg:text-[1vw] text-[3vw] sm:text-[2vw]">
+          <p className="mt-[5vw] lg:text-[1vw] text-[3vw] sm:text-[2vw] sm:mt-[3vw]">
             We understand that you may have some questions about sunduckfilm. We
             have compiled a list of frequently asked questions to help you get
             the information you need. If you have any other questions, please do
             not hesitate to contact us.
           </p>
         </article>
-        <article className="w-full max-w-[80vw] m-auto flex flex-col gap-[2vw] mt-[2vw] ">
+        <article className="w-full max-w-[80vw] m-auto flex flex-col gap-[4vw] mt-[5vw] sm:gap-[5vw] sm:mt-[4vw]">
           {faqData?.map((item, index) => (
             <Accordion
               key={index}
@@ -59,18 +59,18 @@ export default function DisabledAccordion() {
             </Accordion>
           ))}
         </article>
-        <article className="lg:mt-[9vw] mt-[20vw] sm:mt-[5vw] bg-white sm:pb-[8vw] lg:pb-[6vw] pt-[2vw]">
+        <article className="lg:mt-[9vw] mt-[20vw] sm:mt-[5vw] bg-white sm:pb-[8vw] lg:pb-[6vw] pt-[2vw] ">
           <h1 className="font-bold lg:text-[2vw] text-[6vw] text-center sm:text-[3vw]">
             What they say
           </h1>
-          <p className="text-center lg:w-[27vw] w-[99vw] m-auto text-[#525252] font-medium mt-[1vw] sm:w-[50vw]">
+          <p className="text-center lg:w-[27vw] w-[99vw] m-auto text-[#525252] font-medium mt-[4vw] sm:w-[50vw]">
             Hear from our satisfied clients and learn how we've helped them take
             their businesses to new heights.
           </p>
-          <figure className="flex justify-center mt-[2vw]">
+          <figure className="flex justify-center mt-[4vw] sm:mt-[4vw]">
             <img src="/img/brands.png" alt="brands images" />
           </figure>
-          <main className="flex lg:flex-row flex-col  sm:flex-row w-full max-w-[65vw]   m-auto lg:gap-[3vw] gap-[8vw]">
+          <main className="flex lg:flex-row flex-col  sm:flex-row w-full max-w-[65vw] mt-[4vw]   m-auto lg:gap-[3vw] gap-[8vw] sm:mt-[4vw]">
             {faqCardData?.map((item, index) => (
               <main
                 key={index}
