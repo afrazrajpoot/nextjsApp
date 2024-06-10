@@ -1,36 +1,43 @@
+import Footer from "@/components/Footer";
+
 import { termAndConditionData } from "@/data/data";
 import React from "react";
 import Layout from "../layout/Layout";
 
 const page = () => {
   return (
-    <Layout>
-      <main>
-        <section className="md:translate-y-[8vw] translate-y-[25vw]  md:pb-[15vw] pb-[30vw]">
-          <h1 className="md:text-[2vw] text-[5vw] font-bold text-center">
-            Terms & Conditions
-          </h1>
-          <p className="text-center mt-[0.6vw] md:text-[1vw] text-[3vw]">
-            Effective Date: November 28, 2023
+    <main>
+      <section className="lg:translate-y-[8vw] sm:translate-y-[8vw] translate-y-[25vw]  lg:pb-[15vw] pb-[30vw]">
+        <h1 className="lg:text-[2vw] text-[6vw] font-bold text-center sm:text-[4vw] ">
+          Terms & Conditions
+        </h1>
+        <p className="text-center mt-[0.6vw] lg:text-[1vw] text-[3vw] sm:text-[2vw]">
+          Effective Date: November 28, 2023
+        </p>
+        <article className=" w-full max-w-[90vw] ml-[]  mt-[6vw] flex flex-col gap-[3vw] lg:gap-[1vw] px-[9vw]">
+          {termAndConditionData?.map((section, index) => (
+            <div
+              key={index}
+              className="w-full max-w-[70vw] flex flex-col gap-[0.3vw] "
+            >
+              <h2 className="lg:font-bold font-medium sm:text-[3vw]">
+                {section.title}
+              </h2>
+              <p className="lg:text-[1vw] text-[4vw]  w-[85vw] sm:text-[2.5vw]">
+                {section.desc}
+              </p>
+            </div>
+          ))}
+          <p className=" lg:text-[1vw] text-[3.5vw] sm:text-[3vw]">
+            Contact Us. If you have any questions about these Terms, please
+            contact us.
           </p>
-          <article className=" w-full max-w-[90vw] m-auto mt-[6vw] flex flex-col gap-[3vw] md:gap-[1vw] px-[9vw]">
-            {termAndConditionData?.map((section, index) => (
-              <div
-                key={index}
-                className="w-full max-w-[70vw] flex flex-col gap-[0.3vw] "
-              >
-                <h2 className="md:font-bold font-medium">{section.title}</h2>
-                <p className="md:text-[1vw] text-[3vw]">{section.desc}</p>
-              </div>
-            ))}
-            <p className=" md:text-[1vw] text-[3.5vw]">
-              Contact Us. If you have any questions about these Terms, please
-              contact us.
-            </p>
-          </article>
-        </section>
-      </main>
-    </Layout>
+        </article>
+      </section>
+      <footer className="translate-y-[2vw]">
+        <Footer />
+      </footer>
+    </main>
   );
 };
 

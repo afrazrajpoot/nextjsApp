@@ -273,38 +273,6 @@ export const accountForm2 = [
       },
     },
   },
-  {
-    label: "City",
-    name: "city",
-    value: "Birmingham",
-    type: "text",
-    placeholder: "e.g San Andreas",
-    pc: "email",
-
-    rules: {
-      required: "Full name is required",
-      minLength: {
-        value: 3,
-        message: "Full name must be at least 3 characters long",
-      },
-    },
-  },
-  {
-    label: "Postal code",
-    name: "postalCode",
-    value: "5657 8767",
-    type: "text",
-    placeholder: "e.g San Andreas",
-    pc: "email",
-
-    rules: {
-      required: "Full name is required",
-      minLength: {
-        value: 3,
-        message: "Full name must be at least 3 characters long",
-      },
-    },
-  },
 ];
 export const checkoutFormData = [
   {
@@ -615,19 +583,19 @@ export const termAndConditionData = [
 ];
 export const data1 = [
   {
-    desc: "1:Consider your needs. What are your biggest financial risks? What would happen if you lost your job, got sick, or had a car accident? Once you know your biggest risks, you can start to think about what kind of Motion Graphic you need",
+    desc: "Consider your needs. What are your biggest financial risks? What would happen if you lost your job, got sick, or had a car accident? Once you know your biggest risks, you can start to think about what kind of Motion Graphic you need",
   },
   {
-    desc: "2:Do your research. There are many different types of Motion Graphic available, and each one has its own pros and cons. It's important to do your research and understand the different options before you make a decision.",
+    desc: "Do your research. There are many different types of Motion Graphic available, and each one has its own pros and cons. It's important to do your research and understand the different options before you make a decision.",
   },
   {
-    desc: "3:Get quotes from multiple companies. Once you know what kind of Motion Graphic you need, get quotes from multiple companies. This will help you compare prices and coverage.",
+    desc: "Get quotes from multiple companies. Once you know what kind of Motion Graphic you need, get quotes from multiple companies. This will help you compare prices and coverage.",
   },
   {
-    desc: "4:Read the fine print. Before you sign any Motion Graphic policy, be sure to read the fine print. This is where you'll find information about things like deductibles, copays, and exclusions.",
+    desc: "Read the fine print. Before you sign any Motion Graphic policy, be sure to read the fine print. This is where you'll find information about things like deductibles, copays, and exclusions.",
   },
   {
-    desc: "5:Ask questions. If you have any questions about Motion Graphic, don't be afraid to ask your Motion Graphic agent. They should be able to answer all of your questions and help you choose the right policy for you.'",
+    desc: "Ask questions. If you have any questions about Motion Graphic, don't be afraid to ask your Motion Graphic agent. They should be able to answer all of your questions and help you choose the right policy for you.'",
   },
 ];
 export const data2 = [

@@ -26,7 +26,7 @@ export default function OtpModel() {
         aria-describedby="modal-modal-description"
       >
         <div className="flex justify-center items-center h-screen">
-          <div className="relative bg-white p-4 rounded-[0.5vw] shadow-lg w-full max-w-[28vw] mt-[-3vw] flex flex-col gap-[1vw]">
+          <div className="relative bg-white  p-4 rounded-[0.5vw] shadow-lg w-full max-w-[100vw] lg:h-[40vh] h-[100vh] lg:max-w-[28vw] mt-[-3vw] flex flex-col gap-[1vw]">
             <div className="flex w-full justify-center">
               <Image src="/img/Logo.png" alt="logo" width={150} height={150} />
             </div>
@@ -39,7 +39,7 @@ export default function OtpModel() {
             <Otp />
             <Button
               size="large"
-              className="w-full mt-4 text-[0.8vw] bg-[#FF387A] hover:bg-[#FF387A] text-white"
+              className="w-full mt-4 text-[2vw] lg:text-[0.8vw] bg-[#FF387A] hover:bg-[#FF387A] text-white"
             >
               Next
             </Button>
@@ -51,12 +51,12 @@ export default function OtpModel() {
                 border: "none",
                 "&:hover": { border: "none" },
               }}
-              className="w-full  text-[0.8vw] mt-[1vw]"
+              className="w-full text-[2vw] lg:text-[0.8vw] mt-[1vw]"
             >
               Resend
             </Button>
           </div>
-          <Button className="absolute top-[34vw]">
+          <Button className="absolute lg:top-[43vw] top-[0vw] lg:right-[47.5vw] right-[0vw]">
             <IconButton
               onClick={handleClose}
               style={{

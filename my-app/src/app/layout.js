@@ -1,8 +1,10 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/app/components/Common/Header/Header";
-import Sidebar from "@/app/components/Common/Sidebar/Sidebar";
-import Footer from "./components/Common/Footer/Footer";
+import Header from "@/components/Header";
+import Sidebar from "@/components/Sidebar";
+import { UserProvider } from "@/context/globalState";
+import SigninModel from "@/components/SigninModel";
+import MobileSidebar from "@/components/MobileSidebar";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 const inter = Inter({ subsets: ["latin"] });
@@ -16,12 +18,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head></head>
-      <body className={inter.className}>
-        <Header />
-        {/* <Sidebar /> */}
-        <main className="mt-[3.5vw]">{children}</main>
-        {/* <Footer /> */}
-      </body>
+      <UserProvider>
+        <body className={inter.className} style={{backgroundColor: "#FAFAFA"}}>
+          <Header />
+
+          {children}
+          <SigninModel />
+          <MobileSidebar />
+        </body>
+      </UserProvider>
     </html>
   );
 }

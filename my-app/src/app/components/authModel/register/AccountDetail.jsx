@@ -21,7 +21,7 @@ const AccountDetail = () => {
                   <Button
                     size="small"
                     variant="contained"
-                    className="bg-[#FF387A] text-white text-[0.7vw] font-bold hover:bg-[#FF387A] "
+                    className="bg-[#FF387A] text-white md:text-[0.7vw] text-[10vw] font-bold hover:bg-[#FF387A] "
                   >
                     upload photo
                   </Button>
@@ -29,7 +29,7 @@ const AccountDetail = () => {
                   <Button
                     size="small"
                     variant="outlined"
-                    className=" text-[0.7vw] text-[#FF387A] border-[1.5px] font-bold border-[#FF387A] hover:border-[#FF387A]"
+                    className=" md:text-[0.7vw] text-[#FF387A] border-[1.5px] font-bold border-[#FF387A] hover:border-[#FF387A]"
                   >
                     delete photo
                   </Button>

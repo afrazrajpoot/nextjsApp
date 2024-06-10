@@ -25,19 +25,19 @@ export default function ForgetModel() {
         aria-describedby="modal-modal-description"
       >
         <div className="flex justify-center items-center h-screen">
-          <div className="relative bg-white p-4 rounded-[0.5vw] shadow-lg w-full max-w-[28vw] mt-[-3vw] flex flex-col gap-[1vw]">
+          <div className="relative  bg-white p-4 pt-[15vw] lg:pt-[1vw] rounded-[0.5vw] shadow-lg w-full max-w-[100vw] lg:h-[40vh] h-[100vh]  lg:max-w-[28vw] mt-[-3vw] flex flex-col gap-[1vw]">
             <div className="flex w-full justify-center">
               <Image src="/img/Logo.png" alt="logo" width={150} height={150} />
             </div>
-            <h1 className="font-bold text-[1.2vw] text-center">
+            <h1 className="font-bold lg:text-[1.2vw] sm:text-[2vw] text-center">
               Forgot your password?
             </h1>
-            <p className="text-center text-[0.8vw]">
+            <p className="text-center w-[50vw] ml-[20vw] lg:ml-[-11.5vw]  text-[3vw] lg:text-[0.8vw]">
               We'll send you an email with a link to reset your password.
             </p>
             <ForgetForm />
           </div>
-          <Button className="absolute top-[32vw]">
+          <Button className="absolute lg:top-[43vw] top-[0vw] lg:right-[47.5vw] right-[0vw]">
             <IconButton
               onClick={handleClose}
               style={{
