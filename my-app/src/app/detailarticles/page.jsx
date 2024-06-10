@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@mui/material";
 import { cardData, data1, data2, data3 } from "@/data/data";
-import Layout from "@/components/Layout";
+import Layout from "../layout/Layout";
 
 const Page = () => {
   return (
