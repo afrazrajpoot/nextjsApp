@@ -6,26 +6,28 @@ import React from "react";
 const page = () => {
   return (
     <main>
-      <section className="md:translate-y-[8vw] translate-y-[25vw]  md:pb-[15vw] pb-[30vw]">
-        <h1 className="md:text-[2vw] text-[6vw] font-bold text-center">
+      <section className="lg:translate-y-[8vw] translate-y-[25vw] sm:translate-y-[8vw]  lg:pb-[15vw] pb-[30vw]">
+        <h1 className="lg:text-[2vw] text-[6vw] font-bold text-center sm:text-[5vw]">
           Privacy Policy
         </h1>
-        <p className="text-center mt-[0.6vw] md:text-[1vw] text-[3vw]">
+        <p className="text-center mt-[0.6vw] lg:text-[1vw] text-[3vw] sm:text-[2vw]">
           Effective Date: November 28, 2023
         </p>
-        <article className=" w-full max-w-[100vw] m-auto mt-[6vw] flex flex-col gap-[3vw] md:gap-[1vw] px-[9vw]">
+        <article className=" w-full max-w-[100vw] m-auto mt-[6vw] flex flex-col gap-[3vw] lg:gap-[1vw] px-[9vw]">
           {privacyPolicyData?.map((section, index) => (
             <div
               key={index}
               className="w-full max-w-[70vw] flex flex-col gap-[0.3vw] "
             >
-              <h2 className="md:font-bold  font-medium">{section.title}</h2>
-              <p className="md:text-[1vw] text-[4vw]  md:w-[80vw] w-[80vw]">
+              <h2 className="lg:font-bold  font-medium sm:text-[3vw] lg:text-[1vw]">
+                {section.title}
+              </h2>
+              <p className="lg:text-[1vw] text-[4vw]  lg:w-[80vw] w-[80vw] sm:text-[2.5vw]">
                 {section.desc}
               </p>
             </div>
           ))}
-          <p className="md:block hidden">
+          <p className="lg:block hidden">
             Contact Us. If you have any questions about these Terms, please
             contact us.
           </p>

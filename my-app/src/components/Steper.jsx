@@ -32,12 +32,12 @@ const StepIcon = (props) => {
 
 export default function Steper() {
   return (
-    <Box className=" md:w-[100%]  w-[113vw] ml-[-4vw] md:ml-[0vw]">
+    <Box className=" lg:w-[100%]  w-[113vw] sm:w-[125vw] sm:ml-[-10vw] ml-[-4vw] lg:ml-[0vw]">
       <Stepper alternativeLabel>
         {steps.map((label, index) => (
           <Step key={label}>
             <StepLabel StepIconComponent={StepIcon}>
-              <p className="md:text-[1vw] text-[3vw] mt-[-2vw] md:mt-[0vw]">
+              <p className="lg:text-[1vw] sm:text-[1.5vw] sm:mt-[1vw] text-[3vw] mt-[-2vw] lg:mt-[0vw]">
                 {label}
               </p>
             </StepLabel>

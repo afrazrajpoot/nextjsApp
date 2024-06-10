@@ -29,8 +29,8 @@ export default function MobileSidebar() {
             <img src="/img/accountAvatar.png" alt="avatar" className="w-full" />
           </figure>
           <div>
-            <p className="text-[4vw] font-bold ">George gika</p>
-            <p className="text-[#334155] text-[3vw] mt-[0.2vw]">
+            <p className="text-[4vw] sm:text-[2.5vw] font-bold ">George gika</p>
+            <p className="text-[#334155] text-[3vw] sm:text-[2vw] mt-[0.2vw]">
               neurotic@taildo.com
             </p>
           </div>
@@ -47,7 +47,7 @@ export default function MobileSidebar() {
       <form>
         <Box
           sx={{ display: "flex", alignItems: "center" }}
-          className="border-[1px] border-[#E2E8F0] p-[1.5vw] mt-[5vw]   bg-[#F8FAFC] w-full max-w-[80vw] m-auto rounded-lg "
+          className="border-[1px] border-[#E2E8F0] p-[1.5vw] mt-[5vw] sm:max-w-[70vw]   bg-[#F8FAFC] w-full max-w-[80vw] m-auto rounded-lg "
         >
           <img src="/img/mobileSearch.png" alt="" />
           <input
@@ -66,7 +66,9 @@ export default function MobileSidebar() {
       </form>
 
       <div className="flex flex-col gap-[3vw] ml-[7vw] mt-[7vw]">
-        <p className="font-medium text-[3.5vw] text-[#334155] ">Menu</p>
+        <p className="font-medium text-[3.5vw] sm:text-[3vw] text-[#334155] ">
+          Menu
+        </p>
         <div className="flex flex-col gap-[4vw] ml-[1vw]">
           {menueData?.map((item, index) => {
             return (
@@ -75,10 +77,10 @@ export default function MobileSidebar() {
                 key={index}
                 className="flex items-center gap-[2vw]"
               >
-                <img src={item.icon} alt="" className="w-[4vw] " />
+                <img src={item.icon} alt="" className="w-[4vw] sm:w-[3vw]" />
                 <p
                   // to={item?.link}
-                  className="text-[3vw] text-[#334155] "
+                  className="text-[3vw] text-[#334155] sm:text-[2.5vw]"
                 >
                   {item.title}
                 </p>
@@ -88,7 +90,9 @@ export default function MobileSidebar() {
         </div>
       </div>
       <div className="flex flex-col gap-[3vw] ml-[7vw] mt-[7vw]">
-        <p className="font-medium text-[3.5vw] text-[#334155] ">Other</p>
+        <p className="font-medium text-[3.5vw] text-[#334155] sm:text-[3vw] ">
+          Other
+        </p>
         <div className="flex flex-col gap-[4vw] ml-[1vw]">
           {otherData?.map((item, index) => {
             return (
@@ -97,10 +101,10 @@ export default function MobileSidebar() {
                 key={index}
                 className="flex items-center gap-[2vw]"
               >
-                <img src={item.icon} alt="" className="w-[4vw] " />
+                <img src={item.icon} alt="" className="w-[4vw] sm:w-[3vw]" />
                 <p
                   // to={item?.link}
-                  className="text-[3vw] text-[#334155] "
+                  className="text-[3vw] text-[#334155] sm:text-[2.5vw]"
                 >
                   {item.title}
                 </p>
@@ -110,7 +114,9 @@ export default function MobileSidebar() {
         </div>
       </div>
       <div className="flex flex-col gap-[3vw] ml-[7vw] mt-[7vw]">
-        <p className="font-medium text-[3.5vw] text-[#334155] ">Other menue</p>
+        <p className="font-medium text-[3.5vw] text-[#334155] sm:text-[3vw]">
+          Other menue
+        </p>
         <div className="flex flex-col gap-[4vw] ml-[1vw]">
           {headerData?.map((item, index) => {
             return (
@@ -119,10 +125,9 @@ export default function MobileSidebar() {
                 key={index}
                 className="flex items-center gap-[2vw]"
               >
-                <img src={item.icon} alt="" className="w-[4vw] " />
                 <p
                   // to={item?.link}
-                  className="text-[3vw] text-[#334155] "
+                  className="text-[3vw] text-[#334155] sm:text-[2.5vw]"
                 >
                   {item.title}
                 </p>

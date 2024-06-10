@@ -273,38 +273,6 @@ export const accountForm2 = [
       },
     },
   },
-  {
-    label: "City",
-    name: "city",
-    value: "Birmingham",
-    type: "text",
-    placeholder: "e.g San Andreas",
-    pc: "email",
-
-    rules: {
-      required: "Full name is required",
-      minLength: {
-        value: 3,
-        message: "Full name must be at least 3 characters long",
-      },
-    },
-  },
-  {
-    label: "Postal code",
-    name: "postalCode",
-    value: "5657 8767",
-    type: "text",
-    placeholder: "e.g San Andreas",
-    pc: "email",
-
-    rules: {
-      required: "Full name is required",
-      minLength: {
-        value: 3,
-        message: "Full name must be at least 3 characters long",
-      },
-    },
-  },
 ];
 export const checkoutFormData = [
   {

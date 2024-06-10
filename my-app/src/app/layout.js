@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
       <head></head>
 
       <UserProvider>
-        <body className={inter.className}>
+        <body className={inter.className} className="bg-[#FAFAFA]">
           <Header />
 
           {children}
