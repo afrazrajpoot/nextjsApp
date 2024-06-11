@@ -161,7 +161,7 @@ export const menueData = [
   {
     title: "Downloads",
     icon: "/img/downloadIcon.png",
-    link: "/downloads",
+    link: "/download",
   },
   {
     title: "Address",
@@ -753,45 +753,59 @@ export const faqCardData = [
   },
 ];
 
-
 export const subscriptionPlans = [
   {
     title: "Regular",
     price: "25",
-    features: ['5 downloads per day', 'Access to all products', 'Access to new releases', '25% renewal discount']
+    features: [
+      "5 downloads per day",
+      "Access to all products",
+      "Access to new releases",
+      "25% renewal discount",
+    ],
   },
   {
     title: "Basic",
     price: "120",
-    features: ['10 downloads per day', 'Access to all products', 'Access to new releases', '25% renewal discount']
+    features: [
+      "10 downloads per day",
+      "Access to all products",
+      "Access to new releases",
+      "25% renewal discount",
+    ],
   },
   {
     title: "Pro",
     price: "320",
-    features: ['Unlimited downloads per day', 'Access to all products', 'Access to new releases', '25% renewal discount']
+    features: [
+      "Unlimited downloads per day",
+      "Access to all products",
+      "Access to new releases",
+      "25% renewal discount",
+    ],
   },
-]
+];
 
 export const profileData = [
   {
     image: "/img/Ellipse.png",
     name: "Sarah M.",
     title: "Enthusiastic Learner",
-    info: `"Sonduck has transformed my approach to learning. The diverse range of courses and the quality of content provided by creators have exceeded my expectations. The platform truly fosters a sense of community and lifelong learning."`
+    info: `"Sonduck has transformed my approach to learning. The diverse range of courses and the quality of content provided by creators have exceeded my expectations. The platform truly fosters a sense of community and lifelong learning."`,
   },
   {
     image: "/img/Ellipse2.png",
     name: "James L.",
     title: "Lifelong Learner",
-    info: `"I've tried several online learning platforms, and Sonduck stands out for its vibrant community and the variety of courses available. The easy navigation and engaging content make it a go-to platform for continuous skill development."`
+    info: `"I've tried several online learning platforms, and Sonduck stands out for its vibrant community and the variety of courses available. The easy navigation and engaging content make it a go-to platform for continuous skill development."`,
   },
   {
     image: "/img/Ellipse3.png",
     name: "Alex B.",
     title: "Inspired Creator",
-    info: `"As a creator, Sonduck has been a game-changer for me. The Course Editor is user-friendly, and the support from the community is incredible. It's fulfilling to see my courses making a positive impact on learners globally."`
+    info: `"As a creator, Sonduck has been a game-changer for me. The Course Editor is user-friendly, and the support from the community is incredible. It's fulfilling to see my courses making a positive impact on learners globally."`,
   },
-]
+];
 
 // export const footerLists = [
 //   {
@@ -854,83 +868,80 @@ export const profileData = [
 
 export const singlePack = [
   {
-    image:"/img/card1.png",
+    image: "/img/card1.png",
     actualPrice: "48",
     discountedPrice: "60",
-    title:"1500+ Transitions Premiere Pro"
+    title: "1500+ Transitions Premiere Pro",
   },
   {
-    image:"/img/card2.png",
+    image: "/img/card2.png",
     actualPrice: "43",
     discountedPrice: "46",
-    title:"1500+ Transitions Premiere Pro"
+    title: "1500+ Transitions Premiere Pro",
   },
   {
-    image:"/img/card3.png",
+    image: "/img/card3.png",
     actualPrice: "48",
     discountedPrice: "60",
-    title:"1500+ Transitions Premiere Pro"
+    title: "1500+ Transitions Premiere Pro",
   },
   {
-    image:"/img/card4.png",
+    image: "/img/card4.png",
     actualPrice: "43",
     discountedPrice: "46",
-    title:"1500+ Transitions Premiere Pro"
+    title: "1500+ Transitions Premiere Pro",
   },
   {
-    image:"/img/card5.png",
+    image: "/img/card5.png",
     actualPrice: "48",
     discountedPrice: "60",
-    title:"1500+ Transitions Premiere Pro"
+    title: "1500+ Transitions Premiere Pro",
   },
   {
-    image:"/img/card2.png",
+    image: "/img/card2.png",
     actualPrice: "43",
     discountedPrice: "46",
-    title:"1500+ Transitions Premiere Pro"
+    title: "1500+ Transitions Premiere Pro",
   },
-
-]
-
+];
 
 export const bundleData = [
   {
     image1: "/img/bundle_bg1.png",
     actualPrice: "654",
     discountedPrice: "2132",
-    title:"1500+ Transitions Premiere Pro",
+    title: "1500+ Transitions Premiere Pro",
     image2: "/img/subscription.png",
     saveInfo: "Save $1470 and get all 40 Packs!",
     template: "25,000+ Templates",
-    bgColor: "#0D52FF"
+    bgColor: "#0D52FF",
   },
   {
     image1: "/img/bundle_bg2.png",
     actualPrice: "654",
     discountedPrice: "2132",
-    title:"1500+ Transitions Premiere Pro",
+    title: "1500+ Transitions Premiere Pro",
     image2: "/img/subscription.png",
     saveInfo: "Save $1470 and get all 40 Packs!",
     template: "25,000+ Templates",
-    bgColor: "#ED544E"
+    bgColor: "#ED544E",
   },
   {
     image1: "/img/bundle_bg1.png",
     actualPrice: "654",
     discountedPrice: "2132",
-    title:"1500+ Transitions Premiere Pro",
+    title: "1500+ Transitions Premiere Pro",
     image2: "/img/subscription.png",
     saveInfo: "Save $1470 and get all 40 Packs!",
     template: "25,000+ Templates",
-    bgColor: "#66C87B"
+    bgColor: "#66C87B",
   },
-]
-
+];
 
 export const features = [
-  '1500+ Transitions for Premiere Pro',
-  'Premiere Pro MotionDuck Extension',
-  'Works with any FPS',
-  'Premiere Pro CC 2021 (15.0.0) and Above',
-  'Lifetime "Unlimited" license for all your projects.'
-  ]
+  "1500+ Transitions for Premiere Pro",
+  "Premiere Pro MotionDuck Extension",
+  "Works with any FPS",
+  "Premiere Pro CC 2021 (15.0.0) and Above",
+  'Lifetime "Unlimited" license for all your projects.',
+];

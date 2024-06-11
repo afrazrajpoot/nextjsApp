@@ -1,9 +1,10 @@
-import Footer from "@/components/Footer";
+// import Footer from "@/components/Footer";
 import { latestArticledata } from "@/data/data";
-import { Pagination, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import Pagination from "../components/Common/Paggination";
+import Footer from "../components/Common/Footer/Footer";
 
 const Page = () => {
   const data = [

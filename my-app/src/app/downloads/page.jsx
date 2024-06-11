@@ -28,7 +28,7 @@ const page = () => {
           className="p-[2vw] bg-white border-[1px] border-[#F5F5F5] mt-[1vw] translate-y-[15vw]
           md:translate-y-0 rounded-lg"
         >
-          <div className="flex gap-[1vw]">
+          <div className="flex  lg:flex-row sm:flex-row flex-col sm:gap-[2vw] gap-[9vw]  lg:gap-[1vw]">
             {downloadData?.map((elem, ind) => (
               <div key={ind} className="flex flex-col">
                 <img src={elem.img} alt="" />

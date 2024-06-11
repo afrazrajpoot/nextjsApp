@@ -37,18 +37,18 @@ const PaymentMethod = () => {
               </p>
             </div>
           </div>
-          <div className="sm:ml-[2vw] lg:ml-[0.2vw]">
+          <div className="sm:ml-[2vw] ml-[2vw]  lg:ml-[0.2vw] w-full">
             <Button
               type="submit"
               size="small"
-              className="w-full mt-4 text-[4vw] lg:text-[0.8vw] bg-[#FF387A] sm:text-[1.5vw] lg:max-w-[10vw] max-w-[40vw] lg:p-[0.5vw] p-[2vw] hover:bg-[#FF387A] text-white sm:w-[15vw] sm:p-[1vw]"
+              className="w-full mt-4 text-[4vw] lg:text-[0.8vw] bg-[#FF387A] sm:text-[1.5vw] lg:max-w-[10vw] max-w-[38vw] lg:p-[0.5vw] p-[2vw] hover:bg-[#FF387A] text-white sm:w-[15vw] sm:p-[1vw]"
             >
               save changes
             </Button>
             <Button
               variant="outlined"
               size="small"
-              className="w-full mt-4 lg:text-[0.8vw] text-[4vw] lg:max-w-[10vw] sm:text-[1.5vw] max-w-[40vw] lg:p-[0.5vw] p-[2vw]  text-[#FF387A] ml-[1vw] hover:border-[#FF387A] sm:w-[15vw] font-bold sm:p-[1vw] border-[#FF387A]"
+              className="w-full mt-4 lg:text-[0.8vw] text-[4vw] lg:max-w-[10vw] sm:text-[1.5vw] max-w-[38vw] lg:p-[0.5vw] p-[2vw]  text-[#FF387A] ml-[5vw] hover:border-[#FF387A] sm:w-[15vw] font-bold sm:p-[1vw] border-[#FF387A]"
             >
               No cancel
             </Button>

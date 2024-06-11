@@ -1,16 +1,16 @@
 "use client";
 import React from "react";
-import KeyboardDoubleArrowLeftSharpIcon from '@mui/icons-material/KeyboardDoubleArrowLeftSharp';
-import KeyboardArrowLeftSharpIcon from '@mui/icons-material/KeyboardArrowLeftSharp';
-import KeyboardArrowRightSharpIcon from '@mui/icons-material/KeyboardArrowRightSharp';
-import KeyboardDoubleArrowRightSharpIcon from '@mui/icons-material/KeyboardDoubleArrowRightSharp';
+import KeyboardDoubleArrowLeftSharpIcon from "@mui/icons-material/KeyboardDoubleArrowLeftSharp";
+import KeyboardArrowLeftSharpIcon from "@mui/icons-material/KeyboardArrowLeftSharp";
+import KeyboardArrowRightSharpIcon from "@mui/icons-material/KeyboardArrowRightSharp";
+import KeyboardDoubleArrowRightSharpIcon from "@mui/icons-material/KeyboardDoubleArrowRightSharp";
 
 const Pagination = () => {
   return (
     <>
-      <section className="flex w-full items-center p-[2vw] justify-center gap-[1vw] mt-[10vw] md:mt-[2vw] ">
+      <section className="flex w-full items-center p-[2vw] justify-center sm:mt-[15vw] gap-[1vw] mt-[30vw] lg:mt-[10vw] ">
         <figure className="flex gap-[1vw] mr-[2vw]">
-          <KeyboardDoubleArrowLeftSharpIcon className="" />
+          <KeyboardDoubleArrowLeftSharpIcon className="sm:hidden hidden lg:block" />
           <KeyboardArrowLeftSharpIcon className="" />
         </figure>
         {[1, 2, 3, 4, 5, "....", 10].map((elem, ind) => (
@@ -22,8 +22,8 @@ const Pagination = () => {
           </div>
         ))}
         <figure className="flex gap-[1vw] ml-[2vw]">
-        <KeyboardArrowRightSharpIcon />
-        <KeyboardDoubleArrowRightSharpIcon />
+          <KeyboardArrowRightSharpIcon />
+          <KeyboardDoubleArrowRightSharpIcon className="sm:hidden hidden lg:block" />
         </figure>
       </section>
     </>

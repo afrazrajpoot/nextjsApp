@@ -4,7 +4,7 @@ import Footer from "../components/Common/Footer/Footer";
 
 const Page = () => {
   return (
-    <main className="flex flex-col w-full lg:pb-[1vw] overflow-y-hidden pb-[30vw] overflow-x-hidden">
+    <main className="flex flex-col w-full lg:pb-[10vw] overflow-y-hidden pb-[30vw] overflow-x-hidden">
       <section className="lg:translate-y-[6vw]  sm:translate-y-[8vw] translate-y-[20vw] w-full  max-w-[95vw] lg:max-w-[80vw] flex flex-col gap-[1.2vw] p-[2vw] m-auto ">
         <button className="border-[1px] flex  items-center border-[#E5E5E5] rounded-md text-[#525252] p-[0.5vw] w-full lg:max-w-[5vw] max-w-[20vw] sm:max-w-[10vw] justify-center">
           <figure className="w-full lg:max-w-[1.5vw] max-w-[5vw] sm:max-w-[3vw]">
@@ -107,7 +107,7 @@ const Page = () => {
           ))}
         </div>
       </section>
-      <footer className="translate-y-[10vw] sm:translate-y-[13vw]">
+      <footer className="translate-y-[35vw] sm:translate-y-[30vw] lg:translate-y-[10vw]">
         <Footer />
       </footer>
     </main>
