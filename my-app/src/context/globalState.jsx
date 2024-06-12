@@ -40,15 +40,8 @@ export const UserProvider = ({ children }) => {
   return (
     <UserContext.Provider
       value={{
-        login,
-        setLogin,
-        openLoginModel,
-        setLoginModel,
-        tokenInLocal,
-        logout,
-        mobileSidebarOpen,
-        toggleSidebar,
-        setMobileSidebarOpen,
+        login, setLogin, openLoginModel, setLoginModel, tokenInLocal, logout,
+        mobileSidebarOpen, toggleSidebar, setMobileSidebarOpen,
       }}
     >
       {children}

@@ -1,6 +1,8 @@
 import React from "react";
-import { cardData, data1, data2, data3 } from "@/data/data";
+import { cardData, articleInfo, articleInfo2, articleInfo3 } from "@/data/data";
 import Footer from "../components/Common/Footer/Footer";
+
+
 
 const Page = () => {
   return (
@@ -12,18 +14,8 @@ const Page = () => {
           </figure>
           <p>back</p>
         </button>
-
-        <img
-          src="/img/home.png"
-          alt="home"
-          className="hidden lg:block w-[90vw] sm:block"
-        />
-        <img
-          src="/img/mobileImage.png"
-          alt="home"
-          className="block lg:hidden sm:hidden mt-[3vw]"
-        />
-
+        <img src="/img/home.png" alt="home" className="hidden lg:block w-[90vw] sm:block"/>
+        <img src="/img/mobileImage.png" alt="home" className="block lg:hidden sm:hidden mt-[3vw]"/>
         <p className="text-[#525252] font-bold text-[2.5vw] sm:text-[2vw] lg:text-[0.8vw]">
           22/06/2023
         </p>
@@ -40,7 +32,7 @@ const Page = () => {
         </p>
 
         <div className="flex flex-col gap-[0.2vw]">
-          {data1.map((elem, ind) => (
+          {articleInfo.map((elem, ind) => (
             <ul key={ind} className={``}>
               <li
                 className={`text-[#171717] text-[3.5vw]   lg:text-[0.9vw] ml-[2vw] lg:ml-[0vw] sm:text-[2vw]`}
@@ -55,7 +47,7 @@ const Page = () => {
           Here are some additional tips for choosing the right Motion Graphic:
         </h2>
         <div className="flex flex-col gap-[0.2vw]">
-          {data2.map((elem, ind) => (
+          {articleInfo2.map((elem, ind) => (
             <ul key={ind} className="list-disc pl-5 flex flex-col gap-[0.2vw]">
               <li className="text-[#171717] text-[3.5vw] lg:text-[0.9vw] sm:text-[2vw]">
                 {elem.desc}
@@ -67,7 +59,7 @@ const Page = () => {
           Here are some additional tips for choosing the right Motion Graphic:
         </h2>
         <div className="flex flex-col gap-[0.2vw]">
-          {data3.map((elem, ind) => (
+          {articleInfo3?.map((elem, ind) => (
             <ul key={ind} className="list-disc pl-5 flex flex-col gap-[0.2vw]">
               <li className="text-[#171717]  text-[3.5vw] lg:text-[0.9vw] sm:text-[2vw]">
                 {elem.desc}
@@ -84,17 +76,13 @@ const Page = () => {
         <h1 className="lg:text-[2vw] text-[4vw] font-bold w-full max-w-[35vw] mt-[5vw] sm:text-[3vw]">
           Related Products
         </h1>
-        <div className="flex lg:gap-[5vw] sm:grid sm:grid-cols-2 lg:flex  lg:flex-row flex-col gap-[4vw]">
+        <section className="flex lg:gap-[5vw] sm:grid sm:grid-cols-2 lg:flex  lg:flex-row flex-col gap-[4vw]">
           {cardData?.map((elem, ind) => (
-            <div key={ind} className="">
+            <main key={ind} className="">
               <img src={elem.img} alt={elem.title} />
-              <p className="text-[#171717] hidden lg:block text-[0.8vw] font-bold mt-[1vw] w-full max-w-[15vw]">
-                {elem.title}
-              </p>
+              <p className="text-[#171717] hidden lg:block text-[0.8vw] font-bold mt-[1vw] w-full max-w-[15vw]">  {elem.title}</p>
               <div className=" block lg:hiddenflex flex-col gap-[3vw]">
-                <p className="mt-[2vw] font-bold text-[4.5vw] lg:hidden sm:text-[2vw]">
-                  1500+ Transitions Premiere Pro
-                </p>
+                <p className="mt-[2vw] font-bold text-[4.5vw] lg:hidden sm:text-[2vw]"> 1500+ Transitions Premiere Pro </p>
                 <div className="flex gap-[1vw] lg:hidden">
                   <p className="text-[#FF689A] lg:hidden">$48</p>
                   <p>$80</p>
@@ -103,9 +91,9 @@ const Page = () => {
               <p className=" font-medium hidden lg:block text-[0.8vw] text-[#525252] mt-[0.5vw] ">
                 {elem.date}
               </p>
-            </div>
+            </main>
           ))}
-        </div>
+        </section>
       </section>
       <footer className="translate-y-[35vw] sm:translate-y-[30vw] lg:translate-y-[10vw]">
         <Footer />

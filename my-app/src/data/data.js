@@ -340,7 +340,7 @@ export const checkoutFormData = [
     },
   },
 ];
-export const createPassword = [
+export const createPasswordForm = [
   {
     label: "New Password",
     name: "newPassword",
@@ -394,7 +394,7 @@ export const paymentMethodData = [
     desc: "Offers payment processing software for e-commerce websites and mobile applications.",
   },
 ];
-export const billingAddress = [
+export const billingAddressFrom = [
   {
     label: "Email ",
     name: "email",
@@ -518,7 +518,41 @@ export const socialMediaLinks = [
     path: "#",
   },
 ];
-
+export const summaryDetails = [
+  {
+    title: "1500+ Transitions Premiere Pro",
+    desc: "$48.00",
+  },
+  {
+    title: "100+ Transitions Premiere Pro",
+    desc: "$48.00",
+  },
+];
+export const summaryOptions = [
+  {
+    icon: "/img/upload.png",
+    desc: "DOWNLOAD RIGHT AWAY",
+  },
+  {
+    icon: "/img/lock.png",
+    desc: "SAFE CHECKOUT",
+  },
+  {
+    icon: "/img/customer.png",
+    desc: "CUSTOMER SUPPORT",
+  },
+];
+export const profileDetails = [
+  {
+    title: "Address", name: "Address", value: "Mila beoty 243"
+  },
+  {
+    title: "Zip Code", name: "Zip Code", value: "353243"
+  },
+  {
+    title: "Currency", name: "IDR", value: "IDR"
+  },
+]
 export const featurePack = [
   {
     image: "/img/card1.png",
@@ -581,7 +615,7 @@ export const termAndConditionData = [
     desc: "We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.",
   },
 ];
-export const data1 = [
+export const articleInfo = [
   {
     desc: "Consider your needs. What are your biggest financial risks? What would happen if you lost your job, got sick, or had a car accident? Once you know your biggest risks, you can start to think about what kind of Motion Graphic you need",
   },
@@ -598,7 +632,7 @@ export const data1 = [
     desc: "Ask questions. If you have any questions about Motion Graphic, don't be afraid to ask your Motion Graphic agent. They should be able to answer all of your questions and help you choose the right policy for you.'",
   },
 ];
-export const data2 = [
+export const articleInfo2 = [
   {
     desc: "Consider your budget: Motion Graphic can be expensive, so it's important to factor in your budget when you're making a decision.",
   },
@@ -612,7 +646,7 @@ export const data2 = [
     desc: "   Review your Motion Graphic regularly: Your needs may change over time, so it's important to review your Motion Graphic regularly. This will help you make sure that you have the right coverage in place.'",
   },
 ];
-export const data3 = [
+export const articleInfo3 = [
   {
     desc: " Auto Motion Graphic: This type of Motion Graphic protects you financially if you are involved in a car accident.",
   },
@@ -647,6 +681,55 @@ export const cardData = [
     img: "/img/graphicsImg3.png",
     title: "Make Powerful Motion Graphics in After Effects",
     date: "Sep 31 , 2023",
+  },
+];
+export const downloadData = [
+  {
+    img: "/img/img.png",
+    desc: "1500+ Transitions Premiere Pro",
+  },
+  {
+    img: "/img/Img (1).png",
+    desc: "1500+ Transitions Premiere Pro",
+  },
+  {
+    img: "/img/Img (2).png",
+    desc: "1500+ Transitions Premiere Pro",
+  },
+];
+
+export const categoriesData = [
+  {
+    title: "Davinci Resolve",
+    desc: "(8)",
+  },
+  {
+    title: "After Effects",
+    desc: "(2)",
+  },
+  {
+    title: "Graphic Design",
+    desc: "(24)",
+  },
+  {
+    title: "Filmmaking",
+    desc: "(12)",
+  },
+];
+export const orderData = [
+  {
+    img: "/img/dashboardImg.png",
+    desc: "1500+ Transitions Premiere Pro",
+    price: "48$",
+    invoiceText: "View Invoice",
+    downloadImg: "/img/download.png",
+  },
+  {
+    img: "/img/img1.png",
+    desc: "1500+ Transitions Premiere Pro",
+    price: "48$",
+    invoiceText: "View Invoice",
+    downloadImg: "/img/download.png",
   },
 ];
 export const latestArticledata = [

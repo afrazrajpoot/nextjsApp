@@ -22,8 +22,8 @@ export default function SignupModel() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <div className="flex justify-center items-center h-screen ">
-          <div className="relative bg-white mt-[-20vw] px-[5vw] sm:pt-[15vw] pt-[25vw] lg:p-4 rounded-[0.5vw] shadow-lg w-full max-w-[100vw] h-[100vh] lg:h-[80vh]  lg:max-w-[28vw]  lg:mt-[-3vw] flex sm:h-[100vh] flex-col gap-[1vw]">
+        <div className="flex flex-col justify-center items-center h-screen ">
+          <div className="relative bg-white mt-[-20vw] px-[5vw] sm:pt-[15vw] pt-[25vw] lg:p-4 rounded-[0.5vw] shadow-lg w-full max-w-[100vw] h-[100vh] lg:h-[85vh]  lg:max-w-[28vw]  lg:mt-[3vw] flex sm:h-[100vh] flex-col gap-[1vw]">
             <div className="flex w-full justify-center">
               <Image src="/img/Logo.png" alt="logo" width={150} height={150} />
             </div>
@@ -84,7 +84,7 @@ export default function SignupModel() {
               </Button>
             </div>
           </div>
-          <Button className="absolute lg:top-[43vw] top-[0vw] lg:right-[47.5vw] right-[0vw]">
+          <Button className="flex justify-center items-center mt-[1vw]">
             <IconButton
               onClick={handleClose}
               style={{

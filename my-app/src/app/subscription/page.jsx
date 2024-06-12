@@ -5,6 +5,7 @@ import SubscriptionPlains from '../components/pagesComponents/landingpage/Subscr
 import { profileData } from '@/data/data'
 import Profile from '../components/Cards/Profile'
 import Questions from '../components/pagesComponents/subscriptionPage/Questions'
+import Footer from '../components/Common/Footer/Footer'
 
 const Subscription = () => {
   return (
@@ -49,6 +50,7 @@ const Subscription = () => {
           ))}
         </figure>
       </section>
+      <Footer />
     </>
   )
 }

@@ -1,23 +1,7 @@
 import React from "react";
 import Button from "@mui/material/Button"; // Import MUI Button
 import Sidebar from "../components/Common/Sidebar/Sidebar";
-
-const orderData = [
-  {
-    img: "/img/dashboardImg.png",
-    desc: "1500+ Transitions Premiere Pro",
-    price: "48$",
-    invoiceText: "View Invoice",
-    downloadImg: "/img/download.png",
-  },
-  {
-    img: "/img/img1.png",
-    desc: "1500+ Transitions Premiere Pro",
-    price: "48$",
-    invoiceText: "View Invoice",
-    downloadImg: "/img/download.png",
-  },
-];
+import { orderData } from "@/data/data";
 
 const page = () => {
   return (

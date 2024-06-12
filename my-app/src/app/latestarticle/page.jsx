@@ -1,5 +1,5 @@
 // import Footer from "@/components/Footer";
-import { latestArticledata } from "@/data/data";
+import { categoriesData, latestArticledata } from "@/data/data";
 import { TextField } from "@mui/material";
 import Image from "next/image";
 import React from "react";
@@ -7,24 +7,13 @@ import Pagination from "../components/Common/Paggination";
 import Footer from "../components/Common/Footer/Footer";
 
 const Page = () => {
-  const data = [
-    {
-      title: "Davinci Resolve",
-      desc: "(8)",
-    },
-    {
-      title: "After Effects",
-      desc: "(2)",
-    },
-    {
-      title: "Graphic Design",
-      desc: "(24)",
-    },
-    {
-      title: "Filmmaking",
-      desc: "(12)",
-    },
-  ];
+
+  const recentPosts = [
+    {date: "22/06/2023", title:"The 10 Most Popular Title Animations in After Effects"},
+    {date: "22/06/2023", title:"Create Cinematic Visuals in After Effects"},
+    {date: "22/06/2023", title:"Bounce Expression"},
+  ]
+
   return (
     <main className="bg-[#FAFAFA] pb-[2vw]">
       <section className="lg:translate-y-[5vw] translate-y-[20vw] sm:translate-y-[10vw]">
@@ -56,7 +45,7 @@ const Page = () => {
               Categories
             </h2>
             <div className="border-[0.7px] border-b-[#E5E5E5] mt-[5vw]"></div>
-            {data?.map((elem, ind) => (
+            {categoriesData?.map((elem, ind) => (
               <div key={ind}>
                 <div className="flex justify-between">
                   <h3 className="mt-[3vw] ml-[0.4vw] text-[4vw] font-medium sm:text-[2.5vw]">
@@ -128,30 +117,22 @@ const Page = () => {
                 <h2 className="text-[1.5vw] font-bold mt-[2vw] ml-[0.4vw]">
                   Recent Posts
                 </h2>
-                <div className="mt-[1vw] ml-[0.4vw]">
-                  <p className="text-[#525252] text-[1vw]">22/06/2023</p>
+                {recentPosts?.map((post, index) => (
+                  <main key={index}>
+                     <div className="mt-[1vw] ml-[0.4vw]">
+                  <p className="text-[#525252] text-[1vw]">{post?.date}</p>
                   <p className="text-[1vw] font-medium">
-                    The 10 Most Popular Title Animations in After Effects
+                   {post?.title}
                   </p>
                 </div>
                 <div className="border-[0.7px] border-b-[#E5E5E5] mt-[1vw]"></div>
-                <div className="mt-[1vw] ml-[0.4vw]">
-                  <p className="text-[#525252] text-[1vw]">22/06/2023</p>
-                  <p className="text-[1vw] font-medium">
-                    Create Cinematic Visuals in After Effects
-                  </p>
-                </div>
-                <div className="border-[0.7px] border-b-[#E5E5E5] mt-[1vw]"></div>
-                <div className="mt-[1vw] ml-[0.4vw]">
-                  <p className="text-[#525252] text-[1vw]">22/06/2023</p>
-                  <p className="text-[1vw] font-medium">Bounce Expression</p>
-                </div>
-                <div className="border-[0.7px] border-b-[#E5E5E5] mt-[1vw]"></div>
+                  </main>
+                ))}
                 <h2 className="text-[1.5vw] font-bold mt-[2vw] ml-[0.4vw]">
                   Categories
                 </h2>
                 <div className="border-[0.7px] border-b-[#E5E5E5] mt-[1vw]"></div>
-                {data?.map((elem, ind) => (
+                {categoriesData?.map((elem, ind) => (
                   <div key={ind}>
                     <div className="flex justify-between">
                       <h3 className="mt-[1vw] ml-[0.4vw] text-[1vw] font-medium">
@@ -172,36 +153,16 @@ const Page = () => {
         <h2 className="text-[5vw] font-medium mt-[9vw] ml-[4.5vw] sm:text-[3vw]">
           Recent Posts
         </h2>
-
-        <div className="mt-[1vw] ml-[5.5vw]">
-          <p className="text-[#525252] text-[3vw] mt-[4vw] sm:text-[2vw]">
-            22/06/2023
-          </p>
-          <p className="text-[4vw] font-medium w-[75vw] mt-[3vw] sm:text-[2.5vw]">
-            The 10 Most Popular Title Animations in After Effects
-          </p>
-        </div>
-
-        <div className="border-[0.7px] border-b-[#E5E5E5] mt-[3vw] w-[88vw] m-auto"></div>
-        <div className="mt-[1vw] ml-[5.5vw]">
-          <p className="text-[#525252] text-[3vw] mt-[4vw] sm:text-[2vw]">
-            22/06/2023
-          </p>
-          <p className="text-[4vw] font-medium w-[75vw] mt-[3vw] sm:text-[2.5vw]">
-            Create Cinematic Visuals in After Effects
-          </p>
+        {recentPosts?.map((post, index) => (
+          <main className="" key={index}>
+          <div className="mt-[1vw] ml-[5.5vw]">
+          <p className="text-[#525252] text-[3vw] mt-[4vw] sm:text-[2vw]"> {post?.date} </p>
+          <p className="text-[4vw] font-medium w-[75vw] mt-[3vw] sm:text-[2.5vw]">  {post?.title} </p>
         </div>
         <div className="border-[0.7px] border-b-[#E5E5E5] mt-[3vw] w-[88vw] m-auto"></div>
-        <div className="mt-[1vw] ml-[5.5vw]">
-          <p className="text-[#525252] text-[3vw] mt-[4vw] sm:text-[2vw]">
-            22/06/2023
-          </p>
-          <p className="text-[4vw] font-medium w-[75vw] mt-[3vw] sm:text-[2.5vw]">
-            Bounce Expression
-          </p>
-        </div>
-        <div className="border-[0.7px] border-b-[#E5E5E5] mt-[3vw] w-[88vw] m-auto"></div>
-      </article>
+          </main>
+        ))}
+        </article>
       <footer className="translate-y-[10vw]">
         <Footer />
       </footer>

@@ -1,46 +1,16 @@
-import { checkoutFormData } from "@/data/data";
+import { checkoutFormData, summaryDetails, summaryOptions } from "@/data/data";
 import { Button } from "@mui/material";
 import React from "react";
 import Steper from "../components/authModel/register/Steper";
 
 const page = () => {
-  const data = [
-    {
-      title: "1500+ Transitions Premiere Pro",
-      desc: "$48.00",
-    },
-    {
-      title: "100+ Transitions Premiere Pro",
-      desc: "$48.00",
-    },
-  ];
-  const data2 = [
-    {
-      icon: "/img/upload.png",
-      desc: "DOWNLOAD RIGHT AWAY",
-    },
-    {
-      icon: "/img/lock.png",
-      desc: "SAFE CHECKOUT",
-    },
-    {
-      icon: "/img/customer.png",
-      desc: "CUSTOMER SUPPORT",
-    },
-  ];
   return (
     <main className="bg-[#FAFAFA] lg:h-[150vh] h-[160vh] overflow-x-hidden">
       <section className="lg:translate-y-[5vw] sm:translate-y-[10vw] translate-y-[20vw] p-[2vw] w-full max-w-[90vw] m-auto">
         <Button
           variant="outlined"
           className="border-[1px] border-[#E5E5E5] sm:text-[1.5vw]  rounded-lg p-[0.5vw] text-[#525252] flex items-center lg:gap-[0.1vw] lg:w-[6vw] w-[20vw] sm:w-[10vw] sm:ml-[-2vw] sm:translate-y-[3vw] lg:translate-y-[0vw] sm:pr-[2vw] ml-[1vw] lg:ml-[0vw] lg:text-[1vw] text-[3vw] lg:py-[0.3vw] sm:py-[1vw] py-[1.55vw]"
-          startIcon={
-            <img
-              src="/img/backIcon.png"
-              alt="back icon"
-              className="w-[5vw] sm:w-[10vw] lg:w-[2vw]"
-            />
-          }
+          startIcon={<img src="/img/backIcon.png" alt="back icon" className="w-[5vw] sm:w-[10vw] lg:w-[2vw]" />}
         >
           Back
         </Button>
@@ -48,13 +18,8 @@ const page = () => {
           <article className="w-full max-w-[70vw] flex flex-col gap-[2vw] mt-[5vw] sm:mt-[7vw] lg:mt-[0vw]">
             <Steper />
             <div className="bg-white border-[1px] border-[#F5F5F5] mt-[8vw] lg:rounded-lg  sm:mt-[5vw] lg:w-[50vw] lg:p-[1vw] lg:ml-[10vw] ml-[7vw] p-[4vw] w-[90vw] rounded-xl">
-              <p className="font-bold lg:text-[1.5vw] text-[5vw] sm:text-[3vw]">
-                Contact Info
-              </p>
-              <form
-                action=""
-                className="flex flex-col mt-[1vw] lg:text-[1vw] text-[4vw]"
-              >
+              <p className="font-bold lg:text-[1.5vw] text-[5vw] sm:text-[3vw]"> Contact Info</p>
+              <form action="" className="flex flex-col mt-[1vw] lg:text-[1vw] text-[4vw]" >
                 <label htmlFor="" className="sm:text-[2.5vw] lg:text-[1vw]">
                   Email
                 </label>
@@ -83,7 +48,6 @@ const page = () => {
                     <input
                       type="text"
                       className="lg:p-[0.8vw] p-[2vw] lg:text-[1vw] text-[3.5vw] bg-[#FAFAFA] mb-4 sm:text-[2vw] sm:p-[2vw]"
-                      //   placeholder={elem.placeholder}
                       value={elem.value}
                       name=""
                       id=""
@@ -130,9 +94,8 @@ const page = () => {
               <p className="font-bold lg:text-[1.5vw] text-[5vw] sm:text-[3vw]">
                 Summary
               </p>
-
               <div className="mt-[1vw] flex flex-col lg:gap-[0.8vw] gap-[4vw]">
-                {data?.map((elem, ind) => (
+                {summaryDetails?.map((elem, ind) => (
                   <div
                     className={`flex gap-[1vw] justify-between items-center`}
                     key={ind}
@@ -164,7 +127,7 @@ const page = () => {
               </Button>
               <div className="border-[0.2px] border-b-[#EEEEEE] lg:mt-[1vw] mt-[3vw] "></div>
               <div className="flex  lg:translate-x-[-4.2vw] w-full  lg:mt-[1vw] mt-[3vw] lg:ml-[5vw] sm:ml-[4vw] ml-[-1vw]  lg:gap-[2vw] gap-[7.5vw]">
-                {data2?.map((elem, ind) => (
+                {summaryOptions?.map((elem, ind) => (
                   <div className="flex flex-col items-center sm:justify-center ">
                     <img
                       src={elem.icon}

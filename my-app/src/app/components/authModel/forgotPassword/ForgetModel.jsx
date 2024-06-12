@@ -24,7 +24,7 @@ export default function ForgetModel() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <div className="flex justify-center items-center h-screen">
+        <div className="flex flex-col justify-center items-center h-screen">
           <div className="relative  bg-white p-4 pt-[15vw] lg:pt-[1vw] rounded-[0.5vw] shadow-lg w-full max-w-[100vw] lg:h-[40vh] h-[100vh]  lg:max-w-[28vw] mt-[-3vw] flex flex-col gap-[1vw]">
             <div className="flex w-full justify-center">
               <Image src="/img/Logo.png" alt="logo" width={150} height={150} />
@@ -37,7 +37,7 @@ export default function ForgetModel() {
             </p>
             <ForgetForm />
           </div>
-          <Button className="absolute lg:top-[43vw] top-[0vw] lg:right-[47.5vw] right-[0vw]">
+          <Button className="flex justify-center items-center mt-[1vw]">
             <IconButton
               onClick={handleClose}
               style={{

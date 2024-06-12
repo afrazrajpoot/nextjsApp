@@ -8,6 +8,7 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { faqCardData, faqData } from "@/data/data";
 import Footer from "../components/Common/Footer/Footer";
+import FaqCard from "../components/Cards/FaqCard";
 
 export default function DisabledAccordion() {
   const [expanded, setExpanded] = React.useState(false);
@@ -72,41 +73,7 @@ export default function DisabledAccordion() {
           </figure>
           <main className="flex lg:flex-row flex-col  sm:flex-row w-full max-w-[65vw] mt-[4vw]   m-auto lg:gap-[3vw] gap-[8vw] sm:mt-[4vw]">
             {faqCardData?.map((item, index) => (
-              <main
-                key={index}
-                className={`flex flex-col  gap-[1.4vw] lg:gap-[0vw]  sm:gap-[1vw]  ${
-                  index === 1 &&
-                  "border-[1px] border-[#F5F5F5] rounded-lg p-[0.6vw]"
-                } `}
-              >
-                <header className="">
-                  <figure>
-                    <img src={item.img} alt={item.name} className="" />
-                  </figure>
-                  <p className="lg:text-[0.8vw] text-[3vw] mt-[1vw] lg:mt-[1vw] font-medium sm:text-[1.5vw]">
-                    {item.desc}
-                  </p>
-                </header>
-                <figure className="border-[1px] border-[#F5F5F5] sm:mt-[1vw] p-[0.1vw] mt-[6vw] lg:mt-[1vw] rounded-full sm:w-[6vw] w-[10.5vw] lg:w-[3vw]   flex ">
-                  <img src={item.icon} alt="icon" />{" "}
-                  <span className="lg:text-[0.8vw] text-[3vw] sm:text-[1.5vw]">
-                    5.0
-                  </span>
-                </figure>
-                <figure className="flex gap-[1vw] mt-[6vw] sm:mt-[1vw] lg:mt-[1vw]">
-                  <figure>
-                    <img src={item.avatar} alt={item.name} className="" />
-                  </figure>
-                  <div>
-                    <p className="lg:text-[1vw] text-[3vw] sm:text-[1vw] font-bold">
-                      {item.name}
-                    </p>
-                    <p className="lg:text-[1vw] text-[3vw] sm:text-[1vw]">
-                      {item.brandName}
-                    </p>
-                  </div>
-                </figure>
-              </main>
+              <FaqCard key={index} {...item} />
             ))}
           </main>
         </article>

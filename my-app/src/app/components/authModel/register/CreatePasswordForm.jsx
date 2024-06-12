@@ -1,5 +1,5 @@
 "use client";
-import { createPassword } from "@/data/data";
+import { createPasswordForm } from "@/data/data";
 import { Button } from "@mui/material";
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
@@ -31,8 +31,8 @@ const CreatePasswordForm = () => {
           />
         </div>
         <div className="border-[1px] border-b-[#EEEEEE] mt-[2vw]"></div>
-        <div className="mt-[1.5vw]">
-          {createPassword?.map((field, index) => (
+        <form className="mt-[1.5vw]">
+          {createPasswordForm?.map((field, index) => (
             <div key={index} className="mb-4">
               <label
                 htmlFor={field.name}
@@ -61,7 +61,7 @@ const CreatePasswordForm = () => {
               />
             </div>
           ))}
-        </div>
+        </form>
       </div>
       <Button
         type="submit"
