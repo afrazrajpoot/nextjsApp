@@ -20,7 +20,7 @@ const Store = () => {
     "Bundle",
     "Single Pack",
     "Premier pro",
-    "premier pro",
+    "After Effects",
   ];
   return (
     <>
@@ -84,7 +84,7 @@ const Store = () => {
             </div>
           ))}
         </nav>
-        <section className="w-full max-w-[90vw] mx-auto mt-[6vw] md:mt-[2vw]">
+        <section className="w-full max-w-[90vw] ml-[4vw] mx-auto mt-[6vw] md:mt-[2vw]">
           <figure className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-[5vw] md:mt-0 gap-[10vw] md:gap-[2vw] items-start">
             {singlePack?.map((pack, index) => (
               <Pack key={index} {...pack} />
