@@ -67,7 +67,7 @@ const Categories = () => {
           </Slider>
         </figure>
       </section>
-      <section className=" items-start mt-[3vw]">
+      <section className=" items-start mt-[10vw] sm:mt-[3vw]">
         <aside className="w-full sm:max-w-[40vw] lg:max-w-[28vw]">
           <h1 className="text-[5.5vw] md:text-[2.5vw] text-[#171717] font-bold">
             Get Single Packs
