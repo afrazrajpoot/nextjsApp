@@ -1,3 +1,4 @@
+'use client'
 import { TextField } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import MotionDuck from "./components/pagesComponents/landingpage/MotionDuck";
@@ -9,8 +10,15 @@ import { profileData } from "@/data/data";
 import Profile from "./components/Cards/Profile";
 import Footer from "./components/Common/Footer/Footer";
 import Bundles from "./components/pagesComponents/landingpage/Bundles";
+import { useGlobalContext } from "@/context/globalState";
 
-const LandingPage = () => {
+const LandingPage = () => { 
+ const {fetchWooCommerceData} = useGlobalContext();
+
+  fetchWooCommerceData('wc/v3/products')
+  .then(data => console.log('Products:', data))
+    .catch(error => console.error('Error:', error));
+  
   return (
     <main style={{ backgroundImage: "url('/img/hero1.png')"}} className="w-full h-screen bg-cover bg-center">
       <aside className="pt-[20vw] sm:pt-[10vw] lg:pt-[6vw] ml-[6vw] md:ml-[9vw] mt-[8vw] md:mt-0 w-full max-w-[90vw]  md:max-w-[50vw] p-[1vw]">
