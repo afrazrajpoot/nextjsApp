@@ -1,12 +1,13 @@
 "use client";
 
-import React from "react";
-import { featurePack, singlePack } from "@/data/data";
+import React, { useEffect, useState } from "react";
 import Pack from "../../Cards/Pack";
-import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt"; // Make sure to import your icon
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { useGlobalContext } from "@/context/globalState";
+import Link from "next/link";
 
 const Categories = () => {
   const CustomPrevArrow = (props) => (
@@ -17,6 +18,7 @@ const Categories = () => {
       <ArrowRightAltIcon className="text-[#000000] top-[10vw] text-[10.5vw] sm:text-[5.5vw] lg:text-[3.5vw] p-[3vw] md:p-[1vw] cursor-pointer hover:bg-green-50 hover:rounded-full hover:text-center rotate-180" />
     </span>
   );
+
   const CustomNextArrow = (props) => (
     <span
       {...props}
@@ -45,6 +47,36 @@ const Categories = () => {
     ],
   };
 
+  const [featurePackages, setFeaturePackages] = useState([]);
+  const [singlePack, setSinglePack] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const { fetchWooCommerceData } = useGlobalContext();
+
+  const fetchProducts = async (queryParams) => {
+    try {
+      const data = await fetchWooCommerceData('wc/v3/products', { params: queryParams });
+      return data;
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts({ featured: false }).then((data) => setFeaturePackages(data));
+    fetchProducts({}).then((data) => setSinglePack(data));
+  }, []);
+
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+    let queryParams = {};
+
+    if (category !== 'all') {
+      queryParams = { categories: category };
+    }
+
+    fetchProducts(queryParams).then((data) => setSinglePack(data));
+  };
+
   return (
     <main className="w-full max-w-[80vw] mx-auto py-[6vw] md:py-[4vw]">
       <section className="flex flex-col md:flex-row items-start">
@@ -59,35 +91,47 @@ const Categories = () => {
         </aside>
         <figure className="grid grid-cols-1 w-full lg:max-w-[60vw] mt-[5vw] md:mt-0">
           <Slider {...settings}>
-            {featurePack?.map((pack, index) => (
-              <div key={index} className="w-full px-[1vw]">
-                <Pack {...pack} />
-              </div>
-            ))}
+            {featurePackages?.map((packages, index) => {
+              const { images, regular_price, sale_price, name, slug } = packages;
+              return (
+                <Link href={`/product/${slug}`} key={index} className="w-full px-[1vw]">
+                  <Pack discountedPrice={sale_price} actualPrice={regular_price} image={images[0]?.src} title={name} />
+                </Link>
+              );
+            })}
           </Slider>
         </figure>
       </section>
-      <section className=" items-start mt-[10vw] sm:mt-[3vw]">
+      <section className="items-start mt-[10vw] sm:mt-[3vw]">
         <aside className="w-full sm:max-w-[40vw] lg:max-w-[28vw]">
           <h1 className="text-[5.5vw] md:text-[2.5vw] text-[#171717] font-bold">
             Get Single Packs
           </h1>
           <div className="flex items-center w-full">
-            <button className="bg-[#FFFF] mt-[2vw] ml-[0.5vw] border-[1px] border-[#525252] font-medium hover:font-medium text-[3.5vw] sm:text-[2vw] lg:text-[1vw]  hover:text-white hover:shadow-md hover:bg-[#ff387af6] text-[#525252] p-[2.5vw] md:p-[0.9vw] rounded-md w-full max-w-[20vw] sm:max-w-[8vw] lg:max-w-[4vw] text-center">
-              All
-            </button>
-            <button className="bg-[#FFFF] mt-[2vw] ml-[0.5vw] border-[1px] border-[#FF387A] font-medium hover:font-medium text-[3.5vw] sm:text-[2vw] lg:text-[1vw]  hover:text-white hover:shadow-md hover:bg-[#ff387af6] text-[#FF387A] p-[2.5vw] md:p-[0.9vw] rounded-md w-full max-w-[30vw] sm:max-w-[15vw] lg:max-w-[10vw] text-center">
-              After Effects
-            </button>
-            <button className="bg-[#FFFF] mt-[2vw] ml-[0.5vw] border-[1px] border-[#FF387A] font-medium hover:font-medium text-[3.5vw] sm:text-[2vw] lg:text-[1vw]  hover:text-white hover:shadow-md hover:bg-[#ff387af6] text-[#FF387A] p-[2.5vw] md:p-[0.9vw] rounded-md w-full max-w-[30vw] sm:max-w-[15vw] lg:max-w-[10vw] text-center">
-              Premiere Pro
-            </button>
+            {['all', 'after-effects', 'premiere-pro']?.map((category) => (
+              <button
+                key={category}
+                className={`bg-[#FFFF] mt-[2vw] ml-[0.5vw] border-[1px] ${
+                  selectedCategory === category
+                    ? 'border-[#FF387A] text-[#FF387A]'
+                    : 'border-[#525252] text-[#525252]'
+                } font-medium hover:font-medium text-[3.5vw] capitalize sm:text-[2vw] lg:text-[1vw] hover:text-white hover:shadow-md hover:border-[#ff387af6] hover:bg-[#ff387af6] p-[2.5vw] md:p-[0.9vw] rounded-md w-full ${category == 'all'? "max-w-[20vw]" : "max-w-[30vw]"} sm:max-w-[15vw] lg:max-w-[10vw] text-center`}
+                onClick={() => handleCategoryClick(category)}
+              >
+                {category === 'all' ? 'All' : category.replace('-', ' ')}
+              </button>
+            ))}
           </div>
         </aside>
         <figure className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-[5vw] sm:mt-[5vw] lg:mt-0 gap-[10vw] sm:gap-[4vw] lg:gap-[2vw] items-start">
-          {singlePack?.map((pack, index) => (
-            <Pack key={index} {...pack} />
-          ))}
+          {singlePack?.slice(0, 6)?.map((packages, index) => {
+            const { images, regular_price, sale_price, name, slug } = packages;
+            return (
+              <Link href={`/product/${slug}`} >
+                <Pack key={index} discountedPrice={sale_price} actualPrice={regular_price} image={images[0]?.src} title={name} />
+              </Link>
+            );
+          })}
         </figure>
         <div className="flex items-center justify-center">
           <button className="bg-[#FFFF] mt-[5vw] lg:mt-[2vw] border-[1px] border-[#FF387A] font-medium hover:font-medium text-[4vw] sm:text-[2vw] lg:text-[1vw] hover:text-white hover:shadow-md hover:bg-[#ff387af6] text-[#FF387A] p-[2.5vw] md:p-[0.9vw] rounded-md w-full max-w-[30vw] md:max-w-[10vw] text-center">

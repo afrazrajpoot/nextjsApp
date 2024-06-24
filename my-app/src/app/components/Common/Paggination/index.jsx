@@ -5,28 +5,41 @@ import KeyboardArrowLeftSharpIcon from "@mui/icons-material/KeyboardArrowLeftSha
 import KeyboardArrowRightSharpIcon from "@mui/icons-material/KeyboardArrowRightSharp";
 import KeyboardDoubleArrowRightSharpIcon from "@mui/icons-material/KeyboardDoubleArrowRightSharp";
 
-const Pagination = () => {
+const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   return (
-    <>
-      <section className="flex w-full items-center p-[2vw] justify-center sm:mt-[15vw] gap-[1vw] mt-[30vw] lg:mt-[10vw] ">
-        <figure className="flex gap-[1vw] mr-[2vw]">
-          <KeyboardDoubleArrowLeftSharpIcon className="sm:hidden hidden lg:block" />
-          <KeyboardArrowLeftSharpIcon className="" />
-        </figure>
-        {[1, 2, 3, 4, 5, "....", 10].map((elem, ind) => (
-          <div
-            key={ind}
-            className="bg-[#FFFFFF] border-[1px] border-[#E1E4EA] h-[4vh]  flex justify-center items-center w-full max-w-[6vw] sm:max-w-[4vw] lg:max-w-[2vw] rounded-md "
-          >
-            {elem}
-          </div>
-        ))}
-        <figure className="flex gap-[1vw] ml-[2vw]">
-          <KeyboardArrowRightSharpIcon />
-          <KeyboardDoubleArrowRightSharpIcon className="sm:hidden hidden lg:block" />
-        </figure>
-      </section>
-    </>
+    <section className="flex w-full items-center p-[2vw] justify-center sm:mt-[15vw] gap-[1vw] mt-[30vw] lg:mt-[10vw]">
+      <figure className="flex gap-[1vw] mr-[2vw]">
+        <KeyboardDoubleArrowLeftSharpIcon
+          className="sm:hidden hidden lg:block cursor-pointer"
+          onClick={() => onPageChange(1)}
+        />
+        <KeyboardArrowLeftSharpIcon
+          className="cursor-pointer"
+          onClick={() => onPageChange(currentPage - 1)}
+        />
+      </figure>
+      {[...Array(totalPages)]?.map((_, ind) => (
+        <div
+          key={ind}
+          className={`bg-[#FFFFFF] border-[1px] border-[#E1E4EA] h-[4vh] flex justify-center items-center w-full max-w-[6vw] sm:max-w-[4vw] lg:max-w-[2vw] rounded-md cursor-pointer ${
+            currentPage === ind + 1 ? "border-[#FF387A] border-[2px] text-[#171717]" : ""
+          }`}
+          onClick={() => onPageChange(ind + 1)}
+        >
+          {ind + 1}
+        </div>
+      ))}
+      <figure className="flex gap-[1vw] ml-[2vw]">
+        <KeyboardArrowRightSharpIcon
+          className="cursor-pointer"
+          onClick={() => onPageChange(currentPage + 1)}
+        />
+        <KeyboardDoubleArrowRightSharpIcon
+          className="sm:hidden hidden lg:block cursor-pointer"
+          onClick={() => onPageChange(totalPages)}
+        />
+      </figure>
+    </section>
   );
 };
 

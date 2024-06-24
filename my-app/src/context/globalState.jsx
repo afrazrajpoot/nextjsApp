@@ -6,9 +6,9 @@ const UserContext = createContext();
 export const useGlobalContext = () => useContext(UserContext);
 const axios = require('axios');
 
-const WORDPRESS_API_URL = '';
-const WOOCOMMERCE_CONSUMER_KEY = '';
-const WOOCOMMERCE_CONSUMER_SECRET = '';
+const WORDPRESS_API_URL = 'https://develop.sonduckfilm.com/wp-json';
+const WOOCOMMERCE_CONSUMER_KEY = 'ck_a3024c39d99841d8178850ebe3932c74f58c3b3e';
+const WOOCOMMERCE_CONSUMER_SECRET = 'cs_6ac0f165f893fe7bf5b2fd9de93eb1d2a405e002';
 
 
 export const UserProvider = ({ children }) => {
@@ -30,6 +30,7 @@ export const UserProvider = ({ children }) => {
   const [login, setLogin] = useState(false);
   const [openLoginModel, setLoginModel] = useState(false);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const [addToCart, setAddToCart] = useState(0)
 
   const toggleSidebar = () => {
     setMobileSidebarOpen((prev) => !prev);
@@ -79,7 +80,8 @@ export const UserProvider = ({ children }) => {
     <UserContext.Provider
       value={{
         login, setLogin, openLoginModel, setLoginModel, tokenInLocal, logout,
-        mobileSidebarOpen, toggleSidebar, setMobileSidebarOpen, fetchWooCommerceData
+        mobileSidebarOpen, toggleSidebar, setMobileSidebarOpen, fetchWooCommerceData,
+        addToCart, setAddToCart
       }}
     >
       {children}

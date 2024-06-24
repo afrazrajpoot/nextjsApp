@@ -12,12 +12,7 @@ import Footer from "./components/Common/Footer/Footer";
 import Bundles from "./components/pagesComponents/landingpage/Bundles";
 import { useGlobalContext } from "@/context/globalState";
 
-const LandingPage = () => { 
- const {fetchWooCommerceData} = useGlobalContext();
-
-  fetchWooCommerceData('wc/v3/products')
-  .then(data => console.log('Products:', data))
-    .catch(error => console.error('Error:', error));
+const LandingPage = () => {
   
   return (
     <main style={{ backgroundImage: "url('/img/hero1.png')"}} className="w-full h-screen bg-cover bg-center">

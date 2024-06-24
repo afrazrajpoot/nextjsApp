@@ -5,6 +5,10 @@ const nextConfig = {
         WOOCOMMERCE_CONSUMER_KEY: process.env.WOOCOMMERCE_CONSUMER_KEY,
         WOOCOMMERCE_CONSUMER_SECRET: process.env.WOOCOMMERCE_CONSUMER_SECRET,
       },
+      images: {
+        domains: ['develop.sonduckfilm.com'],
+      },
+    
 };
 
 export default nextConfig;

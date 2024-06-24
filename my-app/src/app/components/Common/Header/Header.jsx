@@ -13,15 +13,7 @@ const Header = () => {
     borderWidth: "1px",
     textTransform: "capitalize",
   });
-  const {
-    login,
-    setLogin,
-    openLoginModel,
-    setLoginModel,
-    toggelMobileSidebar,
-    setMobileSideBar,
-    toggleSidebar,
-  } = useGlobalContext();
+  const { login, setLoginModel, toggleSidebar,addToCart} = useGlobalContext();
 
   const filteredHeaderData = !login
     ? headerData.filter((item, index) => index !== 3)
@@ -47,19 +39,14 @@ const Header = () => {
 
         {login ? (
           <div className="flex items-center gap-[0.3vw]">
-            <span className="hidden    lg:w-[10vw]   lg:block ">
-              <form className="flex bg-[#262626]  p-[0.6vw]  lg:p-[0.6vw]    rounded-md gap-[1vw] lg:w-[15vw]">
+            <span className="hidden lg:w-[10vw] lg:block ">
+              <form className="flex bg-[#262626] p-[0.6vw] lg:p-[0.6vw] rounded-md gap-[1vw] lg:w-[15vw]">
                 <img src="/img/searchIcon.png" alt="searchIcon" />
-                <input
-                  type="text"
-                  className=" bg-[#262626] w-full  focus:outline-none text-white"
-                  name=""
-                  id=""
-                />
+                <input type="text" className=" bg-[#262626] w-full  focus:outline-none text-white" name=""  />
               </form>
             </span>
-
-            <div className="bg-[#262626] sm:py-[1vw] lg:px-[0.5vw] px-[1vw] lg:py-[0.6vw]  py-[2vw] transform translate-x-[-3.5vw] lg:translate-x-[5vw] rounded-lg">
+            <div className="bg-[#262626] relative sm:py-[1vw] lg:px-[0.5vw] px-[1vw] lg:py-[0.6vw]  py-[2vw] transform translate-x-[-3.5vw] lg:translate-x-[5vw] rounded-lg">
+              {addToCart > 0 && <span className="absolute -top-[0.2vw] right-0 w-[1.2vw] h-[1.2vw] flex justify-center items-center bg-[#FF387A] rounded-full text-[0.6vw] font-medium text-center text-white">{addToCart}</span>}
               <img src={"/img/cart.png"} alt="cart" />
             </div>
             <span className="lg:hidden  " onClick={toggleSidebar}>
