@@ -6,9 +6,9 @@ const UserContext = createContext();
 export const useGlobalContext = () => useContext(UserContext);
 const axios = require('axios');
 
-const WORDPRESS_API_URL = 'https://develop.sonduckfilm.com/wp-json';
-const WOOCOMMERCE_CONSUMER_KEY = 'ck_a3024c39d99841d8178850ebe3932c74f58c3b3e';
-const WOOCOMMERCE_CONSUMER_SECRET = 'cs_6ac0f165f893fe7bf5b2fd9de93eb1d2a405e002';
+const WORDPRESS_API_URL = '';
+const WOOCOMMERCE_CONSUMER_KEY = '';
+const WOOCOMMERCE_CONSUMER_SECRET = '';
 
 
 export const UserProvider = ({ children }) => {
