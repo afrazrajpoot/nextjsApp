@@ -95,10 +95,10 @@ const Store = () => {
         <section className="w-full max-w-[90vw] ml-[4vw] mx-auto mt-[6vw] md:mt-[2vw]">
           <figure className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-[5vw] md:mt-0 gap-[10vw] md:gap-[2vw] items-start">
           { products?.map((packages, index)=> {
-            const { images, price, sale_price, name, permaLink, } = packages;
+            const { images, regular_price, sale_price, name } = packages;
             return (
-               <div className="w-full">
-                 <Pack discountedPrice={sale_price} actualPrice={price} image={images[0]?.src} title={name} />
+               <div key={index} className="w-full">
+                 <Pack discountedPrice={sale_price} actualPrice={regular_price} image={images[0]?.src} title={name} />
                </div>
             )
           })}

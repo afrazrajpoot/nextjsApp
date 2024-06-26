@@ -25,7 +25,7 @@ const SigninForm = () => {
 
   const onSubmit = (data) => {
     setLoginModel(false);
-    console.log(data);
+    // console.log(data);
     tokenInLocal(data);
     // Reset form data after submission is handled by React Hook Form
   };

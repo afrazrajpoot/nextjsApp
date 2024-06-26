@@ -21,22 +21,47 @@ import ChechoutDrawer from '@/app/components/ChechoutDrawer';
 const ProductDetails = ({ params: { slug } }) => {
   const [productDetails, setProductDetails] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
-  const { fetchWooCommerceData, addToCart, setAddToCart } = useGlobalContext();
-  const [openCartDrawer, setOpenCartDrawer] = useState(false);
-  const [addProductsToCart, setAddProductsToCart] = useState([]);
+  const {fetchWooCommerceData, setCartCount, openCartDrawer,
+  setOpenCartDrawer, productsAddedToCart, setProductsAddedToCart } = useGlobalContext();
+
+  const [subtotal, setSubtotal] = React.useState(0);
+
+  useEffect(() => {
+    const calculateSubtotal = () => {
+      let total = 0;
+      productsAddedToCart?.forEach((item) => {
+        const price = item?.sale_price || item?.regular_price;
+        if (price) {
+          total += parseFloat(price);
+        }
+      });
+      setSubtotal(total);
+      localStorage.setItem("totalPrice" ,JSON.stringify(total))
+    };
+    calculateSubtotal();
+  }, [productsAddedToCart]);
+
+  useEffect(() => {
+    const storedProducts = JSON.parse(localStorage.getItem("productsAddedToCart"));
+    if (storedProducts) {
+      setProductsAddedToCart(storedProducts);
+      setCartCount(storedProducts?.length);
+    }
+  }, []);
 
   const addToCartHandler = (product) => {
-    setAddToCart(addToCart + 1)
-    setAddProductsToCart([...addProductsToCart, product]);
-  }
+    const updatedCart = [...productsAddedToCart, product];
+    setCartCount(updatedCart?.length);
+    setProductsAddedToCart(updatedCart);
+    localStorage.setItem("productsAddedToCart", JSON.stringify(updatedCart));
+  };
 
-  const removeFromCartHandler = (id) => {
-    setAddToCart(addToCart - 1)
-    setAddProductsToCart(addProductsToCart.filter(item => item.id !== id));
-  }
-  console.log('====================================');
-  console.log(addProductsToCart);
-  console.log('====================================');
+  const removeFromCartHandler = (index) => {
+    const updatedCart = productsAddedToCart.filter((_, i) => i !== index);
+    setCartCount(updatedCart.length);
+    setProductsAddedToCart(updatedCart);
+    localStorage.setItem("productsAddedToCart", JSON.stringify(updatedCart));
+  };
 
   const fetchProducts = async () => {
     try {
@@ -109,7 +134,7 @@ const ProductDetails = ({ params: { slug } }) => {
                     </p>
                 </nav>
                 <Button onClick={()=> {addToCartHandler(productDetails); setOpenCartDrawer(true)}} variant="outlined" className='bg-[#FFFF] ml-[0.5vw] mt-[1vw] sm:mt-[4vw] lg:mt-[1vw] border-[1px] border-[#FF387A] font-medium hover:font-medium text-[3.5vw] sm:text-[2vw] lg:text-[1vw]  hover:text-white hover:shadow-md hover:bg-[#ff387af6] hover:border-[#ff387af6] text-[#FF387A] p-[2.5vw] md:p-[0.5vw] rounded-md w-full text-center' >Add to cart</Button>
-                <Button variant="contained" className='bg-[#FF387A] ml-[0.5vw] mt-[4vw] lg:mt-[1vw] border-[1px] border-[#FF387A] font-medium hover:font-medium text-[3.5vw] sm:text-[2vw] lg:text-[1vw] text-white hover:shadow-md hover:bg-[#ff387af6] hover:border-[#ff387af6] p-[2.5vw] md:p-[0.5vw] rounded-md w-full text-center' >Buy now</Button>
+                <Button onClick={() => setOpenCartDrawer(true)} variant="contained" className='bg-[#FF387A] ml-[0.5vw] mt-[4vw] lg:mt-[1vw] border-[1px] border-[#FF387A] font-medium hover:font-medium text-[3.5vw] sm:text-[2vw] lg:text-[1vw] text-white hover:shadow-md hover:bg-[#ff387af6] hover:border-[#ff387af6] p-[2.5vw] md:p-[0.5vw] rounded-md w-full text-center' >Buy now</Button>
                 <section className='flex border-t-[1px] border-[#E5E5E5] mt-[3vw] lg:mt-[1vw] items-center justify-between p-[1vw]'>
                     <p className='text-[#171717] font-medium text-[4vw] sm:text-[2vw] lg:text-[1vw]'>Compatibility</p>
                     <aside className='flex items-center'>
@@ -129,7 +154,6 @@ const ProductDetails = ({ params: { slug } }) => {
                 </nav>
                 <p className='w-full mt-[1vw] lg:max-w-[21vw] text-[4vw] sm:text-[2vw] lg:text-[1vw] text-[#525252]'>Unlock this theme and get unlimited access to over 1000+ Premium templates.</p>
                 <p className='w-full flex items-center mt-[1vw] lg:max-w-[20vw] text-[4vw] sm:text-[2vw] lg:text-[1vw] text-[#FF387A]'>Go Unlimited now <EastSharpIcon className='ml-[0.5vw]' /></p>
-
             </footer>
             </aside>
         </section>
@@ -189,7 +213,7 @@ const ProductDetails = ({ params: { slug } }) => {
         </section>
         <aside className='w-full max-w-[30vw]'>
           <Drawer anchor="right" open={openCartDrawer} onClose={() => setOpenCartDrawer(false)}>
-            <ChechoutDrawer removeProduct={removeFromCartHandler} cartedItems={addProductsToCart} closeDrawer={() => setOpenCartDrawer(false)} />
+            <ChechoutDrawer subtotal={subtotal} removeProduct={removeFromCartHandler} cartedItems={productsAddedToCart} closeDrawer={() => setOpenCartDrawer(false)} />
           </Drawer>
         </aside>
     <Footer />

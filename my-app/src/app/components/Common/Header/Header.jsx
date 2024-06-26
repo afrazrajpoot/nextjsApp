@@ -1,8 +1,7 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { Button, TextField } from "@mui/material";
+import { Button } from "@mui/material";
 import { headerData } from "@/data/data";
 import { useGlobalContext } from "@/context/globalState";
 import { styled } from "@mui/material/styles";
@@ -13,7 +12,7 @@ const Header = () => {
     borderWidth: "1px",
     textTransform: "capitalize",
   });
-  const { login, setLoginModel, toggleSidebar,addToCart} = useGlobalContext();
+  const { login, setLoginModel, toggleSidebar,cartCount, setOpenCartDrawer} = useGlobalContext();
 
   const filteredHeaderData = !login
     ? headerData.filter((item, index) => index !== 3)
@@ -45,8 +44,8 @@ const Header = () => {
                 <input type="text" className=" bg-[#262626] w-full  focus:outline-none text-white" name=""  />
               </form>
             </span>
-            <div className="bg-[#262626] relative sm:py-[1vw] lg:px-[0.5vw] px-[1vw] lg:py-[0.6vw]  py-[2vw] transform translate-x-[-3.5vw] lg:translate-x-[5vw] rounded-lg">
-              {addToCart > 0 && <span className="absolute -top-[0.2vw] right-0 w-[1.2vw] h-[1.2vw] flex justify-center items-center bg-[#FF387A] rounded-full text-[0.6vw] font-medium text-center text-white">{addToCart}</span>}
+            <div onClick={() => setOpenCartDrawer(true)} className="bg-[#262626] relative sm:py-[1vw] lg:px-[0.5vw] px-[1vw] lg:py-[0.6vw]  py-[2vw] transform translate-x-[-3.5vw] lg:translate-x-[5vw] rounded-lg">
+              {cartCount > 0 && <span className="absolute -top-[0.2vw] right-0 w-[1.2vw] h-[1.2vw] flex justify-center items-center bg-[#FF387A] rounded-full text-[0.6vw] font-medium text-center text-white">{cartCount}</span>}
               <img src={"/img/cart.png"} alt="cart" />
             </div>
             <span className="lg:hidden  " onClick={toggleSidebar}>

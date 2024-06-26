@@ -22,7 +22,7 @@ const Form = () => {
   const handleClickShowPassword = () => setShowPassword(!showPassword);
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     // Handle form submission
   };
 
