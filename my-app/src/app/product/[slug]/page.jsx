@@ -92,7 +92,7 @@ const ProductDetails = ({ params: { slug } }) => {
   }, [slug]);
 
   if (!productDetails) {
-    return <div><Loading /></div>;
+    return <main className='w-full flex items-center justify-center h-screen'><Loading /></main>;
   }
 
 

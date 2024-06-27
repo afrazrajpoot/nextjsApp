@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useGlobalContext } from "@/context/globalState";
 import Link from "next/link";
+import Loading from "../../Common/Loading";
 
 const Categories = () => {
   const CustomPrevArrow = (props) => (
@@ -90,7 +91,7 @@ const Categories = () => {
           </p>
         </aside>
         <figure className="grid grid-cols-1 w-full lg:max-w-[60vw] mt-[5vw] md:mt-0">
-          <Slider {...settings}>
+        { featurePackages?.length == 0 ? <main className="w-full lg:max-w-[60vw] flex items-center h-[15vw] justify-center"><Loading /></main> :  <Slider {...settings}>
             {featurePackages?.map((packages, index) => {
               const { images, regular_price, sale_price, name, slug } = packages;
               return (
@@ -99,7 +100,7 @@ const Categories = () => {
                 </Link>
               );
             })}
-          </Slider>
+          </Slider>}
         </figure>
       </section>
       <section className="items-start mt-[10vw] sm:mt-[3vw]">
@@ -123,8 +124,8 @@ const Categories = () => {
             ))}
           </div>
         </aside>
-        <figure className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-[5vw] sm:mt-[5vw] lg:mt-0 gap-[10vw] sm:gap-[4vw] lg:gap-[2vw] items-start">
-          {singlePack?.slice(0, 6)?.map((packages, index) => {
+        {singlePack?.length == 0 ? <main className="w-full flex items-center h-[25vw] justify-center"><Loading /></main> : <figure className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-[5vw] sm:mt-[5vw] lg:mt-0 gap-[10vw] sm:gap-[4vw] lg:gap-[2vw] items-start">
+         {singlePack?.slice(0, 6)?.map((packages, index) => {
             const { images, regular_price, sale_price, name, slug } = packages;
             return (
               <Link href={`/product/${slug}`} >
@@ -132,7 +133,7 @@ const Categories = () => {
               </Link>
             );
           })}
-        </figure>
+        </figure>}
         <Link href={"/store"} className="flex items-center justify-center">
           <button className="bg-[#FFFF] mt-[5vw] lg:mt-[2vw] border-[1px] border-[#FF387A] font-medium hover:font-medium text-[4vw] sm:text-[2vw] lg:text-[1vw] hover:text-white hover:shadow-md hover:bg-[#ff387af6] text-[#FF387A] p-[2.5vw] md:p-[0.9vw] rounded-md w-full max-w-[30vw] md:max-w-[10vw] text-center">
             View All

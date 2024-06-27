@@ -7,7 +7,7 @@ import KeyboardDoubleArrowRightSharpIcon from "@mui/icons-material/KeyboardDoubl
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   return (
-    <section className="flex w-full items-center p-[2vw] justify-center sm:mt-[15vw] gap-[1vw] mt-[30vw] lg:mt-[10vw]">
+    <section className="flex w-full items-center p-[2vw] justify-center sm:mt-[15vw] gap-[1vw] mt-[30vw] lg:mt-[1vw]">
       <figure className="flex gap-[1vw] mr-[2vw]">
         <KeyboardDoubleArrowLeftSharpIcon
           className="sm:hidden hidden lg:block cursor-pointer"
