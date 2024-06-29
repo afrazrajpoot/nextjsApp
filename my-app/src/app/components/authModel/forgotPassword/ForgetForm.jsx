@@ -1,17 +1,16 @@
-"use client";
-import {
-  Button,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
-  Typography,
-} from "@mui/material";
 import React from "react";
+import { Button, Typography } from "@mui/material";
 import { useForm, Controller } from "react-hook-form";
-import { forgetForm, formData, loginFormData } from "@/data/data";
+import { forgetForm } from "@/data/data";
+import { useForgotPasswordMutation } from "@/store/storeApi";
+import { useGlobalContext } from "@/context/globalState";
+
 const ForgetForm = () => {
+  const { dataForResetPassword, setDataForResetPassword } = useGlobalContext();
+
+  const [forgot, { isLoading, isError, isSuccess }] =
+    useForgotPasswordMutation();
+  const { setOtpModel, setForgetModel } = useGlobalContext();
   const {
     handleSubmit,
     control,
@@ -19,9 +18,22 @@ const ForgetForm = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    // console.log(data);
+    console.log(data);
     // Handle form submission
+    forgot(data); // Assuming this triggers the mutation
+    setDataForResetPassword({ ...dataForResetPassword, email: data.email });
   };
+
+  // Handle success state
+  React.useEffect(() => {
+    if (isSuccess) {
+      setOtpModel(true); // Show OTP model upon successful submission
+      setForgetModel(false); // Close forget model
+    }
+    if (isError) {
+      alert("something wrong");
+    }
+  }, [isSuccess, setOtpModel, setForgetModel]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="w-full">
@@ -58,8 +70,9 @@ const ForgetForm = () => {
         type="submit"
         size="large"
         className="w-full mt-4 text-[2vw] lg:text-[0.8vw] bg-[#FF387A] hover:bg-[#FF387A] text-white"
+        disabled={isLoading}
       >
-        Send me a reset link
+        {isLoading ? "Sending..." : "Send me a reset link"}
       </Button>
     </form>
   );

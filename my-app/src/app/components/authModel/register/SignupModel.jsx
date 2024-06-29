@@ -7,17 +7,21 @@ import CloseIcon from "@mui/icons-material/Close";
 import Modal from "@mui/material/Modal";
 import Form from "../../Common/Footer/Form";
 import Image from "next/image";
+import { useGlobalContext } from "@/context/globalState";
 
 export default function SignupModel() {
   const [open, setOpen] = React.useState(false);
+  const { openSignupModel, setSignupModel } = useGlobalContext();
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setSignupModel(false);
+  };
 
   return (
     <div className="w-full relative">
-      <Button onClick={handleOpen}>Signup modal</Button>
+      {/* <Button onClick={handleOpen}>Signup modal</Button> */}
       <Modal
-        open={open}
+        open={openSignupModel}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"

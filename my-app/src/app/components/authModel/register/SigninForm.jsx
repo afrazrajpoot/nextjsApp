@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   FormControlLabel,
@@ -11,25 +11,36 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useForm, Controller } from "react-hook-form";
 import { loginFormData } from "@/data/data";
 import { useGlobalContext } from "@/context/globalState";
+import { useLoginUserMutation } from "@/store/storeApi";
 
 const SigninForm = () => {
-  const { tokenInLocal, setLoginModel } = useGlobalContext();
+  const { tokenInLocal, setLoginModel, setForgetModel } = useGlobalContext();
+  const [showPassword, setShowPassword] = useState(false);
   const {
     handleSubmit,
     control,
     formState: { errors },
   } = useForm();
-  const [showPassword, setShowPassword] = useState(false);
+  const [login, { isLoading, isError, isSuccess, data }] =
+    useLoginUserMutation();
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
 
-  const onSubmit = (data) => {
-    setLoginModel(false);
-    // console.log(data);
-    tokenInLocal(data);
-    // Reset form data after submission is handled by React Hook Form
+  const onSubmit = async (formData) => {
+    const res = await login(formData);
+    console.log(res, "ress");
+    tokenInLocal(res);
   };
-
+  useEffect(() => {
+    if (isError) {
+      setLoginModel(true);
+      alert("Please enter correct details");
+    }
+    if (isSuccess) {
+      setLoginModel(false);
+      alert("login successsfull");
+    }
+  }, [isError, isSuccess]);
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="w-full">
       {loginFormData.map((field, index) => (
@@ -108,8 +119,14 @@ const SigninForm = () => {
           </div>
         </div>
       ))}
-      <p className="lg:text-[0.7vw] text-[2vw] text-[#FF387A] ml-[75vw] lg:ml-[19.6vw] font-bold w-full  max-w-[30vw]">
-        Forget password?
+      <p
+        onClick={() => {
+          setForgetModel(true);
+          setLoginModel(false);
+        }}
+        className="hover:cursor-pointer lg:text-[0.7vw] text-[2vw] text-[#FF387A] ml-[75vw] lg:ml-[19.6vw] font-bold w-full  max-w-[30vw]"
+      >
+        Forgot password?
       </p>
       <div className="mb-4">
         <FormControlLabel value="female" control={<Radio size="small" />} />

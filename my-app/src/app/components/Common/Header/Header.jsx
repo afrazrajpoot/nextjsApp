@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import { headerData } from "@/data/data";
 import { useGlobalContext } from "@/context/globalState";
@@ -12,7 +12,24 @@ const Header = () => {
     borderWidth: "1px",
     textTransform: "capitalize",
   });
-  const { login, setLoginModel, toggleSidebar,cartCount, setOpenCartDrawer} = useGlobalContext();
+
+  const [loggedUser, setLoggedUser] = useState(null);
+
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      try {
+        const parsedUser = JSON.parse(user);
+        setLoggedUser(parsedUser);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }, []);
+  
+
+
+  const { login, setLoginModel, toggleSidebar, cartCount, setSignupModel,} = useGlobalContext();
 
   const filteredHeaderData = !login
     ? headerData.filter((item, index) => index !== 3)
@@ -22,9 +39,9 @@ const Header = () => {
     <>
       <nav className="bg-[#171717] top-0  w-full p-[2vw] lg:p-[0.7vw]  sm:p-[1vw] justify-center   flex items-center sm:justify-center  lg:gap-[4vw]   lg:justify-center gap-[8vw] fixed z-50">
         <Link href={"/"}>
-        <figure className="w-full lg:max-w-[12vw] sm:max-w-[20vw] max-w-[60vw]">
-          <img src={"/img/whiteDuck.png"} className="w-full" alt="logo" />
-        </figure>
+          <figure className="w-full lg:max-w-[12vw] sm:max-w-[20vw] max-w-[60vw]">
+            <img src={"/img/whiteDuck.png"} className="w-full" alt="logo" />
+          </figure>
         </Link>
         <div className="lg:block hidden sm:block ">
           <div className=" lg:flex sm:flex gap-[4vw] text-[1vw] lg:text-[1vw] sm:text-[1.5vw]">
@@ -36,16 +53,24 @@ const Header = () => {
           </div>
         </div>
 
-        {login ? (
+        {loggedUser ? (
           <div className="flex items-center gap-[0.3vw]">
             <span className="hidden lg:w-[10vw] lg:block ">
               <form className="flex bg-[#262626] p-[0.6vw] lg:p-[0.6vw] rounded-md gap-[1vw] lg:w-[15vw]">
                 <img src="/img/searchIcon.png" alt="searchIcon" />
-                <input type="text" className=" bg-[#262626] w-full  focus:outline-none text-white" name=""  />
+                <input
+                  type="text"
+                  className=" bg-[#262626] w-full  focus:outline-none text-white"
+                  name=""
+                />
               </form>
             </span>
-            <div onClick={() => setOpenCartDrawer(true)} className="bg-[#262626] relative sm:py-[1vw] lg:px-[0.5vw] px-[1vw] lg:py-[0.6vw]  py-[2vw] transform translate-x-[-3.5vw] lg:translate-x-[5vw] rounded-lg">
-              {cartCount > 0 && <span className="absolute -top-[0.2vw] right-0 w-[1.2vw] h-[1.2vw] flex justify-center items-center bg-[#FF387A] rounded-full text-[0.6vw] font-medium text-center text-white">{cartCount}</span>}
+            <div className="bg-[#262626] relative sm:py-[1vw] lg:px-[0.5vw] px-[1vw] lg:py-[0.6vw]  py-[2vw] transform translate-x-[-3.5vw] lg:translate-x-[5vw] rounded-lg">
+              {cartCount > 0 && (
+                <span className="absolute -top-[0.2vw] right-0 w-[1.2vw] h-[1.2vw] flex justify-center items-center bg-[#FF387A] rounded-full text-[0.6vw] font-medium text-center text-white">
+                  {cartCount}
+                </span>
+              )}
               <img src={"/img/cart.png"} alt="cart" />
             </div>
             <span className="lg:hidden  " onClick={toggleSidebar}>
@@ -58,7 +83,7 @@ const Header = () => {
                   alt="profile icon"
                   className="sm:w-[2vw] lg:w-[1.5vw]"
                 />
-                <span>George Gika</span>
+                <span>{loggedUser?.user?.fullName}</span>
               </div>
             </aside>
           </div>
@@ -74,7 +99,8 @@ const Header = () => {
             </Button>
             <CustomButton
               variant="outlined"
-              className="lg:text-[1vw] text-[2vw]"
+              className="lg:text-[1vw] text-[2vw] "
+              onClick={() => setSignupModel(true)}
             >
               Join us
             </CustomButton>

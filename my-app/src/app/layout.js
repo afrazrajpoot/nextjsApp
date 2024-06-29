@@ -4,6 +4,9 @@ import { UserProvider } from "@/context/globalState";
 import Header from "./components/Common/Header/Header";
 import SigninModel from "./components/authModel/register/SigninModel";
 import MobileSidebar from "./components/Common/Sidebar/MobileSidebar";
+import Providers from "@/redux/Providers";
+import SignupModel from "./components/authModel/register/SignupModel";
+
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 const inter = Inter({ subsets: ["latin"] });
@@ -17,15 +20,20 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head></head>
-      <UserProvider>
-        <body className={inter.className} style={{backgroundColor: "#FAFAFA"}}>
-          <Header />
-
-          {children}
-          <SigninModel />
-          <MobileSidebar />
-        </body>
-      </UserProvider>
+      <Providers>
+        <UserProvider>
+          <body
+            className={inter.className}
+            style={{ backgroundColor: "#FAFAFA" }}
+          >
+            <Header />
+            {children}
+            <SigninModel />
+            <SignupModel />
+            <MobileSidebar />
+          </body>
+        </UserProvider>
+      </Providers>
     </html>
   );
 }

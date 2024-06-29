@@ -10,17 +10,22 @@ import Image from "next/image";
 import SigninForm from "../register/SigninForm";
 import ForgetForm from "../forgotPassword/ForgetForm";
 import Otp from "./Otp";
+import { useGlobalContext } from "@/context/globalState";
 
 export default function OtpModel() {
+  const { openOtpModel, setOtpModel, openResetModel, setResetModel } =
+    useGlobalContext();
+  // const {} = useGlobalContext()
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => setOtpModel(false);
 
   return (
     <div className="w-full relative">
       <Button onClick={handleOpen}>Otp modal</Button>
       <Modal
-        open={open}
+        open={openOtpModel}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
@@ -37,24 +42,6 @@ export default function OtpModel() {
               Recover your account password
             </p>
             <Otp />
-            <Button
-              size="large"
-              className="w-full mt-4 text-[2vw] lg:text-[0.8vw] bg-[#FF387A] hover:bg-[#FF387A] text-white"
-            >
-              Next
-            </Button>
-            <Button
-              size="large"
-              variant="outlined"
-              sx={{
-                color: "#FF387A",
-                border: "none",
-                "&:hover": { border: "none" },
-              }}
-              className="w-full text-[2vw] lg:text-[0.8vw] mt-[1vw]"
-            >
-              Resend
-            </Button>
           </div>
           <Button className="flex justify-center items-center mt-[1vw]">
             <IconButton

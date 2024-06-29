@@ -34,6 +34,15 @@ export const UserProvider = ({ children }) => {
   const [checkout, setCheckout] = useState(null);
   const [openCartDrawer, setOpenCartDrawer] = useState(false);
   const [productsAddedToCart, setProductsAddedToCart] = useState([]);
+  const [openSignupModel, setSignupModel] = useState(false);
+  const [openForgetModel, setForgetModel] = useState(false);
+  const [openOtpModel, setOtpModel] = useState(false);
+  const [openResetModel, setResetModel] = useState(false);
+  const [otpReset, setOtpReset] = useState();
+  const [dataForResetPassword, setDataForResetPassword] = useState({
+    oldPassword: "", email: "",
+    otp: "", newPassword: "",
+  });
 
   const toggleSidebar = () => {
     setMobileSidebarOpen((prev) => !prev);
@@ -55,19 +64,60 @@ export const UserProvider = ({ children }) => {
       return response.data;
     } catch (error) {
       if (error.response) {
-        // The request was made and the server responded with a status code
         console.error("Error status:", error.response.status);
-        console.error("Error data:", error.response.data);
-      } else if (error.request) {
-        // The request was made but no response was received
-        console.error("No response received:", error.request);
       } else {
-        // Something happened in setting up the request that triggered an Error
-        console.error("Error setting up request:", error.message);
+        console.error(error.message);
       }
       throw error;
     }
   };
+
+  const CreateWooCommerceData = async (endpoint, data) => {
+    try {
+      const response = await axios.post(`${WORDPRESS_API_URL}/${endpoint}`, data, {
+        auth: {
+          username: WOOCOMMERCE_CONSUMER_KEY,
+          password: WOOCOMMERCE_CONSUMER_SECRET,
+        },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      return response?.data;
+    } catch (error) {
+      if (error.response) {
+        console.error("Error status:", error.response.status, error.response.message);
+      } else {
+        console.error(error.message);
+      }
+      throw error;
+    }
+  };
+
+  const updateWooCommerceData = async (endpoint, itemId, data) => {
+    try {
+      const response = await axios.put(`${WORDPRESS_API_URL}/${endpoint}/${itemId}`, data, {
+        auth: {
+          username: WOOCOMMERCE_CONSUMER_KEY,
+          password: WOOCOMMERCE_CONSUMER_SECRET,
+        },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      return response?.data;
+    } catch (error) {
+      if (error.response) {
+        console.error("Error status:", error.response.status, error.response.message);
+      } else {
+        console.error(error.message);
+      }
+      throw error;
+    }
+  };
+  
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -96,11 +146,17 @@ export const UserProvider = ({ children }) => {
         mobileSidebarOpen,
         toggleSidebar,
         setMobileSidebarOpen,
-        fetchWooCommerceData,
+        fetchWooCommerceData,CreateWooCommerceData,updateWooCommerceData,
         cartCount,
         setCartCount,
         checkout, productsAddedToCart, setProductsAddedToCart,
-        setCheckout, openCartDrawer, setOpenCartDrawer
+        setCheckout, openCartDrawer, setOpenCartDrawer,
+        openSignupModel, setSignupModel,
+        openForgetModel, setForgetModel,
+        openOtpModel, setOtpModel,
+        openResetModel, setResetModel,
+        otpReset, setOtpReset,
+        dataForResetPassword, setDataForResetPassword
       }}
     >
       {children}

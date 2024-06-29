@@ -9,17 +9,21 @@ import Form from "../../Common/Footer/Form";
 import Image from "next/image";
 import SigninForm from "../register/SigninForm";
 import ForgetForm from "./ForgetForm";
+import { useGlobalContext } from "@/context/globalState";
 
 export default function ForgetModel() {
+  const { openForgetModel, setForgetModel } = useGlobalContext();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setForgetModel(false);
+  };
 
   return (
     <div className="w-full relative">
       <Button onClick={handleOpen}>Forget password modal</Button>
       <Modal
-        open={open}
+        open={openForgetModel}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"

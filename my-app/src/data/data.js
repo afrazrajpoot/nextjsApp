@@ -196,7 +196,6 @@ export const accoutForm = [
     label: "Email address",
     name: "email",
     type: "email",
-    value: "magika@mail.com",
     placeholder: "e.g sanandreas@gmail.com",
     pc: "email",
     rules: {
@@ -209,17 +208,16 @@ export const accoutForm = [
   },
   {
     label: "Display Name",
-    name: "displayName",
-    value: "George Gika",
+    name: "username",
     type: "text",
     placeholder: "e.g San Andreas",
     pc: "email",
 
     rules: {
-      required: "Full name is required",
+      required: "Display name is required",
       minLength: {
         value: 3,
-        message: "Full name must be at least 3 characters long",
+        message: "name must be at least 3 characters long",
       },
     },
   },
@@ -227,49 +225,46 @@ export const accoutForm = [
 export const accountForm2 = [
   {
     label: "Phone number",
-    name: "phoneNumber",
-    value: "+62 888 999 1222",
+    name: "phone",
     type: "text",
     placeholder: "e.g San Andreas",
     pc: "email",
 
     rules: {
-      required: "Full name is required",
-      minLength: {
-        value: 3,
-        message: "Full name must be at least 3 characters long",
-      },
+      required: "phone is required",
+      // minLength: {
+      //   value: 9,
+      //   message: "phone must be at least 9 characters long",
+      // },
     },
   },
   {
     label: "Country",
     name: "country",
-    value: "United Kingdom",
     type: "text",
     placeholder: "e.g San Andreas",
     pc: "email",
 
     rules: {
-      required: "Full name is required",
+      required: "country is required",
       minLength: {
         value: 3,
-        message: "Full name must be at least 3 characters long",
+        message: "country must be a valid country",
       },
     },
   },
   {
     label: "Address",
-    name: "address",
-    value: "Malang, Sronowagen, East Java, Indonesia",
+    name: "address1",
     type: "text",
     placeholder: "e.g San Andreas",
     pc: "email",
 
     rules: {
-      required: "Full name is required",
+      required: "address is required",
       minLength: {
-        value: 3,
-        message: "Full name must be at least 3 characters long",
+        value: 10,
+        message: "address must be at least 10 characters long",
       },
     },
   },

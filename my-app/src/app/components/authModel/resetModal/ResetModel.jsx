@@ -10,17 +10,18 @@ import Image from "next/image";
 import SigninForm from "../register/SigninForm";
 import ForgetForm from "../forgotPassword/ForgetForm";
 import ResetForm from "./ResetForm";
+import { useGlobalContext } from "@/context/globalState";
 
 export default function ResetModel() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
+  const handleClose = () => setResetModel(false);
+const {openResetModel, setResetModel} = useGlobalContext()
   return (
     <div className="w-full relative">
-      <Button onClick={handleOpen}>Reset Password modal</Button>
+      {/* <Button onClick={handleOpen}>Reset Password modal</Button> */}
       <Modal
-        open={open}
+        open={openResetModel}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"

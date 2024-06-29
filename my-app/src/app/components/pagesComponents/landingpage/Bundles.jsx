@@ -9,12 +9,18 @@ import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 
 const Bundles = () => {
-  const CustomPrevArrow = (props) => (
-    <span {...props} className="text-vw text-black absolute top-[80vw] left-[1vw] cursor-pointer sm:top-[45vw] lg:top-[28vw] sm:left-[3vw] lg:left-[1vw] z-50">
+  const CustomPrevArrow = ({ style, onClick}) => (
+    <span
+    style={{...style}} 
+    onClick={onClick}
+     className={`text-vw text-black absolute top-[80vw] left-[1vw] cursor-pointer sm:top-[45vw] lg:top-[28vw] sm:left-[3vw] lg:left-[1vw] z-50`}>
    <ArrowRightAltIcon className='text-[#000000] text-[10.5vw] sm:text-[5.5vw] lg:text-[3.5vw] p-[3vw] md:p-[1vw] cursor-pointer hover:bg-green-50 hover:rounded-full hover:text-center rotate-180' />
   </span>);
-  const CustomNextArrow = (props) => (
-    <span {...props} className="text-vw text-black absolute top-[80vw] left-[7vw] cursor-pointer sm:top-[45vw] lg:top-[28vw] sm:sm:left-[9vw] lg:left-[4vw] ">
+  const CustomNextArrow = ({ style, onClick}) => (
+    <span
+    style={{...style}} 
+    onClick={onClick}
+     className={`text-vw text-black absolute top-[80vw] left-[7vw] cursor-pointer sm:top-[45vw] lg:top-[28vw] sm:sm:left-[9vw] lg:left-[4vw]`}>
     <ArrowRightAltIcon className='text-[#000000] text-[10.5vw] sm:text-[5.5vw] lg:text-[3.5vw] p-[3vw] md:p-[1vw] cursor-pointer hover:bg-green-50 hover:rounded-full hover:text-center' />
   </span> );
 

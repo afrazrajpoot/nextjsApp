@@ -11,19 +11,21 @@ import Link from "next/link";
 import Loading from "../../Common/Loading";
 
 const Categories = () => {
-  const CustomPrevArrow = (props) => (
+  const CustomPrevArrow = ({style, onClick}) => (
     <span
-      {...props}
-      className="text-vw text-black absolute cursor-pointer sm:top-[20vw] lg:top-[12vw] sm:-left-[35vw] lg:-left-[29vw] z-50"
+      style={{...style}}
+      onClick={onClick}
+      className={`text-vw text-black absolute cursor-pointer sm:top-[20vw] lg:top-[12vw] sm:-left-[35vw] lg:-left-[29vw] z-50`}
     >
       <ArrowRightAltIcon className="text-[#000000] top-[10vw] text-[10.5vw] sm:text-[5.5vw] lg:text-[3.5vw] p-[3vw] md:p-[1vw] cursor-pointer hover:bg-green-50 hover:rounded-full hover:text-center rotate-180" />
     </span>
   );
 
-  const CustomNextArrow = (props) => (
+  const CustomNextArrow = ({style, onClick}) => (
     <span
-      {...props}
-      className="text-vw text-black absolute cursor-pointer sm:top-[20vw] lg:top-[12vw] sm:sm:-left-[30vw] lg:-left-[26vw] "
+      style={{...style}}
+      onClick={onClick}
+      className={`text-vw text-black absolute cursor-pointer sm:top-[20vw] lg:top-[12vw] sm:sm:-left-[30vw] lg:-left-[26vw]`}
     >
       <ArrowRightAltIcon className="text-[#000000] text-[10.5vw] sm:text-[5.5vw] lg:text-[3.5vw] p-[3vw] md:p-[1vw] cursor-pointer hover:bg-green-50 hover:rounded-full hover:text-center" />
     </span>

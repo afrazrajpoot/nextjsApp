@@ -1,33 +1,52 @@
-"use client";
+import React, { useState } from "react";
 import {
   Button,
   FormControlLabel,
   Radio,
   IconButton,
   InputAdornment,
+  Snackbar,
 } from "@mui/material";
-import React, { useState } from "react";
-import { useForm, Controller } from "react-hook-form";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useForm, Controller } from "react-hook-form";
 import { formData } from "@/data/data";
+import { useSignupUserMutation } from "@/store/storeApi";
+import { useGlobalContext } from "@/context/globalState";
 
 const Form = () => {
-  const {
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm();
+  const [register, { isLoading, isError, data }] = useSignupUserMutation();
+  const { handleSubmit,  control,  formState: { errors },  reset,} = useForm();
+  const {setSignupModel} = useGlobalContext()
   const [showPassword, setShowPassword] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
 
-  const onSubmit = (data) => {
-    // console.log(data);
-    // Handle form submission
+  const onSubmit = async (formData) => {
+    try {
+      const response = await register(formData);
+      localStorage.setItem("user", JSON.stringify(response.data));
+      if (response.error) {
+        console.error("Error occurred:", response.error);
+        return;
+      }
+      // Handle success state
+      setSuccessMessage("Signup successful!");
+      setOpenSnackbar(true);
+      reset();
+      setSignupModel(false);
+    } catch (error) {
+      console.error("Error occurred:", error);
+    }
+  };
+
+  const handleSnackbarClose = () => {
+    setOpenSnackbar(false);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate className="w-full ">
+    <form onSubmit={handleSubmit(onSubmit)} noValidate className="w-full">
       {formData.map((field, index) => (
         <div key={index} className="mb-4">
           <label
@@ -91,22 +110,29 @@ const Form = () => {
         </div>
       ))}
       <div className="mb-4">
-        <FormControlLabel value="female" control={<Radio size="small" />} />
-        <label
-          htmlFor=""
+        <FormControlLabel
+          value="female"
+          control={<Radio size="small" />}
+          label="Opt out of emails about latest product updates"
           className="lg:text-[0.9vw] text-[2.5vw] ml-[-4vw] lg:ml-[-1vw] sm:ml-[0.2vw] sm:text-[2vw]"
-        >
-          Opt out of emails about latest product updates
-        </label>
+        />
       </div>
 
       <Button
         type="submit"
         size="large"
         className="w-full mt-4 text-[2vw] lg:text-[0.8vw] bg-[#FF387A] hover:bg-[#FF387A] text-white"
+        disabled={isLoading}
       >
-        Submit
+        {isLoading ? "Submitting..." : "Submit"}
       </Button>
+
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+        message={successMessage}
+      />
     </form>
   );
 };

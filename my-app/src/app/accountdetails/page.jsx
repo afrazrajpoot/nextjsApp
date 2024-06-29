@@ -1,9 +1,9 @@
 "use client";
-import { Button } from "@mui/material";
 import React from "react";
 import Sidebar from "../components/Common/Sidebar/Sidebar";
 import AccountForm from "../components/authModel/register/AccountForm";
 import CreatePasswordForm from "../components/authModel/register/CreatePasswordForm";
+
 
 const page = () => {
   return (
@@ -18,27 +18,6 @@ const page = () => {
             className=" p-[2vw] sm:p-[1vw] bg-white border-[1px]  border-[#F5F5F5] mt-[1vw] sm:translate-y-[6vw] translate-y-[15vw]
         lg:translate-y-0 rounded-lg lg:w-[30vw]  w-[93vw] sm:w-[90vw] ml-[-4.8vw] sm:ml-[-13vw] lg:ml-[0vw]  "
           >
-            <header className="flex items-start gap-[1vw] w-full">
-              <figure className="">
-                <img src="/img/accountAvatar.png" alt="avatar" className="" />
-              </figure>
-              <div>
-                <p className="lg:text-[1vw] text-[4vw] sm:text-[2.5vw] text-[#64748B]">
-                  We only support .JPG, .JPEG, or .PNG file.
-                </p>
-                <div className="mt-[1vw] flex gap-[1vw]">
-                  <Button className="bg-[#FF387A] text-white sm:text-[1.5vw] lg:text-[0.7vw] text-[2vw] font-bold hover:bg-[#FF387A] lg:py-[0.5vw] py-[1vw]   rounded-lg px-[2vw] ">
-                    upload photo
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    className="border-[1px] border-[#FF387A] py-[1vw] sm:text-[1.5vw] lg:py-[0.5vw] px-[1.5vw] rounded-lg lg:text-[0.7vw] text-[2vw] text-[#FF387A]"
-                  >
-                    delete photo
-                  </Button>
-                </div>
-              </div>
-            </header>
             <div className="mt-[1vw]">
               <AccountForm />
             </div>
