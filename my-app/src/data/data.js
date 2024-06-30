@@ -337,6 +337,21 @@ export const checkoutFormData = [
 ];
 export const createPasswordForm = [
   {
+    label: "Old Password",
+    name: "oldPassword",
+    type: "password",
+    placeholder: "Must be at least 8 characters",
+    pc: "email",
+
+    rules: {
+      required: "Password is required",
+      minLength: {
+        value: 8,
+        message: "Password must be at least 8 characters long",
+      },
+    },
+  },
+  {
     label: "New Password",
     name: "newPassword",
     type: "password",
@@ -539,15 +554,21 @@ export const summaryOptions = [
 ];
 export const profileDetails = [
   {
-    title: "Address", name: "Address", value: "Mila beoty 243"
+    title: "Address",
+    name: "Address",
+    value: "Mila beoty 243",
   },
   {
-    title: "Zip Code", name: "Zip Code", value: "353243"
+    title: "Zip Code",
+    name: "Zip Code",
+    value: "353243",
   },
   {
-    title: "Currency", name: "IDR", value: "IDR"
+    title: "Currency",
+    name: "IDR",
+    value: "IDR",
   },
-]
+];
 export const featurePack = [
   {
     image: "/img/card1.png",

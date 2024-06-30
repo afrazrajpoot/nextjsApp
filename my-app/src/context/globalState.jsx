@@ -4,12 +4,13 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 const UserContext = createContext();
 
 export const useGlobalContext = () => useContext(UserContext);
-const axios = require('axios');
+const axios = require("axios");
 
 const WORDPRESS_API_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_URL;
-const WOOCOMMERCE_CONSUMER_KEY = process.env.NEXT_PUBLIC_WOOCOMMERCE_CONSUMER_KEY;
-const WOOCOMMERCE_CONSUMER_SECRET = process.env.NEXT_PUBLIC_WOOCOMMERCE_CONSUMER_SECRET;
-
+const WOOCOMMERCE_CONSUMER_KEY =
+  process.env.NEXT_PUBLIC_WOOCOMMERCE_CONSUMER_KEY;
+const WOOCOMMERCE_CONSUMER_SECRET =
+  process.env.NEXT_PUBLIC_WOOCOMMERCE_CONSUMER_SECRET;
 
 export const UserProvider = ({ children }) => {
   function tokenInLocal(data) {
@@ -40,8 +41,10 @@ export const UserProvider = ({ children }) => {
   const [openResetModel, setResetModel] = useState(false);
   const [otpReset, setOtpReset] = useState();
   const [dataForResetPassword, setDataForResetPassword] = useState({
-    oldPassword: "", email: "",
-    otp: "", newPassword: "",
+    oldPassword: "",
+    email: "",
+    otp: "",
+    newPassword: "",
   });
 
   const toggleSidebar = () => {
@@ -74,20 +77,28 @@ export const UserProvider = ({ children }) => {
 
   const CreateWooCommerceData = async (endpoint, data) => {
     try {
-      const response = await axios.post(`${WORDPRESS_API_URL}/${endpoint}`, data, {
-        auth: {
-          username: WOOCOMMERCE_CONSUMER_KEY,
-          password: WOOCOMMERCE_CONSUMER_SECRET,
-        },
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
+      const response = await axios.post(
+        `${WORDPRESS_API_URL}/${endpoint}`,
+        data,
+        {
+          auth: {
+            username: WOOCOMMERCE_CONSUMER_KEY,
+            password: WOOCOMMERCE_CONSUMER_SECRET,
+          },
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      );
       return response?.data;
     } catch (error) {
       if (error.response) {
-        console.error("Error status:", error.response.status, error.response.message);
+        console.error(
+          "Error status:",
+          error.response.status,
+          error.response.message
+        );
       } else {
         console.error(error.message);
       }
@@ -97,39 +108,47 @@ export const UserProvider = ({ children }) => {
 
   const updateWooCommerceData = async (endpoint, itemId, data) => {
     try {
-      const response = await axios.put(`${WORDPRESS_API_URL}/${endpoint}/${itemId}`, data, {
-        auth: {
-          username: WOOCOMMERCE_CONSUMER_KEY,
-          password: WOOCOMMERCE_CONSUMER_SECRET,
-        },
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
+      const response = await axios.put(
+        `${WORDPRESS_API_URL}/${endpoint}/${itemId}`,
+        data,
+        {
+          auth: {
+            username: WOOCOMMERCE_CONSUMER_KEY,
+            password: WOOCOMMERCE_CONSUMER_SECRET,
+          },
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      );
       return response?.data;
     } catch (error) {
       if (error.response) {
-        console.error("Error status:", error.response.status, error.response.message);
+        console.error(
+          "Error status:",
+          error.response.status,
+          error.response.message
+        );
       } else {
         console.error(error.message);
       }
       throw error;
     }
   };
-  
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
+    if (localStorage.getItem("user")) {
       setLogin(true);
     } else {
       setLogin(false);
     }
   }, []);
 
-  useEffect(()=> {
-    if (!cartCount){
-      const storedProducts = JSON.parse(localStorage.getItem("productsAddedToCart")) || [];
+  useEffect(() => {
+    if (!cartCount) {
+      const storedProducts =
+        JSON.parse(localStorage.getItem("productsAddedToCart")) || [];
       setCartCount(storedProducts?.length);
     }
   }, [cartCount]);
@@ -146,17 +165,29 @@ export const UserProvider = ({ children }) => {
         mobileSidebarOpen,
         toggleSidebar,
         setMobileSidebarOpen,
-        fetchWooCommerceData,CreateWooCommerceData,updateWooCommerceData,
+        fetchWooCommerceData,
+        CreateWooCommerceData,
+        updateWooCommerceData,
         cartCount,
         setCartCount,
-        checkout, productsAddedToCart, setProductsAddedToCart,
-        setCheckout, openCartDrawer, setOpenCartDrawer,
-        openSignupModel, setSignupModel,
-        openForgetModel, setForgetModel,
-        openOtpModel, setOtpModel,
-        openResetModel, setResetModel,
-        otpReset, setOtpReset,
-        dataForResetPassword, setDataForResetPassword
+        checkout,
+        productsAddedToCart,
+        setProductsAddedToCart,
+        setCheckout,
+        openCartDrawer,
+        setOpenCartDrawer,
+        openSignupModel,
+        setSignupModel,
+        openForgetModel,
+        setForgetModel,
+        openOtpModel,
+        setOtpModel,
+        openResetModel,
+        setResetModel,
+        otpReset,
+        setOtpReset,
+        dataForResetPassword,
+        setDataForResetPassword,
       }}
     >
       {children}
