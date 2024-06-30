@@ -58,7 +58,7 @@ const Categories = () => {
   const fetchProducts = async (queryParams) => {
     try {
       const data = await fetchWooCommerceData('wc/v3/products', { params: queryParams });
-      return data;
+      return data?.data;
     } catch (error) {
       console.error('Error fetching products:', error);
     }

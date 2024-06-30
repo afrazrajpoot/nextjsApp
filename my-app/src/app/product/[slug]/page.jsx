@@ -66,7 +66,8 @@ const ProductDetails = ({ params: { slug } }) => {
   const fetchProducts = async () => {
     try {
       const data = await fetchWooCommerceData(`wc/v3/products?slug=${slug}`);
-      const product = data[0];
+      const product = data?.data[0];
+      console.log(product?.related_ids, "products");
       setProductDetails(product);
       fetchRelatedProducts(product?.related_ids);
     } catch (error) {
@@ -79,6 +80,7 @@ const ProductDetails = ({ params: { slug } }) => {
       const relatedProductsData = await Promise.all(
         relatedIds.map(id => fetchWooCommerceData(`wc/v3/products/${id}`))
       );
+      console.log(relatedProductsData, "relatedProductsData");
       setRelatedProducts(relatedProductsData);
     } catch (error) {
       console.error('Error fetching related products:', error);
@@ -200,11 +202,11 @@ const ProductDetails = ({ params: { slug } }) => {
             <h1 className='text-[5vw] sm:text-[2.5vw] lg:text-[2vw] text-[#171717] font-semibold'>Related Products</h1>
             <div className="grid grid-cols-1 gap-[2vw] w-full">
             <Slider {...settings} > 
-            {relatedProducts.map((product, index) => {
-            const { images, regular_price, sale_price, name } = product;
+            {relatedProducts?.map((product, index) => {
+            const { images, regular_price, sale_price, name } = product?.data;
             return (
               <div key={index} className="w-full">
-                <Pack discountedPrice={sale_price} actualPrice={regular_price} image={images[0]?.src} title={name}  />
+                <Pack discountedPrice={sale_price} actualPrice={regular_price} image={images?.[0]?.src} title={name}  />
               </div>
             );
           })}
