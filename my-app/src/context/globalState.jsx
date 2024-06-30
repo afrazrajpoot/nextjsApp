@@ -46,7 +46,7 @@ export const UserProvider = ({ children }) => {
     otp: "",
     newPassword: "",
   });
-
+  const [cart, showCart] = useState(false);
   const toggleSidebar = () => {
     setMobileSidebarOpen((prev) => !prev);
   };
@@ -188,6 +188,8 @@ export const UserProvider = ({ children }) => {
         setOtpReset,
         dataForResetPassword,
         setDataForResetPassword,
+        cart,
+        showCart,
       }}
     >
       {children}
