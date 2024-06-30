@@ -20,13 +20,9 @@ const FormInput = ({label, type, name, value , onChange})=> {
 }
 
 const AccountForm = () => { 
-const { CreateWooCommerceData, fetchWooCommerceData, updateWooCommerceData } = useGlobalContext();
-const [loggedUser, setLoggedUser] = useState(null);
-const [customerID, setCustomerID] = useState(null);
-const [customerDetails, setCustomerDetails] = useState({
-  username: '', first_name: '', last_name: '',  email: '',
-  postcode: '', phone: '', address1: '', city: '', country: '',
-});
+const { CreateWooCommerceData, updateWooCommerceData,loggedUser,
+customerDetails, setCustomerDetails, customerID, setCustomerID
+ } = useGlobalContext();
 
 const { handleSubmit, control, formState: { errors }, reset, trigger } = useForm({
   defaultValues: {
@@ -47,18 +43,9 @@ console.log(customerDetails, "customerDetails");
 const handleInputChange = (e) => {
   const { name, value } = e.target;
   setCustomerDetails({ ...customerDetails, [name]: value });
-  trigger(name);
 };
 
 const onSubmit = async (data) => {
-
-      // if data is empty then use a for loop and set the customer details to the values of the input fields
-      for (const details of customerDetails){
-        console.log(details, "details");
-          setCustomerDetails({...customerDetails, [details]: loggedUser?.[details] || '' });
-      }
-
-  
   console.log(data, "data");
   try {
     const requestData = {
@@ -91,40 +78,9 @@ const onSubmit = async (data) => {
   }
 };
 
-useEffect(() => {
-  const customerID = localStorage.getItem("customerID");
-  if (customerID) {
-    setCustomerID(customerID);
-    fetchWooCommerceData(`wc/v3/customers/${customerID}`).then((data) => {
-      setCustomerDetails({
-        username: data?.username || '',
-        first_name: data?.first_name || '',
-        last_name: data?.last_name || '',
-        email: data?.email || '',
-        postcode: data?.billing?.postcode || '',
-        phone: data?.billing?.phone || '',
-        address1: data?.billing?.address_1 || '',
-        city: data?.billing?.city || '',
-        country: data?.billing?.country || '',
-      });
-    });
-  }
-}, []);
-
-useEffect(() => {
-  const user = localStorage.getItem("user");
-  if (user) {
-    try {
-      const parsedUser = JSON.parse(user);
-      setLoggedUser(parsedUser?.user);
-      setCustomerDetails({...customerDetails, username: parsedUser?.user?.fullName, email: parsedUser?.user?.email});
-    } catch (error) {
-      console.error(error);
-    }
-  }
-}, []);
 
   return (
+    <>
     <main className="mt-[3vw] lg:mt-[1vw]">
    
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -163,7 +119,6 @@ useEffect(() => {
           <Controller
             control={control}
             name="first_name"
-            rules={{ required: 'First name is required' }}
             render={({ field }) => (
               <FormInput {...field}
               value={customerDetails?.first_name}
@@ -182,11 +137,10 @@ useEffect(() => {
         <section>
           <Controller
             control={control}
-            rules={{ required: 'Last name is required' }}
             name="last_name"
             render={({ field }) => (
               <FormInput {...field}
-              value={customerDetails?.last_name}                name="last_name"
+              value={customerDetails?.last_name} name="last_name"
                  onChange={(e) => {
                       handleInputChange(e);
                       field.onChange(e);
@@ -232,7 +186,6 @@ useEffect(() => {
           <Controller
             control={control}
             name="postcode"
-            rules={{ required: 'Postal code is required' }}
             render={({ field }) => (
               <FormInput {...field}
               value={customerDetails?.postcode}
@@ -252,7 +205,6 @@ useEffect(() => {
           <Controller
             control={control}
             name="city"
-            rules={{ required: 'City is required' }}
             render={({ field }) => (
               <FormInput {...field}
               value={customerDetails.city}
@@ -279,6 +231,7 @@ useEffect(() => {
       </Button>
     </form>
   </main>
+    </>
   );
 };
 

@@ -11,7 +11,7 @@ import { loadScript } from '@paypal/paypal-js';
 
 const page = () => {
   const [checkoutDetail, setCheckoutDetail] = useState();
-  const { fetchWooCommerceData, productsAddedToCart } = useGlobalContext();
+  const { fetchWooCommerceData, productsAddedToCart, customerDetails } = useGlobalContext();
 
   useEffect(() => {
     const storedProducts = JSON.parse(localStorage.getItem("productsAddedToCart")) || [];
@@ -104,8 +104,9 @@ const page = () => {
                   type="text"
                   className="lg:p-[0.8vw] p-[2vw] bg-[#FAFAFA] lg:text-[1vw] text-[3.5vw] sm:text-[2vw] sm:p-[2vw]"
                   placeholder="magika@mail.com"
-                  name=""
-                  id=""
+                  value={customerDetails?.email}
+                  name="email"
+                  
                 />
               </form>
             </div>
@@ -125,9 +126,9 @@ const page = () => {
                     <input
                       type="text"
                       className="lg:p-[0.8vw] p-[2vw] lg:text-[1vw] text-[3.5vw] bg-[#FAFAFA] mb-4 sm:text-[2vw] sm:p-[2vw]"
-                      value={elem.value}
-                      name=""
-                      id=""
+                      value={customerDetails?.[elem?.name]}
+                      name={customerDetails?.[elem?.name]}
+                      
                     />
                   </div>
                 ))}
@@ -141,9 +142,9 @@ const page = () => {
                     </label>
                     <input
                       type="text"
-                      value={"Birmingham"}
+                      value={customerDetails?.city}
                       name="city"
-                      id=""
+                      
                       className="lg:p-[0.8vw] sm:text-[2vw] sm:mt-[1vw]  p-[2vw] lg:text-[1vw] text-[3.5vw] bg-[#FAFAFA] mb-4 lg:w-[23vw] w-[42vw]"
                     />
                   </div>
@@ -156,9 +157,9 @@ const page = () => {
                     </label>
                     <input
                       type="text"
-                      value={"5678"}
-                      name="postalCode"
-                      id=""
+                      value={customerDetails?.postcode}
+                      name="postcode"
+                      
                       className="lg:p-[0.8vw] p-[2vw] sm:mt-[1vw]  sm:text-[2vw] lg:text-[1vw] text-[3.5vw] bg-[#FAFAFA] mb-4 lg:w-[24vw] w-[42vw]"
                     />
                   </div>

@@ -43,6 +43,13 @@ export const UserProvider = ({ children }) => {
     oldPassword: "", email: "",
     otp: "", newPassword: "",
   });
+  const [customerDetails, setCustomerDetails] = useState({
+    username: '', first_name: '', last_name: '',  email: '', date_created: "",
+    postcode: '', phone: '', address1: '', city: '', country: '',
+  });
+  const [customerID, setCustomerID] = useState(null);
+  const [loggedUser, setLoggedUser] = useState(null);
+
 
   const toggleSidebar = () => {
     setMobileSidebarOpen((prev) => !prev);
@@ -61,7 +68,7 @@ export const UserProvider = ({ children }) => {
           Accept: "application/json",
         },
       });
-      return response.data;
+      return response;
     } catch (error) {
       if (error.response) {
         console.error("Error status:", error.response.status);
@@ -117,6 +124,40 @@ export const UserProvider = ({ children }) => {
       throw error;
     }
   };
+
+  useEffect(() => {
+    const customerID = localStorage.getItem("customerID");
+    if (customerID) {
+      setCustomerID(customerID);
+      fetchWooCommerceData(`wc/v3/customers/${customerID}`).then((data) => {
+        setCustomerDetails({
+          username: data?.username || '',
+          first_name: data?.first_name || '',
+          last_name: data?.last_name || '',
+          email: data?.email || '',
+          postcode: data?.billing?.postcode || '',
+          phone: data?.billing?.phone || '',
+          address1: data?.billing?.address_1 || '',
+          city: data?.billing?.city || '',
+          country: data?.billing?.country || '',
+          date_created: data?.date_created || '',
+        });
+      });
+    }
+  }, []);
+  
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      try {
+        const parsedUser = JSON.parse(user);
+        setLoggedUser(parsedUser?.user);
+        setCustomerDetails({...customerDetails, username: parsedUser?.user?.fullName, email: parsedUser?.user?.email});
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }, []);
   
 
   useEffect(() => {
@@ -148,15 +189,15 @@ export const UserProvider = ({ children }) => {
         setMobileSidebarOpen,
         fetchWooCommerceData,CreateWooCommerceData,updateWooCommerceData,
         cartCount,
-        setCartCount,
+        setCartCount,loggedUser, setLoggedUser,
         checkout, productsAddedToCart, setProductsAddedToCart,
         setCheckout, openCartDrawer, setOpenCartDrawer,
         openSignupModel, setSignupModel,
         openForgetModel, setForgetModel,
         openOtpModel, setOtpModel,
         openResetModel, setResetModel,
-        otpReset, setOtpReset,
-        dataForResetPassword, setDataForResetPassword
+        otpReset, setOtpReset, customerID, setCustomerID,
+        dataForResetPassword, setDataForResetPassword, customerDetails, setCustomerDetails
       }}
     >
       {children}

@@ -21,13 +21,14 @@ const Store = () => {
   const { fetchWooCommerceData } = useGlobalContext();
   const itemsPerPage = 6;
 
-  const fetchProducts = async (categorySlug = '') => {
+  const fetchProducts = async (categorySlug = '', page = 1) => {
     try {
-      let params = { per_page: 100 };
-
+      let params = { per_page: itemsPerPage, page };
+      
       if (categorySlug) {
-        const categories = await fetchWooCommerceData('wc/v3/products/categories', { params });
-        const category = categories.find(cat => cat.slug === categorySlug);
+        const categoriesResponse = await fetchWooCommerceData('wc/v3/products/categories', { params: { per_page: 100 } });
+        const categories = await categoriesResponse.data;
+        const category = categories?.find(cat => cat.slug === categorySlug);
         if (category) {
           params = { ...params, category: category.id };
         } else {
@@ -36,21 +37,19 @@ const Store = () => {
         }
       }
 
-      const data = await fetchWooCommerceData('wc/v3/products', { params });
-      const totalProducts = parseInt(data.length);
-      console.log(totalProducts, "Total products");
+      const response = await fetchWooCommerceData('wc/v3/products', { params });
+      const totalProducts = response.headers['x-wp-total'];
+      const data = response.data;
       setTotalPages(Math.ceil(totalProducts / itemsPerPage));
-      console.log(totalPages, "Total pages");
       setProducts(data);
     } catch (error) {
-      console.error('Error fetching products:', error);
+      console.error('Error fetching products:', error.message);
     }
   };
-
   const handleClick = (label) => {
     setSelectedBtn(label);
     setCurrentPage(1);
-    const categorySlug = label === 'All Products' ? '' : label.toLowerCase().replace(/\s+/g, '-');
+    const categorySlug = label === 'All Products' ? '': label === 'Bundle' ? "bundles" : label.toLowerCase().replace(/\s+/g, '-');
     fetchProducts(categorySlug, 1);
   };
 
@@ -60,8 +59,8 @@ const Store = () => {
 
   useEffect(() => {
     const categorySlug = selectedBtn === 'All Products' ? '' : selectedBtn.toLowerCase().replace(/\s+/g, '-');
-    fetchProducts(categorySlug);
-  }, [selectedBtn]); // Dependency array with currentPage and selectedBtn changes
+    fetchProducts(categorySlug, currentPage);
+  }, [selectedBtn, currentPage]); // Dependency array with currentPage and selectedBtn changes
 
   const handlePageChange = (page) => {
     if (page < 1 || page > totalPages) return;
@@ -71,7 +70,7 @@ const Store = () => {
   useEffect(() => {
     // Sorting products whenever sortOrder or products change
     sortProducts();
-  }, [sortOrder, products]);
+  }, [sortOrder]);
 
   const sortProducts = () => {
     const sortedProducts = [...products].sort((a, b) => {
@@ -89,14 +88,15 @@ const Store = () => {
   const toggleSortOrder = () => {
     setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
   };
-
-  const displayedProducts = products.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  console.log('====================================');
+  console.log(products);
+  console.log('====================================');
 
 
   return (
     <>
       <main className="w-full">
-        <nav className="flex mt-[20vw] sm:mt-[8vw] lg:mt-[5vw] w-full max-w-[90vw] mx-auto items-center justify-between p-[3vw]">
+      <nav className="flex mt-[20vw] sm:mt-[8vw] lg:mt-[5vw] w-full max-w-[90vw] mx-auto items-center justify-between p-[3vw]">
           <section className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-[1vw]  w-full md:max-w-[50vw] items-center"> 
             {btnData.map((label, index) => (
               <Button
@@ -117,11 +117,11 @@ const Store = () => {
               Sort by
             </p>
             <button
-        onClick={toggleSortOrder}
-        className={` ml-[0.5vw] border-[1px] font-medium hover:font-medium text-[3.5vw] sm:text-[2vw] lg:text-[1vw] ${sortOrder === 'desc' ? 'bg-[#FF387A] text-[#ffff] border-[#FF387A] hover:text-[#525252] hover:bg-white hover:border-[#525252]' : 'text-[#525252] bg-white border-[#525252] hover:bg-[#FF387A] hover:text-[#ffff] hover:border-[#FF387A]'} hover:shadow-md p-[2.5vw] md:p-[0.5vw] rounded-md w-full max-w-[40vw] sm:max-w-[15vw] lg:max-w-[8vw] text-center`}
-      >
-        Release {sortOrder === 'asc' ? '↑' : '↓'}
-      </button>
+              onClick={toggleSortOrder}
+              className={` ml-[0.5vw] border-[1px] font-medium hover:font-medium text-[3.5vw] sm:text-[2vw] lg:text-[1vw] ${sortOrder === 'desc' ? 'bg-[#FF387A] text-[#ffff] border-[#FF387A] hover:text-[#525252] hover:bg-white hover:border-[#525252]' : 'text-[#525252] bg-white border-[#525252] hover:bg-[#FF387A] hover:text-[#ffff] hover:border-[#FF387A]'} hover:shadow-md p-[2.5vw] md:p-[0.5vw] rounded-md w-full max-w-[40vw] sm:max-w-[15vw] lg:max-w-[8vw] text-center`}
+            >
+              Release {sortOrder === 'asc' ? '↑' : '↓'}
+            </button>
           </section>
         </nav>
         <nav className="lg:hidden sm:hidden pl-[76vw] ml-[5vw] pr-[2vw] pb-[4vw]  mt-[1vw] flex gap-[3vw] justify-center overflow-x-scroll">
@@ -142,9 +142,9 @@ const Store = () => {
           ))}
         </nav>
         <section className="w-full max-w-[90vw] ml-[4vw] mx-auto mt-[6vw] md:mt-[2vw]">
-          {displayedProducts?.length == 0 ? <main className="w-full flex items-center justify-center h-[30vw]"><Loading /></main> : <>
+          {products?.length === 0 ? <main className="w-full flex items-center justify-center h-[30vw]"><Loading /></main> : <>
           <figure className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-[5vw] md:mt-0 gap-[10vw] md:gap-[2vw] items-start">
-            {displayedProducts?.map((product, index) => {
+            {products?.map((product, index) => {
               const { images, regular_price, sale_price, name, slug } = product;
               return (
                 <Link href={`/product/${slug}`} key={index} className="w-full">

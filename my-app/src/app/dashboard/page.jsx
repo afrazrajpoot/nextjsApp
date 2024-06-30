@@ -1,6 +1,8 @@
 "use client";
 import { profileDetails } from "@/data/data";
 import Sidebar from "../components/Common/Sidebar/Sidebar";
+import { useGlobalContext } from "@/context/globalState";
+import Link from "next/link";
  
 const OrderDetails = ({image, title, price, onClick})=> {
   return (
@@ -20,6 +22,7 @@ const OrderDetails = ({image, title, price, onClick})=> {
 }
 
 const page = () => {
+  const {customerDetails, setCustomerDetails} = useGlobalContext()
 
   return (
     <main className="bg-[#FAFAFA] h-[110vh] sm:h-[270vh] lg:h-[110vh]">
@@ -41,10 +44,10 @@ const page = () => {
               />
               <div>
                 <p className="text-center font-bold lg:text-[1vw] text-[4vw] sm:text-[2.5vw]">
-                  George Gika
+                  {customerDetails?.username}
                 </p>
                 <p className="text-center lg:text-[0.9vw] text-[3.5vw] font-bold text-[#475569] sm:text-[2vw]">
-                  george
+                  {customerDetails?.email}
                 </p>
               </div>
             </div>
@@ -58,7 +61,7 @@ const page = () => {
                   />
                 </figure>
                 <span className="text-[#475569] lg:text-[1vw] text-[2.5vw] sm:text-[1.5vw]">
-                  San Jose,Spain
+                  {customerDetails?.country}
                 </span>
               </div>
               <div
@@ -77,7 +80,7 @@ const page = () => {
                   />
                 </figure>
                 <span className="text-[#475569] lg:text-[1vw] text-[2.5vw] sm:text-[1.5vw]">
-                  2024
+                 {customerDetails?.date_created?.slice(0, 4)}
                 </span>
               </div>
             </div>
@@ -90,19 +93,23 @@ const page = () => {
                 {item?.title}
               </p>
               <p className="text-[#475569] lg:text-[0.9vw] text-[3.5vw] font-bold sm:text-[2vw]">
-                {item?.value}
+                {customerDetails?.[item?.name] || item?.value}
               </p>
             </div>
               </main>
             ))}
             </aside>
             <div className="flex gap-[3vw] lg:items-center justify-center lg:mt-[1vw] mt-[3vw]">
+              <Link href="/accountdetails">
               <button className="text-[#FF387A] font-bold lg:text-[1vw] text-[3.5vw] sm:text-[2vw]">
                 change password
               </button>
-              <button className="lg:py-[0.4vw] py-[1.5vw] lg:px-[1vw] px-[7vw] lg:text-[0.9vw] text-[3.5vw] text-[#FF387A] border-[1px] border-[#FF387A] lg:rounded-lg rounded-lg sm:text-[2vw]">
+              </Link>
+              <Link href="/accountdetails">
+              <button className="lg:py-[0.4vw] py-[1.5vw] lg:px-[1vw] px-[7vw] lg:text-[0.9vw] text-[3.5vw] hover:border-[#FF387A] hover:text-[#ffff] hover:bg-[#FF387A] text-[#FF387A] border-[1px] border-[#FF387A] lg:rounded-lg rounded-lg sm:text-[2vw]">
                 Edit profile
               </button>
+              </Link>
             </div>
           </article>
           <section>

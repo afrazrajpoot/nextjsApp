@@ -197,29 +197,13 @@ export const accoutForm = [
     name: "email",
     type: "email",
     placeholder: "e.g sanandreas@gmail.com",
-    pc: "email",
-    rules: {
-      required: "Email is required",
-      pattern: {
-        value: /^\S+@\S+$/i,
-        message: "Enter a valid email address",
-      },
-    },
   },
   {
     label: "Display Name",
     name: "username",
     type: "text",
     placeholder: "e.g San Andreas",
-    pc: "email",
 
-    rules: {
-      required: "Display name is required",
-      minLength: {
-        value: 3,
-        message: "name must be at least 3 characters long",
-      },
-    },
   },
 ];
 export const accountForm2 = [
@@ -228,14 +212,12 @@ export const accountForm2 = [
     name: "phone",
     type: "text",
     placeholder: "e.g San Andreas",
-    pc: "email",
-
     rules: {
-      required: "phone is required",
-      // minLength: {
-      //   value: 9,
-      //   message: "phone must be at least 9 characters long",
-      // },
+      // required: "phone is required",
+      minLength: {
+        value: 9,
+        message: "phone must be at least 9 characters long",
+      },
     },
   },
   {
@@ -246,7 +228,7 @@ export const accountForm2 = [
     pc: "email",
 
     rules: {
-      required: "country is required",
+      // required: "country is required",
       minLength: {
         value: 3,
         message: "country must be a valid country",
@@ -261,7 +243,7 @@ export const accountForm2 = [
     pc: "email",
 
     rules: {
-      required: "address is required",
+      // required: "address is required",
       minLength: {
         value: 10,
         message: "address must be at least 10 characters long",
@@ -272,8 +254,7 @@ export const accountForm2 = [
 export const checkoutFormData = [
   {
     label: "Your name",
-    name: "name",
-    value: "Giks",
+    name: "username",
     type: "text",
     placeholder: "e.g San Andreas",
     pc: "email",
@@ -288,7 +269,7 @@ export const checkoutFormData = [
   },
   {
     label: "Phone number",
-    name: "phoneNumber",
+    name: "phone",
     value: "+62 888 999 1222",
     type: "text",
     placeholder: "e.g San Andreas",
@@ -320,7 +301,7 @@ export const checkoutFormData = [
   },
   {
     label: "Address",
-    name: "address",
+    name: "address1",
     value: "Malang, Sronowagen, East Java, Indonesia",
     type: "text",
     placeholder: "e.g San Andreas",
@@ -394,7 +375,6 @@ export const billingAddressFrom = [
     label: "Email ",
     name: "email",
     type: "email",
-    value: "magika@mail.com",
     placeholder: "e.g sanandreas@gmail.com",
     pc: "email",
     rules: {
@@ -407,8 +387,7 @@ export const billingAddressFrom = [
   },
   {
     label: "Your Name",
-    name: "yourname",
-    value: "George Gika",
+    name: "username",
     type: "text",
     placeholder: "e.g San Andreas",
     pc: "email",
@@ -423,8 +402,7 @@ export const billingAddressFrom = [
   },
   {
     label: "Phone number",
-    name: "phoneNumber",
-    value: "+62 888 999 1222",
+    name: "phone",
     type: "text",
     placeholder: "e.g San Andreas",
     pc: "email",
@@ -440,7 +418,6 @@ export const billingAddressFrom = [
   {
     label: "Country",
     name: "country",
-    value: "United Kingdom",
     type: "text",
     placeholder: "e.g San Andreas",
     pc: "email",
@@ -455,8 +432,7 @@ export const billingAddressFrom = [
   },
   {
     label: "Address",
-    name: "address",
-    value: "Malang, Sronowagen, East Java, Indonesia",
+    name: "address1",
     type: "text",
     placeholder: "e.g San Andreas",
     pc: "email",
@@ -539,13 +515,13 @@ export const summaryOptions = [
 ];
 export const profileDetails = [
   {
-    title: "Address", name: "Address", value: "Mila beoty 243"
+    title: "Address", name: "address1", 
   },
   {
-    title: "Zip Code", name: "Zip Code", value: "353243"
+    title: "Zip Code", name: "postcode", 
   },
   {
-    title: "Currency", name: "IDR", value: "IDR"
+    title: "Currency", name: "USD", value: "USD"
   },
 ]
 export const featurePack = [
