@@ -9,6 +9,7 @@ import SignupModel from "./components/authModel/register/SignupModel";
 import { Toaster } from "sonner";
 import { Drawer } from "@mui/material";
 import ChechoutDrawer from "./components/ChechoutDrawer";
+import ForgetModel from "./components/authModel/forgotPassword/ForgetModel";
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -34,7 +35,7 @@ export default function RootLayout({ children }) {
             {children}
             <SigninModel />
             <SignupModel />
-
+            <ForgetModel />
             <ChechoutDrawer />
 
             <MobileSidebar />

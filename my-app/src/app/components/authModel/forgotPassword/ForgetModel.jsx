@@ -21,7 +21,7 @@ export default function ForgetModel() {
 
   return (
     <div className="w-full relative">
-      <Button onClick={handleOpen}>Forget password modal</Button>
+      {/* <Button onClick={handleOpen}>Forget password modal</Button> */}
       <Modal
         open={openForgetModel}
         onClose={handleClose}
