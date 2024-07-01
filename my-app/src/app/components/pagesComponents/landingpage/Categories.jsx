@@ -2,16 +2,14 @@
 import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import ImportExportSharpIcon from "@mui/icons-material/ImportExportSharp";
-// import Pack from "../components/Cards/Pack";
-// import Pagination from "../components/Common/Paggination";
-// import SubscriptionPass from "../components/pagesComponents/landingpage/SubscriptionPass";
-// import Bundles from "../components/pagesComponents/landingpage/Bundles";
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 import Link from "next/link";
 // import Footer from "../components/Common/Footer/Footer";
 import { useGlobalContext } from "@/context/globalState";
-// import Loading from "../components/Common/Loading";
 import Pack from "../../Cards/Pack";
-import Pagination from "../../Common/Paggination";
 import SubscriptionPass from "./SubscriptionPass";
 import Bundles from "./Bundles";
 import Footer from "../../Common/Footer/Footer";
@@ -19,12 +17,11 @@ import Loading from "../../Common/Loading";
 
 const Categories = () => {
   const btnData = ["All Products", "Premiere Pro", "After Effects"];
-  const [sortOrder, setSortOrder] = useState("asc"); // State to track sort order
   const [products, setProducts] = useState([]);
   const [selectedBtn, setSelectedBtn] = useState("All Products");
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
   const { fetchWooCommerceData } = useGlobalContext();
+  const [featurePackages, setFeaturePackages] = useState([]);
   const itemsPerPage = 6;
 
   const fetchProducts = async (categorySlug = "", page = 1) => {
@@ -47,9 +44,7 @@ const Categories = () => {
       }
 
       const response = await fetchWooCommerceData("wc/v3/products", { params });
-      const totalProducts = response.headers["x-wp-total"];
       const data = response.data;
-      setTotalPages(Math.ceil(totalProducts / itemsPerPage));
       setProducts(data);
     } catch (error) {
       console.error("Error fetching products:", error.message);
@@ -67,9 +62,16 @@ const Categories = () => {
     fetchProducts(categorySlug, 1);
   };
 
+  const fetchFeaturePack = ()=> {
+    const packs = fetchWooCommerceData("wc/v3/products?featured=false")
+    .then((data) => setFeaturePackages(data?.data))
+    .catch((error) => console.log(error))
+}
+
   useEffect(() => {
-    fetchProducts(); // Fetch initial products (All Products)
-  }, []); // Empty dependency array to run once on mount
+    fetchFeaturePack()
+    fetchProducts();
+  }, []); 
 
   useEffect(() => {
     const categorySlug =
@@ -79,41 +81,74 @@ const Categories = () => {
     fetchProducts(categorySlug, currentPage);
   }, [selectedBtn, currentPage]); // Dependency array with currentPage and selectedBtn changes
 
-  const handlePageChange = (page) => {
-    if (page < 1 || page > totalPages) return;
-    setCurrentPage(page);
+  const CustomPrevArrow = ({style, onClick}) => (
+    <span
+      style={{...style}}
+      onClick={onClick}
+      className={`text-vw text-black absolute cursor-pointer sm:top-[20vw] lg:top-[12vw] sm:-left-[35vw] lg:-left-[29vw] z-50`}
+    >
+      <ArrowRightAltIcon className="text-[#000000] top-[10vw] text-[10.5vw] sm:text-[5.5vw] lg:text-[3.5vw] p-[3vw] md:p-[1vw] cursor-pointer hover:bg-green-50 hover:rounded-full hover:text-center rotate-180" />
+    </span>
+  );
+
+  const CustomNextArrow = ({style, onClick}) => (
+    <span
+      style={{...style}}
+      onClick={onClick}
+      className={`text-vw text-black absolute cursor-pointer sm:top-[20vw] lg:top-[12vw] sm:sm:-left-[30vw] lg:-left-[26vw]`}
+    >
+      <ArrowRightAltIcon className="text-[#000000] text-[10.5vw] sm:text-[5.5vw] lg:text-[3.5vw] p-[3vw] md:p-[1vw] cursor-pointer hover:bg-green-50 hover:rounded-full hover:text-center" />
+    </span>
+  );
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    arrows: true,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    nextArrow: <CustomPrevArrow />,
+    prevArrow: <CustomNextArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: { slidesToShow: 2, slidesToScroll: 1, infinite: true },
+      },
+      { breakpoint: 1000, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+      { breakpoint: 640, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+    ],
   };
 
-  useEffect(() => {
-    // Sorting products whenever sortOrder or products change
-    sortProducts();
-  }, [sortOrder]);
-
-  const sortProducts = () => {
-    const sortedProducts = [...products].sort((a, b) => {
-      const dateA = new Date(a.date_created).getTime();
-      const dateB = new Date(b.date_created).getTime();
-      if (sortOrder === "asc") {
-        return dateA - dateB;
-      } else {
-        return dateB - dateA;
-      }
-    });
-    setProducts(sortedProducts);
-  };
-
-  const toggleSortOrder = () => {
-    setSortOrder(sortOrder === "asc" ? "desc" : "asc");
-  };
-  console.log("====================================");
-  console.log(products);
-  console.log("====================================");
 
   return (
     <>
       <main className="w-full">
+      <section className="flex w-full max-w-[80vw] mx-auto mt-[6vw] pt-[3vw] md:mt-[2vw] flex-col md:flex-row items-start">
+        <aside className="w-full sm:max-w-[35vw] lg:max-w-[28vw] ">
+          <h1 className="text-[5.5vw] md:text-[2.5vw] text-[#171717] font-bold">
+            Featured Single Packs
+          </h1>
+          <p className="text-[#404040] text-[4vw] sm:text-[2vw] lg:text-[1vw] mt-[1vw]">
+            Find what you need on Sonduck Film, Discover millions of video
+            templates, stock footage, audio & more. All for one low cost.
+          </p>
+        </aside>
+        <figure className="grid grid-cols-1 w-full lg:max-w-[60vw] mt-[5vw] md:mt-0">
+        { featurePackages?.length == 0 ? <main className="w-full lg:max-w-[60vw] flex items-center h-[15vw] justify-center"><Loading /></main> :  <Slider {...settings}>
+            {featurePackages?.map((packages, index) => {
+              const { images, regular_price, sale_price, name, slug } = packages;
+              return (
+                <Link href={`/product/${slug}`} key={index} className="w-full px-[1vw]">
+                  <Pack discountedPrice={sale_price} actualPrice={regular_price} image={images[0]?.src} title={name} />
+                </Link>
+              );
+            })}
+          </Slider>}
+        </figure>
+      </section>
         <nav className="flex mt-[20vw] sm:mt-[8vw] lg:mt-[5vw] w-full max-w-[90vw] mx-auto items-center justify-between p-[3vw]">
-          <section className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-[1vw]  w-full md:max-w-[50vw] items-center">
+          <section className="grid grid-cols-3 gap-[1vw]  w-full md:max-w-[30vw] items-center">
             {btnData.map((label, index) => (
               <Button
                 key={index}
@@ -134,23 +169,11 @@ const Categories = () => {
             ))}
           </section>
         </nav>
-        <nav className="lg:hidden sm:hidden pl-[76vw] ml-[5vw] pr-[2vw] pb-[4vw]  mt-[1vw] flex gap-[3vw] justify-center overflow-x-scroll">
-          {btnData?.map((elem, ind) => (
-            <div className="flex">
-              <Button
-                style={{ textTransform: "capitalize" }}
-                key={ind}
-                variant="outlined"
-                className={`bg-[#FFFF] font-bold text-[#525252]  border-[#525252] border-[1px] w-[30vw]   text-[3vw]   hover:shadow-md    py-[2.5vw] rounded-md  px-[3vw]    text-center ${
-                  ind === 0 &&
-                  "border-[#FF387A] hover:bg-[#ff387af6] text-[#FF387A] text-[3.5vw]"
-                }`}
-              >
-                {elem}
-              </Button>
-            </div>
-          ))}
-        </nav>
+        <section className="w-full max-w-[80vw] mx-auto mt-[5vw] md:mt-[2vw]">
+        <h1 className="text-[5.5vw] md:text-[2.5vw] text-[#171717] font-bold">
+            Get Single Packs
+          </h1>
+        </section>
         <section className="w-full max-w-[90vw] ml-[4vw] mx-auto mt-[6vw] md:mt-[2vw]">
           {products?.length === 0 ? (
             <main className="w-full flex items-center justify-center h-[30vw]">
@@ -188,12 +211,7 @@ const Categories = () => {
             </>
           )}
         </section>
-        <article className="w-full max-w-[80vw] mx-auto mt-[10vw] md:mt-[2vw]">
-          <SubscriptionPass btnBg={"#FF387A"} />
-        </article>
-
-        {/* <Footer /> */}
-      </main>
+        </main>
     </>
   );
 };
