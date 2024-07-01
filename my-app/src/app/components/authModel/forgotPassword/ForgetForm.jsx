@@ -18,7 +18,7 @@ const ForgetForm = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     // Handle form submission
     forgot(data); // Assuming this triggers the mutation
     setDataForResetPassword({ ...dataForResetPassword, email: data.email });

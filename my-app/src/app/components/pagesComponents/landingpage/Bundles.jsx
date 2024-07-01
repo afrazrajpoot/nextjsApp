@@ -21,7 +21,6 @@ const Bundles = () => {
       console.error("Error fetching products:", error.message);
     }
   };
-  console.log(bundleData, "respppp ,mm");
   const CustomPrevArrow = ({ style, onClick }) => (
     <span
       style={{ ...style }}

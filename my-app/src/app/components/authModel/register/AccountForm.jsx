@@ -59,7 +59,6 @@ const AccountForm = () => {
     },
   });
 
-  // console.log(customerDetails, "customerDetails");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
