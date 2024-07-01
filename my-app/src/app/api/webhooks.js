@@ -29,7 +29,7 @@ export default async function handler(req, res) {
       const session = event.data.object;
 
       // Handle successful payment here
-      console.log('Payment was successful!', session);
+      // console.log('Payment was successful!', session);
     }
 
     res.status(200).json({ received: true });

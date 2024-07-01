@@ -76,7 +76,7 @@ const ProductDetails = ({ params: { slug } }) => {
     try {
       const data = await fetchWooCommerceData(`wc/v3/products?slug=${slug}`);
       const product = data?.data[0];
-      console.log(product?.related_ids, "products");
+      // console.log(product?.related_ids, "products");
       setProductDetails(product);
       fetchRelatedProducts(product?.related_ids);
     } catch (error) {

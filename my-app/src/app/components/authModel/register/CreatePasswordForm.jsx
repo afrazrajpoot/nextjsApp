@@ -59,7 +59,7 @@ const CreatePasswordForm = () => {
     const userId = JSON.parse(localStorage.getItem("user"));
     setId(userId?.user?._id);
   }, []);
-  console.log(id, "id");
+  // console.log(id, "id");
   return (
     <main className="p-[1vw] mt-[1vw]">
       <h1 className="font-bold sm:text-[3vw] lg:text-[1.5vw]">

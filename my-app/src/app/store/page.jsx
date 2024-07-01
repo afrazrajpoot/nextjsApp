@@ -88,9 +88,6 @@ const Store = () => {
   const toggleSortOrder = () => {
     setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
   };
-  console.log('====================================');
-  console.log(products);
-  console.log('====================================');
 
 
   return (

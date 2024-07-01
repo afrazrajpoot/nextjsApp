@@ -90,7 +90,7 @@ const page = () => {
             },
             onApprove: (data, actions) => {
               return actions.order.capture().then((details) => {
-                console.log(details, "Payment successful:");
+                // console.log(details, "Payment successful:");
 
                 setCreateOrder({
                   payment_method: "bacs",
@@ -125,7 +125,7 @@ const page = () => {
               });
             },
             onCancel: (data) => {
-              console.log("Payment cancelled:", data);
+              // console.log("Payment cancelled:", data);
               // Add any additional handling for a cancelled payment here
             },
             onError: (err) => {
@@ -142,7 +142,6 @@ const page = () => {
   const fetchOrder = async () => {
     try {
       const response = await CreateWooCommerceData(`wc/v3/orders`, createOrder);
-      console.log(response, "resppppppppponse");
     } catch (err) {
       console.log(err.message);
     }

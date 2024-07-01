@@ -27,7 +27,7 @@ const { handleSubmit, control, formState: { errors }, reset, trigger } = useForm
   },
 });
 
-console.log(customerDetails, "customerDetails");
+// console.log(customerDetails, "customerDetails");
 
 const handleInputChange = (e) => {
   const { name, value } = e.target;
@@ -44,7 +44,7 @@ const onSubmit = async (data) => {
       }
 
   
-  console.log(data, "data");
+  // console.log(data, "data");
   try {
     const requestData = {
       username: customerDetails?.username || data?.username,

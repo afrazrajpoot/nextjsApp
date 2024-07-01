@@ -26,7 +26,6 @@ const Header = () => {
       }
     }
   }, []);
-  // console.log(loggedUser?.data.user.fullName, "loggedUser");
   const {
     login,
     setLoginModel,
@@ -93,7 +92,7 @@ const Header = () => {
                   alt="profile icon"
                   className="sm:w-[2vw] lg:w-[1.5vw]"
                 />
-                <span>{login ? loggedUser?.data.user.fullName : "Guest"}</span>
+                <span>{login ? loggedUser?.data?.user?.fullName : "Guest"}</span>
               </div>
             </aside>
           </div>
