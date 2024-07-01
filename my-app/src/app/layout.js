@@ -6,6 +6,7 @@ import SigninModel from "./components/authModel/register/SigninModel";
 import MobileSidebar from "./components/Common/Sidebar/MobileSidebar";
 import Providers from "@/redux/Providers";
 import SignupModel from "./components/authModel/register/SignupModel";
+import { Toaster } from "sonner";
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
             style={{ backgroundColor: "#FAFAFA" }}
           >
             <Header />
+            <Toaster />
             {children}
             <SigninModel />
             <SignupModel />

@@ -26,10 +26,16 @@ const Header = () => {
       }
     }
   }, []);
-  
 
-
-  const { login, setLoginModel, toggleSidebar, cartCount, setSignupModel,} = useGlobalContext();
+  const {
+    login,
+    setLoginModel,
+    toggleSidebar,
+    cartCount,
+    setSignupModel,
+    cart,
+    showCart,
+  } = useGlobalContext();
 
   const filteredHeaderData = !login
     ? headerData.filter((item, index) => index !== 3)
@@ -71,7 +77,11 @@ const Header = () => {
                   {cartCount}
                 </span>
               )}
-              <img src={"/img/cart.png"} alt="cart" />
+              <img
+                src={"/img/cart.png"}
+                alt="cart"
+                onClick={() => showCart(true)}
+              />
             </div>
             <span className="lg:hidden  " onClick={toggleSidebar}>
               <img src="/img/burger.png" alt="burger" />

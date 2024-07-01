@@ -12,6 +12,7 @@ import { useForm, Controller } from "react-hook-form";
 import { loginFormData } from "@/data/data";
 import { useGlobalContext } from "@/context/globalState";
 import { useLoginUserMutation } from "@/store/storeApi";
+import { toast } from "sonner";
 
 const SigninForm = () => {
   const { tokenInLocal, setLoginModel, setForgetModel } = useGlobalContext();
@@ -28,17 +29,18 @@ const SigninForm = () => {
 
   const onSubmit = async (formData) => {
     const res = await login(formData);
-    console.log(res, "ress");
+    // console.log(res, "ress");
     tokenInLocal(res);
   };
   useEffect(() => {
     if (isError) {
       setLoginModel(true);
-      alert("Please enter correct details");
+      // alert("Please enter correct details");
+      toast.error("Please enter correct details");
     }
     if (isSuccess) {
       setLoginModel(false);
-      alert("login successsfull");
+      toast.success("Login Successful");
     }
   }, [isError, isSuccess]);
   return (

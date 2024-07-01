@@ -5,7 +5,12 @@ import { useGlobalContext } from "@/context/globalState";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-const ChechoutDrawer = ({ cartedItems, closeDrawer, removeProduct, subtotal }) => {
+const ChechoutDrawer = ({
+  cartedItems,
+  closeDrawer,
+  removeProduct,
+  subtotal,
+}) => {
   let cartData = [
     {
       img: "/img/upload.png",
@@ -20,7 +25,7 @@ const ChechoutDrawer = ({ cartedItems, closeDrawer, removeProduct, subtotal }) =
       title: "CUSTOMER SUPPORT",
     },
   ];
-  const [totalPrice, setTotalPrice] = useState(subtotal)
+  const [totalPrice, setTotalPrice] = useState(subtotal);
   const { cartCount } = useGlobalContext();
   const navigate = useRouter();
   function addCheckoutDetail() {
@@ -28,9 +33,9 @@ const ChechoutDrawer = ({ cartedItems, closeDrawer, removeProduct, subtotal }) =
   }
 
   useEffect(() => {
-    if (!subtotal){
-     const storedSubtotal = localStorage.getItem("subtotal");
-     setTotalPrice(storedSubtotal)
+    if (!subtotal) {
+      const storedSubtotal = localStorage.getItem("subtotal");
+      setTotalPrice(storedSubtotal);
     }
   }, [subtotal]);
   return (

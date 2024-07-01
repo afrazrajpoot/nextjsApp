@@ -318,6 +318,21 @@ export const checkoutFormData = [
 ];
 export const createPasswordForm = [
   {
+    label: "Old Password",
+    name: "oldPassword",
+    type: "password",
+    placeholder: "Must be at least 8 characters",
+    pc: "email",
+
+    rules: {
+      required: "Password is required",
+      minLength: {
+        value: 8,
+        message: "Password must be at least 8 characters long",
+      },
+    },
+  },
+  {
     label: "New Password",
     name: "newPassword",
     type: "password",
@@ -523,7 +538,7 @@ export const profileDetails = [
   {
     title: "Currency", name: "USD", value: "USD"
   },
-]
+];
 export const featurePack = [
   {
     image: "/img/card1.png",

@@ -61,6 +61,7 @@ export const UserProvider = ({ children }) => {
   const [customerID, setCustomerID] = useState(null);
   const [loggedUser, setLoggedUser] = useState(null);
 
+  const [cart, showCart] = useState(false);
   const toggleSidebar = () => {
     setMobileSidebarOpen((prev) => !prev);
   };
@@ -190,7 +191,7 @@ export const UserProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
+    if (localStorage.getItem("user")) {
       setLogin(true);
     } else {
       setLogin(false);
@@ -246,6 +247,10 @@ export const UserProvider = ({ children }) => {
         setDataForResetPassword,
         customerDetails,
         setCustomerDetails,
+        dataForResetPassword,
+        setDataForResetPassword,
+        cart,
+        showCart,
       }}
     >
       {children}

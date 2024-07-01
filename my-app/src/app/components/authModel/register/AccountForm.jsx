@@ -3,7 +3,6 @@
 import { useGlobalContext } from "@/context/globalState";
 import { accountForm2, accoutForm } from "@/data/data";
 import { Avatar, Button } from "@mui/material";
-import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
 const FormInput = ({label, type, name, value , onChange})=> {
@@ -46,7 +45,6 @@ const handleInputChange = (e) => {
 };
 
 const onSubmit = async (data) => {
-  console.log(data, "data");
   try {
     const requestData = {
       username: customerDetails?.username || data?.username,
@@ -82,7 +80,28 @@ const onSubmit = async (data) => {
   return (
     <>
     <main className="mt-[3vw] lg:mt-[1vw]">
-   
+    <header className="flex items-start gap-[1vw] w-full">
+      <figure className="">
+      <Avatar className="w-[5vw] h-[5vw]">{loggedUser?.fullName[0]}</Avatar>
+        {/* <img src="/img/accountAvatar.png" alt="avatar" className="" /> */}
+      </figure>
+      <div>
+        <p className="lg:text-[1vw] text-[4vw] sm:text-[2.5vw] text-[#64748B]">
+          We only support .JPG, .JPEG, or .PNG file.
+        </p>
+        <div className="mt-[1vw] flex gap-[1vw]">
+          <Button className="bg-[#FF387A] text-white sm:text-[1.5vw] lg:text-[0.7vw] text-[2vw] font-bold hover:bg-[#FF387A] lg:py-[0.5vw] py-[1vw]   rounded-lg px-[2vw] ">
+            upload photo
+          </Button>
+          <Button
+            variant="outlined"
+            className="border-[1px] border-[#FF387A] py-[1vw] sm:text-[1.5vw] lg:py-[0.5vw] px-[1.5vw] rounded-lg lg:text-[0.7vw] text-[2vw] text-[#FF387A]"
+          >
+            delete photo
+          </Button>
+        </div>
+      </div>
+      </header>
     <form onSubmit={handleSubmit(onSubmit)}>
       {accoutForm?.map((item, index) => (
         <div className="mt-[2vw]" key={index}>
@@ -236,27 +255,3 @@ const onSubmit = async (data) => {
 };
 
 export default AccountForm;
-
-// <header className="flex items-start gap-[1vw] w-full">
-// <figure className="">
-// <Avatar className="w-[5vw] h-[5vw]">{loggedUser?.fullName[0]}</Avatar>
-//   {/* <img src="/img/accountAvatar.png" alt="avatar" className="" /> */}
-// </figure>
-// <div>
-//   <p className="lg:text-[1vw] text-[4vw] sm:text-[2.5vw] text-[#64748B]">
-//     We only support .JPG, .JPEG, or .PNG file.
-//   </p>
-//   <div className="mt-[1vw] flex gap-[1vw]">
-//     <Button className="bg-[#FF387A] text-white sm:text-[1.5vw] lg:text-[0.7vw] text-[2vw] font-bold hover:bg-[#FF387A] lg:py-[0.5vw] py-[1vw]   rounded-lg px-[2vw] ">
-//       upload photo
-//     </Button>
-//     <Button
-//       variant="outlined"
-//       className="border-[1px] border-[#FF387A] py-[1vw] sm:text-[1.5vw] lg:py-[0.5vw] px-[1.5vw] rounded-lg lg:text-[0.7vw] text-[2vw] text-[#FF387A]"
-//     >
-//       delete photo
-//     </Button>
-//   </div>
-// </div>
-// </header>
-

@@ -33,6 +33,13 @@ export const storeApi = createApi({
         body: data,
       }),
     }),
+    updatePassword: builder.mutation({
+      query: (data) => ({
+        url: "/api/user/updatePassword",
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -41,4 +48,5 @@ export const {
   useSignupUserMutation,
   useForgotPasswordMutation,
   useResetPasswordMutation,
+  useUpdatePasswordMutation,
 } = storeApi;
