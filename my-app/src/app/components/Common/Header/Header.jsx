@@ -26,7 +26,7 @@ const Header = () => {
       }
     }
   }, []);
-
+  // console.log(loggedUser?.data.user.fullName, "loggedUser");
   const {
     login,
     setLoginModel,
@@ -59,7 +59,7 @@ const Header = () => {
           </div>
         </div>
 
-        {loggedUser ? (
+        {login ? (
           <div className="flex items-center gap-[0.3vw]">
             <span className="hidden lg:w-[10vw] lg:block ">
               <form className="flex bg-[#262626] p-[0.6vw] lg:p-[0.6vw] rounded-md gap-[1vw] lg:w-[15vw]">
@@ -93,7 +93,7 @@ const Header = () => {
                   alt="profile icon"
                   className="sm:w-[2vw] lg:w-[1.5vw]"
                 />
-                <span>{loggedUser?.user?.fullName}</span>
+                <span>{login ? loggedUser?.data.user.fullName : "Guest"}</span>
               </div>
             </aside>
           </div>

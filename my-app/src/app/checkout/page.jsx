@@ -4,17 +4,23 @@ import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Steper from "../components/authModel/register/Steper";
 import { useGlobalContext } from "@/context/globalState";
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Link from "next/link";
-import { loadScript } from '@paypal/paypal-js';
-
+import { loadScript } from "@paypal/paypal-js";
 
 const page = () => {
+  const [createOrder, setCreateOrder] = useState({});
   const [checkoutDetail, setCheckoutDetail] = useState();
-  const { fetchWooCommerceData, productsAddedToCart, customerDetails } = useGlobalContext();
+  const {
+    fetchWooCommerceData,
+    productsAddedToCart,
+    customerDetails,
+    CreateWooCommerceData,
+  } = useGlobalContext();
 
   useEffect(() => {
-    const storedProducts = JSON.parse(localStorage.getItem("productsAddedToCart")) || [];
+    const storedProducts =
+      JSON.parse(localStorage.getItem("productsAddedToCart")) || [];
     if (productsAddedToCart?.length > 0) {
       setCheckoutDetail(productsAddedToCart);
     } else {
@@ -39,51 +45,123 @@ const page = () => {
     //   console.log(err);
     // }
 
-  loadScript({ "client-id": process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID }).then((paypal) => {
-  paypal.Buttons({
-    createOrder: (data, actions) => {
-      const items = checkoutDetail.map(product => ({
-        name: product.name,
-        unit_amount: {
-          currency_code: "USD",
-          value: parseFloat(product.sale_price || product.regular_price).toFixed(2)
-        },
-        quantity: "1"
-      }));
+    loadScript({ "client-id": process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID }).then(
+      (paypal) => {
+        paypal
+          .Buttons({
+            createOrder: (data, actions) => {
+              const items = checkoutDetail.map((product) => ({
+                name: product.name,
+                unit_amount: {
+                  currency_code: "USD",
+                  value: parseFloat(
+                    product.sale_price || product.regular_price
+                  ).toFixed(2),
+                },
+                quantity: "1",
+              }));
 
-      const itemTotal = items.reduce((total, item) => total + parseFloat(item.unit_amount.value) * parseInt(item.quantity), 0).toFixed(2);
+              const itemTotal = items
+                .reduce(
+                  (total, item) =>
+                    total +
+                    parseFloat(item.unit_amount.value) *
+                      parseInt(item.quantity),
+                  0
+                )
+                .toFixed(2);
 
-      return actions.order.create({
-        purchase_units: [{
-          amount: {
-            value: totalPrice.toFixed(2),
-            breakdown: {
-              item_total: {
-                currency_code: "USD",
-                value: itemTotal
-              }
-            }
-          },
-          items: items
-        }]
-      });
-    },
-    // Your other configurations, like onApprove, onCancel, onError, etc.
-  }).render('#paypal-button-container');
-});
+              return actions.order.create({
+                purchase_units: [
+                  {
+                    amount: {
+                      value: totalPrice.toFixed(2),
+                      breakdown: {
+                        item_total: {
+                          currency_code: "USD",
+                          value: itemTotal,
+                        },
+                      },
+                    },
+                    items: items,
+                  },
+                ],
+              });
+            },
+            onApprove: (data, actions) => {
+              return actions.order.capture().then((details) => {
+                console.log(details, "Payment successful:");
 
+                setCreateOrder({
+                  payment_method: "bacs",
+                  payment_method_title: "Direct Bank Transfer",
+                  set_paid: true,
+                  billing: {
+                    first_name: details.payer.name.given_name,
+                    last_name: details.payer.name.surname,
+                    address_1: details.purchase_units.map(
+                      (unit) => unit.shipping.address.address_line_1
+                    ),
+                    address_2: "",
+                    city: "San Francisco",
+                    state: "CA",
+                    postcode: "94103",
+                    country: "US",
+                    email: details.payer.email_address,
+                    phone: "(555) 555-5555",
+                  },
+                  shipping: {
+                    first_name: "John",
+                    last_name: "Doe",
+                    address_1: "969 Market",
+                    address_2: "",
+                    city: "San Francisco",
+                    state: "CA",
+                    postcode: "94103",
+                    country: "US",
+                  },
+                });
+                // Add any additional handling for a successful payment here
+              });
+            },
+            onCancel: (data) => {
+              console.log("Payment cancelled:", data);
+              // Add any additional handling for a cancelled payment here
+            },
+            onError: (err) => {
+              console.log("Payment error:", err);
+              // Add any additional handling for an error here
+            },
+          })
+          .render("#paypal-button-container");
+      }
+    );
   }
+  console.log(createOrder, "oredr");
+
+  const fetchOrder = async () => {
+    try {
+      const response = await CreateWooCommerceData(`wc/v3/orders`, createOrder);
+      console.log(response, "resppppppppponse");
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+  useEffect(() => {
+    fetchOrder();
+    // console.log("hy");
+  }, [createOrder, setCreateOrder]);
   return (
     <main className="bg-[#FAFAFA] lg:h-[200vh] h-[260vh] overflow-x-hidden overflow-y-hidden">
       <section className="lg:translate-y-[5vw] sm:translate-y-[10vw] translate-y-[20vw] p-[2vw] w-full max-w-[90vw] m-auto">
         <Link href={`/product/${checkoutDetail?.[0]?.slug}`}>
-        <Button
-          variant="outlined"
-          className="border-[1px] border-[#E5E5E5] sm:text-[1.5vw] hover:bg-[#FF689A] hover:border-[#FF689A] hover:text-[#ffff] rounded-lg p-[0.5vw] text-[#525252] flex items-center lg:gap-[0.1vw] lg:w-[8vw] w-[20vw] sm:w-[10vw] sm:ml-[-2vw] sm:translate-y-[3vw] lg:translate-y-[0vw] sm:pr-[2vw] ml-[1vw] lg:ml-[0vw] lg:text-[1vw] text-[3vw] lg:py-[0.3vw] sm:py-[1vw] py-[1.55vw]"
-          startIcon={<ArrowBackIosIcon />}
-        >
-          Back
-        </Button>
+          <Button
+            variant="outlined"
+            className="border-[1px] border-[#E5E5E5] sm:text-[1.5vw] hover:bg-[#FF689A] hover:border-[#FF689A] hover:text-[#ffff] rounded-lg p-[0.5vw] text-[#525252] flex items-center lg:gap-[0.1vw] lg:w-[8vw] w-[20vw] sm:w-[10vw] sm:ml-[-2vw] sm:translate-y-[3vw] lg:translate-y-[0vw] sm:pr-[2vw] ml-[1vw] lg:ml-[0vw] lg:text-[1vw] text-[3vw] lg:py-[0.3vw] sm:py-[1vw] py-[1.55vw]"
+            startIcon={<ArrowBackIosIcon />}
+          >
+            Back
+          </Button>
         </Link>
         <section className="flex lg:flex-row flex-col mt-[3vw] ml-[-9.5vw]">
           <article className="w-full max-w-[70vw] flex flex-col gap-[2vw] mt-[5vw] sm:mt-[7vw] lg:mt-[0vw]">
@@ -106,7 +184,6 @@ const page = () => {
                   placeholder="magika@mail.com"
                   value={customerDetails?.email}
                   name="email"
-                  
                 />
               </form>
             </div>
@@ -128,7 +205,6 @@ const page = () => {
                       className="lg:p-[0.8vw] p-[2vw] lg:text-[1vw] text-[3.5vw] bg-[#FAFAFA] mb-4 sm:text-[2vw] sm:p-[2vw]"
                       value={customerDetails?.[elem?.name]}
                       name={customerDetails?.[elem?.name]}
-                      
                     />
                   </div>
                 ))}
@@ -144,7 +220,6 @@ const page = () => {
                       type="text"
                       value={customerDetails?.city}
                       name="city"
-                      
                       className="lg:p-[0.8vw] sm:text-[2vw] sm:mt-[1vw]  p-[2vw] lg:text-[1vw] text-[3.5vw] bg-[#FAFAFA] mb-4 lg:w-[23vw] w-[42vw]"
                     />
                   </div>
@@ -159,7 +234,6 @@ const page = () => {
                       type="text"
                       value={customerDetails?.postcode}
                       name="postcode"
-                      
                       className="lg:p-[0.8vw] p-[2vw] sm:mt-[1vw]  sm:text-[2vw] lg:text-[1vw] text-[3.5vw] bg-[#FAFAFA] mb-4 lg:w-[24vw] w-[42vw]"
                     />
                   </div>
@@ -182,7 +256,10 @@ const page = () => {
                       {product?.name}
                     </p>
                     <p className="lg:text-[1vw] text-[2.5vw] font-bold lg:font-medium sm:text-[1.5vw] text-[#FF689A]">
-                      ${product?.sale_price ? product?.sale_price : product?.regular_price}
+                      $
+                      {product?.sale_price
+                        ? product?.sale_price
+                        : product?.regular_price}
                     </p>
                   </div>
                 ))}
@@ -204,11 +281,17 @@ const page = () => {
               >
                 Contnue to Payment
               </Button>
-              <div id="paypal-button-container" className="lg:mt-[1vw] mt-[3vw]"></div>
+              <div
+                id="paypal-button-container"
+                className="lg:mt-[1vw] mt-[3vw]"
+              ></div>
               <div className="border-[0.2px] border-b-[#EEEEEE] lg:mt-[1vw] mt-[3vw]"></div>
               <div className="flex  lg:translate-x-[-4.2vw] w-full  lg:mt-[1vw] mt-[3vw] lg:ml-[5vw] sm:ml-[4vw] ml-[-1vw]  lg:gap-[2vw] gap-[7.5vw]">
                 {summaryOptions?.map((elem, ind) => (
-                  <div key={ind} className="flex flex-col items-center sm:justify-center ">
+                  <div
+                    key={ind}
+                    className="flex flex-col items-center sm:justify-center "
+                  >
                     <img
                       src={elem.icon}
                       alt="icon"

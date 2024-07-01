@@ -13,9 +13,12 @@ import { loginFormData } from "@/data/data";
 import { useGlobalContext } from "@/context/globalState";
 import { useLoginUserMutation } from "@/store/storeApi";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const SigninForm = () => {
-  const { tokenInLocal, setLoginModel, setForgetModel } = useGlobalContext();
+  const navigate = useRouter();
+  const { tokenInLocal, setLoginModel, setForgetModel, customerID } =
+    useGlobalContext();
   const [showPassword, setShowPassword] = useState(false);
   const {
     handleSubmit,
@@ -27,22 +30,56 @@ const SigninForm = () => {
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
 
+  // const onSubmit = async (formData) => {
+  //   const res = await login(formData);
+  //   // console.log(res, "ress");
+  //   tokenInLocal(res);
+  // };
   const onSubmit = async (formData) => {
-    const res = await login(formData);
-    // console.log(res, "ress");
-    tokenInLocal(res);
+    try {
+      const res = await login(formData);
+      tokenInLocal(res);
+    } catch (error) {
+      console.log(error);
+    }
+    // console.log(res, "ress");
   };
   useEffect(() => {
     if (isError) {
       setLoginModel(true);
       // alert("Please enter correct details");
-      toast.error("Please enter correct details");
+      toast.error("Please enter correct details", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
     if (isSuccess) {
       setLoginModel(false);
-      toast.success("Login Successful");
+
+      toast.success("Login Successful", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      if (customerID) {
+        navigate.push("/");
+      } else {
+        navigate.push("/accountdetails");
+      }
     }
   }, [isError, isSuccess]);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="w-full">
       {loginFormData.map((field, index) => (

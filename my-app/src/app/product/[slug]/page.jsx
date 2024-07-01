@@ -335,31 +335,30 @@ const ProductDetails = ({ params: { slug } }) => {
             </footer>
           </aside>
         </section>
-        <section className='w-full flex flex-col items-start max-w-[90vw] mx-auto my-[10vw] sm:mt-[5vw] lg:mt-[2vw]'>
-            <h1 className='text-[5vw] sm:text-[2.5vw] lg:text-[2vw] text-[#171717] font-semibold'>Related Products</h1>
-            <div className="grid grid-cols-1 gap-[2vw] w-full">
-            <Slider {...settings} > 
-            {relatedProducts?.map((product, index) => {
-            const { images, regular_price, sale_price, name } = product?.data;
-            return (
-              <div key={index} className="w-full">
-                <Pack discountedPrice={sale_price} actualPrice={regular_price} image={images?.[0]?.src} title={name}  />
-              </div>
-            );
-          })}
+        <section className="w-full flex flex-col items-start max-w-[90vw] mx-auto my-[10vw] sm:mt-[5vw] lg:mt-[2vw]">
+          <h1 className="text-[5vw] sm:text-[2.5vw] lg:text-[2vw] text-[#171717] font-semibold">
+            Related Products
+          </h1>
+          <div className="grid grid-cols-1 gap-[2vw] w-full">
+            <Slider {...settings}>
+              {relatedProducts?.map((product, index) => {
+                const { images, regular_price, sale_price, name } =
+                  product?.data;
+                return (
+                  <div key={index} className="w-full">
+                    <Pack
+                      discountedPrice={sale_price}
+                      actualPrice={regular_price}
+                      image={images?.[0]?.src}
+                      title={name}
+                    />
+                  </div>
+                );
+              })}
             </Slider>
           </div>
         </section>
-        <aside className="w-full max-w-[30vw]">
-          <Drawer anchor="right" open={cart} onClose={() => showCart(false)}>
-            <ChechoutDrawer
-              subtotal={subtotal}
-              removeProduct={removeFromCartHandler}
-              cartedItems={productsAddedToCart}
-              closeDrawer={() => showCart(false)}
-            />
-          </Drawer>
-        </aside>
+
         <Footer />
       </main>
     </>

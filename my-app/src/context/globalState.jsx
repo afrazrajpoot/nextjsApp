@@ -15,7 +15,7 @@ const WOOCOMMERCE_CONSUMER_SECRET =
 export const UserProvider = ({ children }) => {
   function tokenInLocal(data) {
     if (data) {
-      localStorage.setItem("token", JSON.stringify(data));
+      localStorage.setItem("user", JSON.stringify(data));
       setLogin(true);
       return true;
     }
@@ -191,7 +191,7 @@ export const UserProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    if (localStorage.getItem("user")) {
+    if (JSON.parse(localStorage.getItem("user"))) {
       setLogin(true);
     } else {
       setLogin(false);

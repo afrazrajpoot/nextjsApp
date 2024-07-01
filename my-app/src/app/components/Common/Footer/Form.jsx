@@ -13,17 +13,20 @@ import { formData } from "@/data/data";
 import { useSignupUserMutation } from "@/store/storeApi";
 import { useGlobalContext } from "@/context/globalState";
 import { Toaster, toast } from "sonner";
+import { useRouter } from "next/navigation";
+import SignupModel from "../../authModel/register/SignupModel";
 
 const Form = () => {
   const [register, { isLoading, isError, data, isSuccess }] =
     useSignupUserMutation();
+  const navigate = useRouter();
   const {
     handleSubmit,
     control,
     formState: { errors },
     reset,
   } = useForm();
-  const { setSignupModel } = useGlobalContext();
+  const { setSignupModel, customerID, setLoginModel } = useGlobalContext();
   const [showPassword, setShowPassword] = useState(false);
   // const [successMessage, setSuccessMessage] = useState("");
   // const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -46,22 +49,6 @@ const Form = () => {
         });
         return;
       }
-
-      if (response.data) {
-        localStorage.setItem("user", JSON.stringify(response.data));
-        toast.success("Signup successful!", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
-        reset();
-        setSignupModel(false);
-      }
     } catch (error) {
       console.error("Error occurred:", error);
     }
@@ -70,7 +57,22 @@ const Form = () => {
   const handleSnackbarClose = () => {
     setOpenSnackbar(false);
   };
-
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Signup successful!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      setSignupModel(false);
+      setLoginModel(true);
+    }
+  }, [isSuccess]);
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)} noValidate className="w-full">
