@@ -93,7 +93,7 @@ const page = () => {
               return actions.order.capture().then((detail) => {
                 console.log(detail, "Payment successful:");
 
-                const lineItems = detail.purchase_units[0].items.map(
+                const lineItems = detail?.purchase_units?.[0]?.items?.map(
                   (item) => ({
                     product_id: item.id,
                     name: item.name,
@@ -103,8 +103,8 @@ const page = () => {
                     total: item.unit_amount.value,
                     taxes: [],
                     meta_data: [],
-                    sku: item.sku || null,
-                    image: item.image || { id: 0, src: "" },
+                    sku: checkoutDetail?.[0]?.sku || null,
+                    image: checkoutDetail?.[0]?.images?.[0]?.src ? { id: 0, src: checkoutDetail?.[0]?.images?.[0]?.src }: null,
                   })
                 );
 
@@ -146,7 +146,7 @@ const page = () => {
                     country:
                       detail.purchase_units[0].shipping.address.country_code,
                   },
-                  line_items: purchase_units,
+                  line_items: lineItems,
                   shipping_lines: [
                     {
                       method_id: "flat_rate",
