@@ -46,6 +46,7 @@ export const UserProvider = ({ children }) => {
     otp: "",
     newPassword: "",
   });
+  const [querySuggestion, setQuerySuggestion] = useState();
   const [customerDetails, setCustomerDetails] = useState({
     username: "",
     first_name: "",
@@ -86,7 +87,7 @@ export const UserProvider = ({ children }) => {
       } else {
         console.error(error.message);
       }
-      throw error;
+      console.log("please stable connection");
     }
   };
 
@@ -251,6 +252,8 @@ export const UserProvider = ({ children }) => {
         setDataForResetPassword,
         cart,
         showCart,
+        querySuggestion,
+        setQuerySuggestion,
       }}
     >
       {children}

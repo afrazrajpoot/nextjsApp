@@ -7,6 +7,7 @@ import { useGlobalContext } from "@/context/globalState";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Link from "next/link";
 import { loadScript } from "@paypal/paypal-js";
+import { toast } from "sonner";
 
 const page = () => {
   const [createOrder, setCreateOrder] = useState({});
@@ -17,7 +18,14 @@ const page = () => {
     customerDetails,
     CreateWooCommerceData,
   } = useGlobalContext();
-
+  const fetchOrder = async (data) => {
+    try {
+      const response = await CreateWooCommerceData(`wc/v3/orders`, data);
+      console.log(response, "respoooooone");
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
   useEffect(() => {
     const storedProducts =
       JSON.parse(localStorage.getItem("productsAddedToCart")) || [];
@@ -38,13 +46,6 @@ const page = () => {
   }
 
   async function paymentMethod() {
-    // try {
-    //   const response = await fetchWooCommerceData("wc/v3/payment_gateways/bacs");
-    //   console.log(response);
-    // } catch (err) {
-    //   console.log(err);
-    // }
-
     loadScript({ "client-id": process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID }).then(
       (paypal) => {
         paypal
@@ -75,7 +76,7 @@ const page = () => {
                 purchase_units: [
                   {
                     amount: {
-                      value: totalPrice.toFixed(2),
+                      value: itemTotal,
                       breakdown: {
                         item_total: {
                           currency_code: "USD",
@@ -89,48 +90,98 @@ const page = () => {
               });
             },
             onApprove: (data, actions) => {
-              return actions.order.capture().then((details) => {
-                // console.log(details, "Payment successful:");
+              return actions.order.capture().then((detail) => {
+                console.log(detail, "Payment successful:");
 
-                setCreateOrder({
-                  payment_method: "bacs",
-                  payment_method_title: "Direct Bank Transfer",
+                const lineItems = detail.purchase_units[0].items.map(
+                  (item) => ({
+                    product_id: item.id,
+                    name: item.name,
+                    quantity: item.quantity,
+                    price: item.unit_amount.value,
+                    subtotal: item.unit_amount.value,
+                    total: item.unit_amount.value,
+                    taxes: [],
+                    meta_data: [],
+                    sku: item.sku || null,
+                    image: item.image || { id: 0, src: "" },
+                  })
+                );
+
+                fetchOrder({
+                  payment_method: "paypal",
+                  payment_method_title: "PayPal",
                   set_paid: true,
                   billing: {
-                    first_name: details.payer.name.given_name,
-                    last_name: details.payer.name.surname,
-                    address_1: details.purchase_units.map(
-                      (unit) => unit.shipping.address.address_line_1
-                    ),
-                    address_2: "",
-                    city: "San Francisco",
-                    state: "CA",
-                    postcode: "94103",
-                    country: "US",
-                    email: details.payer.email_address,
+                    first_name: detail.payer.name.given_name,
+                    last_name: detail.payer.name.surname,
+                    address_1:
+                      detail.purchase_units[0].shipping.address.address_line_1,
+                    address_2:
+                      detail.purchase_units[0].shipping.address.admin_area_1,
+                    city: detail.purchase_units[0].shipping.address
+                      .admin_area_2,
+                    state:
+                      detail.purchase_units[0].shipping.address.country_code,
+                    postcode:
+                      detail.purchase_units[0].shipping.address.postal_code,
+                    country:
+                      detail.purchase_units[0].shipping.address.country_code,
+                    email: detail.payer.email_address,
                     phone: "(555) 555-5555",
                   },
                   shipping: {
-                    first_name: "John",
-                    last_name: "Doe",
-                    address_1: "969 Market",
-                    address_2: "",
-                    city: "San Francisco",
-                    state: "CA",
-                    postcode: "94103",
-                    country: "US",
+                    first_name: detail.payer.name.given_name,
+                    last_name: detail.payer.name.surname,
+                    address_1:
+                      detail.purchase_units[0].shipping.address.address_line_1,
+                    address_2:
+                      detail.purchase_units[0].shipping.address.admin_area_1,
+                    city: detail.purchase_units[0].shipping.address
+                      .admin_area_2,
+                    state:
+                      detail.purchase_units[0].shipping.address.country_code,
+                    postcode:
+                      detail.purchase_units[0].shipping.address.postal_code,
+                    country:
+                      detail.purchase_units[0].shipping.address.country_code,
                   },
+                  line_items: purchase_units,
+                  shipping_lines: [
+                    {
+                      method_id: "flat_rate",
+                      method_title: "Flat Rate",
+                      total: "10.00",
+                    },
+                  ],
                 });
-                // Add any additional handling for a successful payment here
+
+                toast.success("Payment successful", {
+                  position: "top-right",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "light",
+                });
               });
             },
             onCancel: (data) => {
-              // console.log("Payment cancelled:", data);
-              // Add any additional handling for a cancelled payment here
+              toast.error("Payment cancelled", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              });
             },
             onError: (err) => {
               console.log("Payment error:", err);
-              // Add any additional handling for an error here
             },
           })
           .render("#paypal-button-container");
@@ -139,17 +190,6 @@ const page = () => {
   }
   console.log(createOrder, "oredr");
 
-  const fetchOrder = async () => {
-    try {
-      const response = await CreateWooCommerceData(`wc/v3/orders`, createOrder);
-    } catch (err) {
-      console.log(err.message);
-    }
-  };
-  useEffect(() => {
-    fetchOrder();
-    // console.log("hy");
-  }, [createOrder, setCreateOrder]);
   return (
     <main className="bg-[#FAFAFA] lg:h-[200vh] h-[260vh] overflow-x-hidden overflow-y-hidden">
       <section className="lg:translate-y-[5vw] sm:translate-y-[10vw] translate-y-[20vw] p-[2vw] w-full max-w-[90vw] m-auto">
